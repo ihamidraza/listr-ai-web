@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {Layout} from './layout'
 import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 const NewsPageDetail = React.lazy(() => import("pages/NewsPageDetail"));
@@ -48,12 +49,12 @@ const ProjectRoutes = () => {
     <React.Suspense fallback={<>Loading...</>}>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Layout />} >
           <Route path="*" element={<NotFound />} />
           <Route path="/loginpage" element={<LoginPage />} />
           <Route path="/registerpageone" element={<RegisterPageOne />} />
           <Route path="/registerpage" element={<RegisterPage />} />
-          <Route path="/homepage" element={<HomePage />} />
+          <Route path="homepage" element={<HomePage />} />
           <Route path="/aitoolmapper" element={<AitoolMapper />} />
           <Route path="/aitoolmapperlogin" element={<AitoolMapperlogin />} />
           <Route
@@ -97,6 +98,7 @@ const ProjectRoutes = () => {
           <Route path="/newspage" element={<NewsPage />} />
           <Route path="/newspageone" element={<NewsPageOne />} />
           <Route path="/newspagedetail" element={<NewsPageDetail />} />
+          </Route>
         </Routes>
       </Router>
     </React.Suspense>

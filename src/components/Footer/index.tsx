@@ -8,7 +8,7 @@ type FooterProps = React.DetailedHTMLProps<
 > &
   Partial<{}>;
 
-const Footer: React.FC<FooterProps> = (props) => {
+export const Footer: React.FC<FooterProps> = (props) => {
   return (
     <>
       <footer className={props.className}>

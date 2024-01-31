@@ -8,7 +8,7 @@ type Header4Props = React.DetailedHTMLProps<
 > &
   Partial<{}>;
 
-const Header4: React.FC<Header4Props> = (props) => {
+export const Header4: React.FC<Header4Props> = (props) => {
   return (
     <>
       <header className={props.className}>

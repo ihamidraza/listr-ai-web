@@ -1,5 +1,5 @@
 import React from "react";
-import { ErrorMessage } from "../../components/ErrorMessage";
+import { ErrorMessage } from "../ErrorMessage";
 
 const variants = {
   fill: { white_A700: "bg-white-A700 text-white-A700" },

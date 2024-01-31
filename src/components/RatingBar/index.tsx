@@ -1,4 +1,4 @@
-import { ErrorMessage } from "../../components/ErrorMessage";
+import { ErrorMessage } from "../ErrorMessage";
 import React, { HTMLAttributes } from "react";
 import ReactStars from "react-rating-stars-component";
 

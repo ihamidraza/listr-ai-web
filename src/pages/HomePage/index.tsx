@@ -3,7 +3,6 @@ import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 
 import { Button, Img, Input, Line, List, SelectBox, Text } from "components";
-import Footer from "components/Footer";
 
 const languageOptionsList = [
   { label: "Option1", value: "option1" },
@@ -2397,7 +2396,6 @@ const HomePagePage: React.FC = () => {
               </div>
             </div>
           </div>
-          <Footer className="flex items-center justify-center mt-[110px] md:px-5 w-full" />
         </div>
       </div>
     </>

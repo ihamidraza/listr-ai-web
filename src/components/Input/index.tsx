@@ -1,5 +1,5 @@
 import React from "react";
-import { ErrorMessage } from "../../components/ErrorMessage";
+import { ErrorMessage } from "../ErrorMessage";
 
 const shapes = { round: "rounded-[10px]" } as const;
 const variants = {
