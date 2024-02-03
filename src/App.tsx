@@ -1,12 +1,17 @@
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import React from "react";
+import { ConfigProvider, theme } from 'antd'
 import Routes from "./Routes";
 
+
 function App() {
+  const { darkAlgorithm } = theme;
+
   return (
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-      <Routes />
-    </GoogleOAuthProvider>
+    <ConfigProvider theme={{ algorithm: darkAlgorithm }}>
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+        <Routes />
+      </GoogleOAuthProvider>
+    </ConfigProvider>
   );
 }
 

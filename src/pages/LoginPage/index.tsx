@@ -1,14 +1,17 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 
 import { Button, Img, Input, Line, Text } from "components";
 import Footer from "components/Footer";
-import Header from "components/Header";
 
 const LoginPagePage: React.FC = () => {
+
+  const navigate = useNavigate()
+
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="h-[813px] md:px-5 relative w-full">
+        <div className="h-[813px] md:px-5 relative w-full" style={{ marginTop: 100 }}>
           <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full">
             <Img
               className="h-[622px] object-cover"
@@ -128,7 +131,6 @@ const LoginPagePage: React.FC = () => {
               </div>
             </div>
           </div>
-          <Header className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
         </div>
         <Text
           className="mt-[30px] text-base text-gray-100"
@@ -137,9 +139,15 @@ const LoginPagePage: React.FC = () => {
           <span className="text-gray-100 font-plusjakartasans text-left font-normal">
             Need an account?{" "}
           </span>
-          <span className="text-amber-500 font-plusjakartasans text-left font-bold">
-            Signup Here
-          </span>
+          <Button
+            onClick={() => navigate('/registerpageone')}
+
+          >
+
+            <span className="text-amber-500 font-plusjakartasans text-left font-bold">
+              Signup Here
+            </span>
+          </Button>
         </Text>
         <div className="h-[422px] md:h-[519px] max-w-[1212px] mt-[97px] mx-auto md:px-5 relative w-full">
           <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col h-full items-center justify-start m-auto pt-0.5 rounded-[15px] w-full">

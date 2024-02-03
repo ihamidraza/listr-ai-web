@@ -2,9 +2,8 @@ import React from "react";
 
 import { useGoogleLogin } from "@react-oauth/google";
 
-import { Button, CheckBox, Img, Input, Text } from "components";
-import Footer from "components/Footer";
-import Header from "components/Header";
+import { Button, CheckBox, Img, Text } from "components";
+
 
 const SubmittoolPage: React.FC = () => {
   const googleSignIn = useGoogleLogin({
@@ -185,7 +184,6 @@ const SubmittoolPage: React.FC = () => {
               </Text>
             </div>
           </div>
-          <Header className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
         </div>
         <Text
           className="text-white-A700 text-xs"
@@ -292,7 +290,6 @@ const SubmittoolPage: React.FC = () => {
             </div>
           </div>
         </div>
-        <Footer className="flex items-center justify-center md:px-5 w-full" />
       </div>
     </>
   );

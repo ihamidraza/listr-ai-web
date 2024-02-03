@@ -51,18 +51,18 @@ const ProjectRoutes = () => {
         <Routes>
           <Route path="/" element={<Layout />} >
           <Route path="*" element={<NotFound />} />
-          <Route path="/loginpage" element={<LoginPage />} />
-          <Route path="/registerpageone" element={<RegisterPageOne />} />
-          <Route path="/registerpage" element={<RegisterPage />} />
-          <Route path="homepage" element={<HomePage />} />
-          <Route path="/aitoolmapper" element={<AitoolMapper />} />
-          <Route path="/aitoolmapperlogin" element={<AitoolMapperlogin />} />
+          <Route path="loginpage" element={<LoginPage />} />
+          <Route path="registerpageone" element={<RegisterPageOne />} />
+          <Route path="registerpage" element={<RegisterPage />} />
+          <Route path="" element={<HomePage />} />
+          <Route path="aitoolmapper" element={<AitoolMapper />} />
+          <Route path="aitoolmapperlogin" element={<AitoolMapperlogin />} />
           <Route
-            path="/aitoolmapperloginone"
+            path="aitoolmapperloginone"
             element={<AitoolMapperloginOne />}
           />
-          <Route path="/customaisolutions" element={<CustomAISolutions />} />
-          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="customaisolutions" element={<CustomAISolutions />} />
+          <Route path="contactus" element={<ContactUs />} />
           <Route path="/termsconditions" element={<TermsConditions />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/aitoolscategoryone" element={<AiToolsCategoryOne />} />

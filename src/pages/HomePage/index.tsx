@@ -33,7 +33,7 @@ const HomePagePage: React.FC = () => {
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
         <div className="flex flex-col items-center justify-start w-full">
-          <div className="md:h-[1053px] h-[813px] md:px-5 relative w-full">
+          <div className="md:h-[1053px] h-[813px] md:px-5 relative w-full" style={{marginTop: 100}}>
             <div className="md:h-[1053px] h-[813px] m-auto w-full">
               <Img
                 className="h-[622px] object-cover"
@@ -136,96 +136,7 @@ const HomePagePage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <header className="absolute bg-black-900_33 flex flex-col inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full">
-              <div className="flex md:flex-col flex-row md:gap-5 items-center justify-center md:ml-[0] mx-[111px] my-7 w-[85%]">
-                <div className="flex flex-col justify-start w-[33%] md:w-full">
-                  <ul className="flex sm:flex-col flex-row sm:hidden items-end justify-start w-full common-row-list">
-                    <li>
-                      <a
-                        href="javascript:"
-                        className="hover:font-extrabold md:text-2xl sm:text-[22px] text-[26px] text-white-A700"
-                      >
-                        <Text size="txtPlusJakartaSansExtraBold26">
-                          Listr.ai
-                        </Text>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="javascript:"
-                        className="hover:font-extrabold ml-[101px] my-[5px] text-base text-white-A700"
-                      >
-                        <Text size="txtPlusJakartaSansRomanRegular16">
-                          Home
-                        </Text>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="javascript:"
-                        className="hover:font-extrabold mb-1 ml-[30px] mt-[7px] text-base text-white-A700"
-                      >
-                        <Text size="txtPlusJakartaSansRomanRegular16">
-                          Ai Tools Category
-                        </Text>
-                      </a>
-                    </li>
-                  </ul>
-                  <div className="bg-amber-500 h-1 md:ml-[0] ml-[188px] mr-[162px] mt-[3px] rounded-sm w-[12%]"></div>
-                </div>
-                <Text
-                  className="md:ml-[0] ml-[30px] text-base text-white-A700"
-                  size="txtPlusJakartaSansRomanRegular16"
-                >
-                  Ai Tools Mapper
-                </Text>
-                <Text
-                  className="md:ml-[0] ml-[30px] text-base text-white-A700"
-                  size="txtPlusJakartaSansRomanRegular16"
-                >
-                  Custom AI Solutions
-                </Text>
-                <Text
-                  className="md:ml-[0] ml-[30px] text-base text-white-A700"
-                  size="txtPlusJakartaSansRomanRegular16"
-                >
-                  Articles
-                </Text>
-                <div className="flex h-16 justify-end ml-9 md:ml-[0] relative w-[13%] md:w-full">
-                  <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-1.5 ml-auto mr-[33px] mt-auto rounded-[50%] w-8"></div>
-                  <Button
-                    className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[152px]"
-                    leftIcon={
-                      <Img
-                        className="h-6 mb-px mr-2.5 bottom-[2%] right-[7%] absolute"
-                        src="images/img_lock.svg"
-                        alt="lock"
-                      />
-                    }
-                    shape="round"
-                    color="amber_500_19"
-                    size="xl"
-                    variant="fill"
-                  >
-                    <div className="capitalize font-bold text-left text-lg">
-                      Sign in
-                    </div>
-                  </Button>
-                </div>
-                <div className="flex h-16 justify-end ml-5 md:ml-[0] relative w-[16%] md:w-full">
-                  <div className="backdrop-opacity-[0.5] bg-green-A400 blur-[24.00px] h-[35px] mb-[3px] ml-auto mr-[54px] mt-auto rounded-[17px] w-[17%]"></div>
-                  <Button
-                    className="absolute border border-green-A400 border-solid capitalize cursor-pointer font-bold h-full inset-[0] m-auto min-w-[193px] text-center text-lg"
-                    shape="round"
-                    color="green_A400_19"
-                    size="2xl"
-                    variant="fill"
-                  >
-                    Submit Ai tools
-                  </Button>
-                </div>
-              </div>
-            </header>
+
           </div>
           <Text
             className="mt-[33px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"

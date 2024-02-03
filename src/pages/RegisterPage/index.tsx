@@ -1,13 +1,12 @@
 import React from "react";
 
 import { Button, Img, Input, Text } from "components";
-import Header from "components/Header";
 
 const RegisterPagePage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto pb-[486px] w-full">
-        <div className="h-[813px] md:px-5 relative w-full">
+        <div className="h-[813px] md:px-5 relative w-full" style={{ marginTop: 100 }}>
           <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full">
             <Img
               className="h-[622px] object-cover"
@@ -108,7 +107,6 @@ const RegisterPagePage: React.FC = () => {
               </div>
             </div>
           </div>
-          <Header className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
         </div>
         <div className="flex flex-col items-start justify-start max-w-[1054px] mx-auto md:px-5 w-full">
           <Input

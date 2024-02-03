@@ -1,15 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { message } from 'antd'
 
 import { Button, Img, Input, Line, Text } from "components";
-import Footer from "components/Footer";
-import Header from "components/Header";
+import { server } from "utils";
 
 const RegisterPageOnePage: React.FC = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [password2, setPassword2] = useState('')
+
+  const onFinish = () => {
+    
+    if(!name) return message.error('Name is required')
+    if(!email) return message.error('Email is required')
+    if(!isValidEmail(email)) return message.error('Email is not valid')
+    if(!password)  return  message.error('Password is required')
+    if (password !== password2)
+    return message.error('Passwords are mismatched')
+  
+  try {
+      const data = {
+        name,
+        email,
+        password
+      }
+      
+      server.post('/signup', data)
+    }
+    catch(err) {
+
+    }
+  }
+
+  function isValidEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+
+
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="md:h-[813px] h-[825px] md:px-5 relative w-full">
-          <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full">
+        <div className="md:h-[813px] h-[825px] md:px-5 relative w-full" style={{ marginTop: 100 }}>
+          <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full" >
             <Img
               className="h-[622px] object-cover"
               src="images/img_divelementorw.png"
@@ -44,6 +80,7 @@ const RegisterPageOnePage: React.FC = () => {
                     placeholder="Continue With Google"
                     className="font-medium p-0 placeholder:text-blue_gray-800 text-left text-sm w-full"
                     wrapClassName="border border-blue_gray-900 border-solid flex w-full"
+
                     prefix={
                       <Img
                         className="h-6 mr-[15px] my-auto"
@@ -82,6 +119,8 @@ const RegisterPageOnePage: React.FC = () => {
                     color="black_900_33"
                     size="lg"
                     variant="fill"
+                    value={name}
+                    onChange={setName}
                   ></Input>
                   <Text
                     className="mt-4 text-base text-white-A700"
@@ -99,6 +138,8 @@ const RegisterPageOnePage: React.FC = () => {
                     color="black_900_33"
                     size="lg"
                     variant="fill"
+                    value={email}
+                    onChange={setEmail}
                   ></Input>
                   <Text
                     className="mt-4 text-base text-white-A700"
@@ -116,6 +157,8 @@ const RegisterPageOnePage: React.FC = () => {
                     color="black_900_33"
                     size="xl"
                     variant="fill"
+                    value={password}
+                    onChange={setPassword}
                   ></Input>
                 </div>
               </div>
@@ -127,7 +170,6 @@ const RegisterPageOnePage: React.FC = () => {
           >
             Confirm Password
           </Text>
-          <Header className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
         </div>
         <Input
           name="language_One"
@@ -139,6 +181,8 @@ const RegisterPageOnePage: React.FC = () => {
           color="black_900_33"
           size="lg"
           variant="fill"
+          value={password2}
+          onChange={setPassword2}
         ></Input>
         <div className="flex md:h-[134px] h-[58px] justify-end mt-[76px] md:px-5 relative w-[27%] sm:w-full">
           <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[5px] ml-auto mr-[138px] mt-auto rounded-[50%] w-8"></div>
@@ -148,8 +192,9 @@ const RegisterPageOnePage: React.FC = () => {
             color="amber_500_19"
             size="xl"
             variant="fill"
+            onClick={onFinish}
           >
-            SignUp
+            Sign Up
           </Button>
         </div>
         <Text
@@ -207,7 +252,6 @@ const RegisterPageOnePage: React.FC = () => {
             </div>
           </div>
         </div>
-        <Footer className="flex items-center justify-center mt-[130px] md:px-5 w-full" />
       </div>
     </>
   );
