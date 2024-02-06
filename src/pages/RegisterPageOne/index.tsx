@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 
 import { message } from 'antd'
+import { useNavigate } from 'react-router-dom'
 
 import { Button, Img, Input, Line, Text } from "components";
 import { server } from "utils";
 
 const RegisterPageOnePage: React.FC = () => {
+
+  const navigate = useNavigate()
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
 
   const onFinish = () => {
-    
+
     if(!name) return message.error('Name is required')
     if(!email) return message.error('Email is required')
     if(!isValidEmail(email)) return message.error('Email is not valid')
@@ -30,6 +34,8 @@ const RegisterPageOnePage: React.FC = () => {
       server.post('/signup', data)
     }
     catch(err) {
+
+      message.error(err?.message || 'Error while signing up')
 
     }
   }
@@ -204,9 +210,13 @@ const RegisterPageOnePage: React.FC = () => {
           <span className="text-gray-100 font-plusjakartasans text-left font-normal">
             Need an account?{" "}
           </span>
+          <Button 
+          onClick={() => navigate('/login')}>
+
           <span className="text-amber-500 font-plusjakartasans text-left font-bold">
             Login Here!
           </span>
+          </Button>
         </Text>
         <div className="h-[422px] md:h-[519px] max-w-[1212px] mt-[97px] mx-auto md:px-5 relative w-full">
           <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col h-full items-center justify-start m-auto pt-0.5 rounded-[15px] w-full">

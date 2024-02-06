@@ -1,12 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import { message } from 'antd'
 
 import { Button, Img, Input, Line, Text } from "components";
-import Footer from "components/Footer";
+import { server } from "utils";
 
 const LoginPagePage: React.FC = () => {
 
   const navigate = useNavigate()
+
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const onFinish = () => {
+
+    if (!email) return message.error('Email is required')
+    if (!isValidEmail(email)) return message.error('Email is not valid')
+    if (!password) return message.error('Password is required')
+
+
+    try {
+      const data = {
+        email,
+        password
+      }
+
+      server.post('/signin', data)
+    }
+    catch (err) {
+
+      message.error(err?.message || 'Error while signing in')
+
+    }
+  }
+
+  function isValidEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
 
   return (
     <>
@@ -91,6 +123,8 @@ const LoginPagePage: React.FC = () => {
                     color="black_900_33"
                     size="lg"
                     variant="fill"
+                    value={email}
+                    onChange={setEmail}
                   ></Input>
                   <Text
                     className="mt-4 text-base text-white-A700"
@@ -108,12 +142,14 @@ const LoginPagePage: React.FC = () => {
                     color="black_900_33"
                     size="xl"
                     variant="fill"
+                    value={password}
+                    onChange={setPassword}
                   ></Input>
                   <Text
                     className="ml-56 md:ml-[0] mt-[13px] text-base text-gray-100"
                     size="txtPlusJakartaSansRomanBold16"
                   >
-                    Forget Password?
+                    Forgot Password?
                   </Text>
                   <div className="flex h-[58px] md:h-[75px] justify-end md:ml-[0] ml-[3px] mt-[17px] relative w-[99%]">
                     <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[5px] ml-auto mr-[131px] mt-auto rounded-[50%] w-8"></div>
@@ -123,6 +159,7 @@ const LoginPagePage: React.FC = () => {
                       color="amber_500_19"
                       size="xl"
                       variant="fill"
+                      onClick={onFinish}
                     >
                       Login
                     </Button>
@@ -140,7 +177,7 @@ const LoginPagePage: React.FC = () => {
             Need an account?{" "}
           </span>
           <Button
-            onClick={() => navigate('/registerpageone')}
+            onClick={() => navigate('/register')}
 
           >
 
@@ -193,7 +230,6 @@ const LoginPagePage: React.FC = () => {
             </div>
           </div>
         </div>
-        <Footer className="flex items-center justify-center mt-[130px] md:px-5 w-full" />
       </div>
     </>
   );

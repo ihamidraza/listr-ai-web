@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button, Img, Text } from "components";
 
 
@@ -60,50 +60,49 @@ export const Header: React.FC<HeaderProps> = (props) => {
                 <div className="bg-amber-500 h-1 md:ml-[0] ml-[188px] mr-[162px] mt-[3px] rounded-sm w-[12%]"></div>
               </div>
               <Button
-                      onClick={() => navigate('/')}
-                      >
-              <Text
-                className="md:ml-[0] ml-[30px] text-base text-white-A700"
-                size="txtPlusJakartaSansRomanRegular16"
+                onClick={() => navigate('/')}
+              >
+                <Text
+                  className="md:ml-[0] ml-[30px] text-base text-white-A700"
+                  size="txtPlusJakartaSansRomanRegular16"
                 >
-                Ai Tools Mapper
-              </Text>
-                </Button>
-                <Button
-                      onClick={() => navigate('/')}
-                      >
+                  Ai Tools Mapper
+                </Text>
+              </Button>
+              <Button
+                onClick={() => navigate('/')}
+              >
 
-              <Text
-                className="md:ml-[0] ml-[30px] text-base text-white-A700"
-                size="txtPlusJakartaSansRomanRegular16"
+                <Text
+                  className="md:ml-[0] ml-[30px] text-base text-white-A700"
+                  size="txtPlusJakartaSansRomanRegular16"
                 >
-                Custom AI Solutions
-              </Text>
-                </Button>
-                <Button
-                      onClick={() => navigate('/')}
-                
-                >
+                  Custom AI Solutions
+                </Text>
+              </Button>
+              <Button
+                onClick={() => navigate('/')}
 
-              <Text
-                className="md:ml-[0] ml-[30px] text-base text-white-A700"
-                size="txtPlusJakartaSansRomanRegular16"
+              >
+
+                <Text
+                  className="md:ml-[0] ml-[30px] text-base text-white-A700"
+                  size="txtPlusJakartaSansRomanRegular16"
                 >
-                Articles
-              </Text>
-                </Button>
+                  Articles
+                </Text>
+              </Button>
               <div className="flex h-16 justify-end ml-9 md:ml-[0] relative w-[13%] md:w-full">
                 <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-1.5 ml-auto mr-[33px] mt-auto rounded-[50%] w-8"></div>
                 <Button
                   className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[152px]"
                   leftIcon={
                     <Img
-                      // className="h-6 mb-px mr-2.5 bottom-[4%] right-[20%] absolute"
                       src="images/img_lock.svg"
                       alt="lock"
                     />
                   }
-                  onClick={() => navigate('/loginpage')}
+                  onClick={() => navigate('/login')}
 
                   shape="round"
                   color="amber_500_19"
