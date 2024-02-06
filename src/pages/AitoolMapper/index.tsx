@@ -1,14 +1,12 @@
 import React from "react";
 
 import { Button, Img, Input, Line, Text } from "components";
-import Footer from "components/Footer";
-import Header1 from "components/Header1";
 
 const AitoolMapperPage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="flex flex-col items-center justify-start w-full">
+        <div className="flex flex-col items-center justify-start w-full" style={{ marginTop: 100 }}>
           <div className="h-[813px] md:px-5 relative w-full">
             <div className="h-[813px] m-auto w-full">
               <Img
@@ -85,7 +83,7 @@ const AitoolMapperPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <Header1 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
+           
           </div>
           <div className="flex md:flex-col flex-row gap-8 items-center justify-start max-w-[1199px] mt-4 mx-auto md:px-5 w-full">
             <Input
@@ -910,7 +908,6 @@ const AitoolMapperPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <Footer className="flex items-center justify-center mt-[116px] md:px-5 w-full" />
         </div>
       </div>
     </>

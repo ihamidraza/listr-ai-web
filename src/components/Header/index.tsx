@@ -9,7 +9,7 @@ type HeaderProps = React.DetailedHTMLProps<
 > &
   Partial<{}>;
 
-export const Header: React.FC<HeaderProps> = (props) => {
+export const Header: React.FC<HeaderProps> = () => {
 
   const navigate = useNavigate()
   return (
@@ -23,7 +23,6 @@ export const Header: React.FC<HeaderProps> = (props) => {
                 >
                   <li>
                     <Button
-                      // href="javascript:"
                       className="hover:font-extrabold md:text-2xl sm:text-[22px] text-[26px] text-white-A700"
                       onClick={() => navigate('/')}
                     >
@@ -34,7 +33,6 @@ export const Header: React.FC<HeaderProps> = (props) => {
                   </li>
                   <li>
                     <Button
-                      // href="javascript:"
                       className="hover:font-extrabold ml-[101px] my-[5px] text-base text-white-A700"
                       onClick={() => navigate('/')}
 
@@ -46,10 +44,8 @@ export const Header: React.FC<HeaderProps> = (props) => {
                   </li>
                   <li>
                     <Button
-
                       className="hover:font-extrabold mb-1 ml-[30px] mt-[7px] text-base text-white-A700"
-                      onClick={() => navigate('/')}
-
+                      onClick={() => navigate('/aiToolsCategoryOne')}
                     >
                       <Text size="txtPlusJakartaSansRomanRegular16">
                         Ai Tools Category
@@ -60,7 +56,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
                 <div className="bg-amber-500 h-1 md:ml-[0] ml-[188px] mr-[162px] mt-[3px] rounded-sm w-[12%]"></div>
               </div>
               <Button
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/aiToolMapper')}
               >
                 <Text
                   className="md:ml-[0] ml-[30px] text-base text-white-A700"
@@ -70,7 +66,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
                 </Text>
               </Button>
               <Button
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/customAISolutions')}
               >
 
                 <Text
@@ -81,7 +77,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
                 </Text>
               </Button>
               <Button
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/articles')}
 
               >
 

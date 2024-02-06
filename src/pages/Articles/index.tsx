@@ -1,14 +1,12 @@
 import React from "react";
 
-import { Button, Img, Input, Line, List, Text } from "components";
-import Footer from "components/Footer";
-import Header4 from "components/Header4";
+import { Button, Img, Line, List, Text } from "components";
 
 const ArticlesPage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="md:h-[1051px] h-[1276px] sm:h-[1451px] md:px-5 relative w-full">
+        <div className="md:h-[1051px] h-[1276px] sm:h-[1451px] md:px-5 relative w-full" style={{ marginTop: 100 }}>
           <div className="absolute md:h-[1051px] h-[813px] inset-x-[0] mx-auto top-[0] w-full">
             <Img
               className="h-[622px] object-cover"
@@ -353,7 +351,7 @@ const ArticlesPage: React.FC = () => {
               </div>
             </div>
           </List>
-          <Header4 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
+          {/* <Header4 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" /> */}
         </div>
         <List
           className="sm:flex-col flex-row gap-[22px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center max-w-[1214px] mt-5 mx-auto md:px-5 w-full"
@@ -964,7 +962,6 @@ const ArticlesPage: React.FC = () => {
             </div>
           </div>
         </div>
-        <Footer className="flex items-center justify-center mt-12 md:px-5 w-full" />
       </div>
     </>
   );

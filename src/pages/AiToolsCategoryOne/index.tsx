@@ -1,16 +1,7 @@
 import React from "react";
 
-import {
-  Button,
-  CheckBox,
-  Img,
-  Input,
-  Line,
-  SelectBox,
-  Text,
-} from "components";
-import Footer from "components/Footer";
-import Header3 from "components/Header3";
+import { Button, CheckBox, Img, Input, SelectBox, Text } from "components";
+
 
 const newOptionsList = [
   { label: "Option1", value: "option1" },
@@ -22,7 +13,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="flex flex-col items-center justify-start w-full">
+        <div className="flex flex-col items-center justify-start w-full" style={{ marginTop: 100 }}>
           <div className="md:h-[813px] h-[817px] md:px-5 relative w-full">
             <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full">
               <Img
@@ -115,7 +106,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
             >
               AI Tools List
             </Text>
-            <Header3 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
+          
           </div>
           <div className="flex flex-row md:gap-10 items-center justify-between max-w-[1214px] mt-[47px] mx-auto md:px-5 w-full">
             <Button
@@ -765,7 +756,6 @@ const AiToolsCategoryOnePage: React.FC = () => {
               </div>
             </div>
           </div>
-          <Footer className="flex items-center justify-center mt-[72px] md:px-5 w-full" />
         </div>
       </div>
     </>

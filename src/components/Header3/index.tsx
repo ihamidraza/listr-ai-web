@@ -31,7 +31,7 @@ export const Header3: React.FC<Header3Props> = (props) => {
           >
             Ai Tools Category
           </Text>
-          <Line className="bg-amber-500 h-1 rounded-sm w-full" />
+          {/* <Line className="bg-amber-500 h-1 rounded-sm w-full" /> */}
         </div>
         <Text
           className="mb-[46px] md:ml-[0] ml-[30px] md:mt-0 mt-[52px] text-base text-white-A700"

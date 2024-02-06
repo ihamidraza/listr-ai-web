@@ -1,14 +1,12 @@
 import React from "react";
 
-import { Button, Img, Input, Line, List, Text } from "components";
-import Footer from "components/Footer";
-import Header4 from "components/Header4";
+import { Button, Img, Line, List, Text } from "components";
 
 const ArticlesOnePage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="h-[813px] md:px-5 relative w-full">
+        <div className="h-[813px] md:px-5 relative w-full" style={{ marginTop: 100 }}>
           <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full">
             <Img
               className="h-[622px] object-cover"
@@ -57,7 +55,7 @@ const ArticlesOnePage: React.FC = () => {
               </div>
             </div>
           </div>
-          <Header4 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
+          {/* <Header4 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" /> */}
         </div>
         <Text
           className="mt-[50px] text-lg text-white-A700"
@@ -352,7 +350,7 @@ const ArticlesOnePage: React.FC = () => {
             </div>
           </div>
         </div>
-        <Footer className="flex items-center justify-center mt-[62px] md:px-5 w-full" />
+        {/* <Footer className="flex items-center justify-center mt-[62px] md:px-5 w-full" /> */}
       </div>
     </>
   );
