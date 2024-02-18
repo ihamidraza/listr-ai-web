@@ -1,0 +1,1 @@
+import{a as o,F as c,j as s,_ as d,E as g}from"./index-8223da36.js";const u=({children:e,className:r,starCount:t=5,color:l="grey",activeColor:n="red",isEditable:f=!1,errors:i=[],...a})=>o(c,{children:[s(d,{edit:f,classNames:r,count:t,isHalf:!1,color:l,activeColor:n,...a},a.value||1),s(g,{errors:i}),e]});export{u as R};
