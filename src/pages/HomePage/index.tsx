@@ -2,7 +2,7 @@ import React from "react";
 
 import { useGoogleLogin } from "@react-oauth/google";
 
-import { Button, Img, Input, Line, List, SelectBox, Text } from "components";
+import { Button, Img, Input, Line, List, SelectBox, Text, SubscribeForm } from "components";
 
 const languageOptionsList = [
   { label: "Option1", value: "option1" },
@@ -70,7 +70,7 @@ const HomePagePage: React.FC = () => {
                       Optimize your workflow with our selection of AI Tools -
                       Discover your perfect solution!
                     </Text>
-                    <div className="flex md:flex-col flex-row gap-[15px] items-center justify-between ml-1 md:ml-[0] mt-[76px] w-full">
+                    <div className="flex md:flex-col flex-row gap-[15px] items-center ml-1 md:ml-[0] mt-[76px] w-full">
                       <Input
                         name="group191"
                         placeholder="Search for tools…"
@@ -79,16 +79,22 @@ const HomePagePage: React.FC = () => {
                         color="black_900_33"
                         size="lg"
                         variant="fill"
+                        style={{ width: '30vw' }}
                       ></Input>
                       <div className="flex h-[70px] justify-end relative w-[14%] md:w-full">
                         <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[37px] mb-1.5 ml-auto mr-[15px] mt-auto rounded-[18px] w-[37px]"></div>
-                        <div className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto">
+                       
+                          <Button
+                        className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto"
+                          >
+
                           <Img
-                            className="h-10 w-10"
+                            className="h-10 w-20"
                             src="images/img_save_white_a700.svg"
                             alt="save"
-                          />
-                        </div>
+                            />
+                            </Button>
+              
                       </div>
                     </div>
                     <div className="flex sm:flex-col flex-row gap-[15px] items-center justify-start md:ml-[0] ml-[34px] mt-[33px] w-4/5 md:w-full">
@@ -2263,50 +2269,8 @@ const HomePagePage: React.FC = () => {
             />
             <Line className="bg-blue_gray-800_02 h-px w-full" />
           </div>
-          <div className="h-[422px] md:h-[512px] max-w-[1212px] mt-[90px] mx-auto md:px-5 relative w-full">
-            <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col h-full items-center justify-start m-auto pt-0.5 rounded-[15px] w-full">
-              <Img
-                className="h-[420px] md:h-auto object-cover rounded-tl-[15px] rounded-tr-[15px]"
-                src="images/img_maskgroup.png"
-                alt="maskgroup"
-              />
-            </div>
-            <div className="absolute h-[422px] inset-[0] justify-center m-auto w-full">
-              <Img
-                className="h-[422px] m-auto object-cover w-full"
-                src="images/img_image_422x1212.png"
-                alt="image_Four"
-              />
-              <div className="absolute flex flex-col md:gap-10 gap-[82px] h-max inset-[0] items-center justify-center m-auto w-[84%]">
-                <Text
-                  className="leading-[60.00px] sm:text-4xl md:text-[42px] text-[46px] text-center text-white-A700 w-[85%] sm:w-full"
-                  size="txtPlusJakartaSansRomanSemiBold46"
-                >
-                  Join 30,000+ subscribers and get our 3 min daily newsletter on
-                  AI.
-                </Text>
-                <div className="bg-black-900_0c border border-blue_gray-900 border-solid flex flex-row sm:gap-10 items-center justify-between p-4 rounded-[15px] w-full">
-                  <Text
-                    className="ml-[5px] text-blue_gray-800 text-sm"
-                    size="txtPlusJakartaSansRomanMedium14"
-                  >
-                    Enter Your Email
-                  </Text>
-                  <div className="flex h-[58px] justify-end mr-2.5 relative w-[17%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[3px] ml-auto mr-[39px] mt-auto rounded-[50%] w-8"></div>
-                    <Button
-                      className="absolute border border-amber-500 border-solid cursor-pointer font-semibold h-full inset-[0] m-auto min-w-[163px] rounded-[7px] text-center text-lg uppercase"
-                      color="amber_500_19"
-                      size="xl"
-                      variant="fill"
-                    >
-                      Subscribe
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SubscribeForm />
+
         </div>
       </div>
     </>

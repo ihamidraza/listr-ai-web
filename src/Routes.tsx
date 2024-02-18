@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Spin } from 'antd'
 
 import { Layout } from './layout'
 import NotFound from "pages/NotFound";
@@ -37,16 +38,16 @@ const LoginPage = React.lazy(() => import("pages/LoginPage"));
 
 const ProjectRoutes = () => {
   return (
-    <React.Suspense fallback={<>Loading...</>}>
+    <React.Suspense fallback={<Spin />}>
       <Router>
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Layout />} >
-            <Route path="*" element={<NotFound />} />
             <Route path="" element={<HomePage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPageOne />} />
             {/* <Route path="registerpage" element={<RegisterPage />} /> */}
-            <Route path="aiToolMapper" element={<AitoolMapper />} />
+            {/* <Route path="aiToolMapper" element={<AitoolMapper />} />
             <Route path="aiToolMapperLogin" element={<AitoolMapperlogin />} />
             <Route path="aiToolMapperLoginone" element={<AitoolMapperloginOne />} />
             <Route path="customAISolutions" element={<CustomAISolutions />} />
@@ -70,7 +71,7 @@ const ProjectRoutes = () => {
             <Route path="/newsLetter" element={<NewsletterPage />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/newsOne" element={<NewsPageOne />} />
-            <Route path="/newsDetail" element={<NewsPageDetail />} />
+            <Route path="/newsDetail" element={<NewsPageDetail />} /> */}
           </Route>
         </Routes>
       </Router>

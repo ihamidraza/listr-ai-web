@@ -17,23 +17,23 @@ const RegisterPageOnePage: React.FC = () => {
 
   const onFinish = () => {
 
-    if(!name) return message.error('Name is required')
-    if(!email) return message.error('Email is required')
-    if(!isValidEmail(email)) return message.error('Email is not valid')
-    if(!password)  return  message.error('Password is required')
+    if (!name) return message.error('Name is required')
+    if (!email) return message.error('Email is required')
+    if (!isValidEmail(email)) return message.error('Email is not valid')
+    if (!password) return message.error('Password is required')
     if (password !== password2)
-    return message.error('Passwords are mismatched')
-  
-  try {
+      return message.error('Passwords are mismatched')
+
+    try {
       const data = {
         name,
         email,
         password
       }
-      
+
       server.post('/signup', data)
     }
-    catch(err) {
+    catch (err) {
 
       message.error(err?.message || 'Error while signing up')
 
@@ -43,7 +43,7 @@ const RegisterPageOnePage: React.FC = () => {
   function isValidEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-}
+  }
 
 
 
@@ -81,24 +81,23 @@ const RegisterPageOnePage: React.FC = () => {
                   </>
                 </Text>
                 <div className="flex flex-col items-start justify-start mt-5 w-[79%] md:w-full">
-                  <Input
-                    name="group370"
-                    placeholder="Continue With Google"
-                    className="font-medium p-0 placeholder:text-blue_gray-800 text-left text-sm w-full"
-                    wrapClassName="border border-blue_gray-900 border-solid flex w-full"
-
-                    prefix={
-                      <Img
-                        className="h-6 mr-[15px] my-auto"
-                        src="images/img_google57226179_1.svg"
-                        alt="Google-57226179 1"
-                      />
-                    }
+                  <Button
+                    className="border border-blue_gray-900 border-solid capitalize cursor-pointer max-h-[70px] inset-[0] m-auto min-w-[361px] text-center text-lg"
                     shape="round"
                     color="white_A700"
-                    size="sm"
+                    size="xl"
                     variant="fill"
-                  ></Input>
+                    style={{ backgroundColor: '#fff' }}
+                  // onClick={onFinish}
+                  >
+                    <Img
+                      className="h-6 mr-[15px] my-auto"
+                      src="images/img_google57226179_1.svg"
+                      alt="Google-57226179 1"
+                      style={{ display: 'inline' }}
+                    />
+                    Continue With Google
+                  </Button>
                   <div className="flex flex-row gap-2.5 items-start justify-center md:ml-[0] ml-[73px] mt-[22px] w-3/5 md:w-full">
                     <Line className="bg-white-A700 h-px mb-1.5 mt-2.5 w-[41%]" />
                     <Text
@@ -210,12 +209,12 @@ const RegisterPageOnePage: React.FC = () => {
           <span className="text-gray-100 font-plusjakartasans text-left font-normal">
             Need an account?{" "}
           </span>
-          <Button 
-          onClick={() => navigate('/login')}>
+          <Button
+            onClick={() => navigate('/login')}>
 
-          <span className="text-amber-500 font-plusjakartasans text-left font-bold">
-            Login Here!
-          </span>
+            <span className="text-amber-500 font-plusjakartasans text-left font-bold">
+              Login Here!
+            </span>
           </Button>
         </Text>
         <div className="h-[422px] md:h-[519px] max-w-[1212px] mt-[97px] mx-auto md:px-5 relative w-full">

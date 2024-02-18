@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button, CheckBox, Img, Input, Text } from "components";
 import Footer from "components/Footer";
-import Header from "components/Header";
+import {Header} from "components/Header";
 
 const SubmittoolOnePage: React.FC = () => {
   return (

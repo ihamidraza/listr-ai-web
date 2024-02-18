@@ -80,23 +80,23 @@ const LoginPagePage: React.FC = () => {
                   Login using social profile or enter email manually.
                 </Text>
                 <div className="flex flex-col items-start justify-start mt-[19px] w-[79%] md:w-full">
-                  <Input
-                    name="group293"
-                    placeholder="Continue With Google"
-                    className="font-medium p-0 placeholder:text-blue_gray-800 text-left text-sm w-full"
-                    wrapClassName="border border-blue_gray-900 border-solid flex w-full"
-                    prefix={
+                  <Button
+                      className="border border-blue_gray-900 border-solid capitalize cursor-pointer max-h-[70px] inset-[0] m-auto min-w-[361px] text-center text-lg"
+                      shape="round"
+                      color="white_A700"
+                      size="xl"
+                      variant="fill"
+                      style={{ backgroundColor: '#fff' }}
+                      // onClick={onFinish}
+                    >
                       <Img
                         className="h-6 mr-[15px] my-auto"
                         src="images/img_google57226179_1.svg"
                         alt="Google-57226179 1"
-                      />
-                    }
-                    shape="round"
-                    color="white_A700"
-                    size="sm"
-                    variant="fill"
-                  ></Input>
+                        style={{ display: 'inline' }}
+                      /> 
+                      Continue With Google
+                    </Button>
                   <div className="flex flex-row gap-2.5 items-start justify-center md:ml-[0] ml-[73px] mt-[22px] w-3/5 md:w-full">
                     <Line className="bg-white-A700 h-px mb-1.5 mt-2.5 w-[41%]" />
                     <Text

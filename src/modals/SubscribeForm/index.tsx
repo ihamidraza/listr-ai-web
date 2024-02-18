@@ -17,7 +17,7 @@ const SubscribeFormModal = (props) => {
             className="md:text-3xl sm:text-[28px] text-[32px] text-white-A700"
             size="txtPlusJakartaSansRomanSemiBold32"
           >
-            Listar Ai Tools
+            Listr Ai Tools
           </Text>
           <Text
             className="leading-[50.00px] mt-[42px] sm:text-4xl md:text-[42px] text-[46px] text-center text-white-A700"
@@ -34,7 +34,7 @@ const SubscribeFormModal = (props) => {
             className="mt-[46px] text-lg text-white-A700"
             size="txtPlusJakartaSansRomanRegular18"
           >
-            Subscribe ti get it daily in your inbox
+            Subscribe to get it daily in your inbox
           </Text>
           <div className="flex flex-col gap-7 items-center justify-start my-9 w-[86%] md:w-full">
             <div className="flex flex-col gap-5 items-center justify-start w-full">

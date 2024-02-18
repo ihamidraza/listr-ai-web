@@ -1,5 +1,6 @@
 {
   "name": "lister-ai",
+  "homepage": "https://ihamidraza.github.io/listr-ai-web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,6 +25,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "serve": "vite preview"
   },
   "eslintConfig": {
@@ -50,6 +53,7 @@
     "@types/react-dom": "^17.0.18",
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "10.4.2",
+    "gh-pages": "^6.1.1",
     "postcss": "8.4.6",
     "tailwindcss": "3.0.18",
     "vite": "^4.1.1",
