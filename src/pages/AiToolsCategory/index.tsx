@@ -272,7 +272,7 @@ const AiToolsCategoryPage: React.FC = () => {
             >
               Image
             </Text>
-            <header className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full">
+            {/* <header className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full">
               <Text
                 className="md:ml-[0] ml-[111px] md:mt-0 my-[42px] md:text-2xl sm:text-[22px] text-[26px] text-white-A700"
                 size="txtPlusJakartaSansExtraBold26"
@@ -345,7 +345,7 @@ const AiToolsCategoryPage: React.FC = () => {
                   Submit Ai tools
                 </Button>
               </div>
-            </header>
+            </header> */}
           </div>
           <div className="gap-5 grid sm:grid-cols-1 md:grid-cols-4 grid-cols-8 justify-center max-w-[1188px] min-h-[auto] mt-[17px] mx-auto md:px-5 w-full">
             <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-1 flex-col gap-[19px] justify-end p-3 rounded-[15px] w-full">

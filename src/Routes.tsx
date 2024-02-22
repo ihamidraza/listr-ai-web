@@ -46,6 +46,10 @@ const ProjectRoutes = () => {
             <Route path="" element={<HomePage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPageOne />} />
+            <Route path="/aiToolsCategoryOne" element={<AiToolsCategoryOne />} />
+            <Route path="/aiToolsCategory" element={<AiToolsCategory />} />
+            <Route path="/aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
+            <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
             {/* <Route path="registerpage" element={<RegisterPage />} /> */}
             {/* <Route path="aiToolMapper" element={<AitoolMapper />} />
             <Route path="aiToolMapperLogin" element={<AitoolMapperlogin />} />
@@ -54,14 +58,10 @@ const ProjectRoutes = () => {
             <Route path="contactUs" element={<ContactUs />} />
             <Route path="/termsConditions" element={<TermsConditions />} />
             <Route path="/aboutUs" element={<AboutUs />} />
-            <Route path="/aiToolsCategoryOne" element={<AiToolsCategoryOne />} />
-            <Route path="/aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
-            <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/articlesOne" element={<ArticlesOne />} />
             <Route path="/submitTool" element={<Submittool />} />
             <Route path="/submitToolOne" element={<SubmittoolOne />} />
-            <Route path="/aiToolsCategory" element={<AiToolsCategory />} />
             <Route path="/homeOne" element={<HomePageOne />} />
             <Route path="/bookmarkWebsiteLinkOne" element={<BookmarkWebsitLinkpageOne />} />
             <Route path="/bookmarkWebsiteLinkPage" element={<BookmarkWebsitLinkpage />} />

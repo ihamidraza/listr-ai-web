@@ -1,6 +1,6 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom'
-import { Button, Img, Text } from "components";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from 'react-router-dom'
+import { Button, Img, Text, Line } from "components";
 
 
 type HeaderProps = React.DetailedHTMLProps<
@@ -11,7 +11,12 @@ type HeaderProps = React.DetailedHTMLProps<
 
 export const Header: React.FC<HeaderProps> = () => {
 
+  const { pathname } = useLocation();
+
+
   const navigate = useNavigate()
+
+
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
@@ -30,6 +35,7 @@ export const Header: React.FC<HeaderProps> = () => {
                         Listr.ai
                       </Text>
                     </Button>
+
                   </li>
                   <li>
                     <Button
@@ -40,6 +46,7 @@ export const Header: React.FC<HeaderProps> = () => {
                       <Text size="txtPlusJakartaSansRomanRegular16">
                         Home
                       </Text>
+                      {pathname === '/' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
                     </Button>
                   </li>
                   <li>
@@ -50,10 +57,13 @@ export const Header: React.FC<HeaderProps> = () => {
                       <Text size="txtPlusJakartaSansRomanRegular16">
                         Ai Tools Category
                       </Text>
+                      {pathname === '/aiToolsCategoryOne' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
+
                     </Button>
+
                   </li>
                 </ul>
-                <div className="bg-amber-500 h-1 md:ml-[0] ml-[188px] mr-[162px] mt-[3px] rounded-sm w-[12%]"></div>
+                {/* <div className="bg-amber-500 h-1 md:ml-[0] ml-[188px] mr-[162px] mt-[3px] rounded-sm w-[12%]"></div> */}
               </div>
               <Button
                 onClick={() => navigate('/aiToolMapper')}
@@ -64,6 +74,8 @@ export const Header: React.FC<HeaderProps> = () => {
                 >
                   Ai Tools Mapper
                 </Text>
+                {pathname === '/aiToolMapper' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
+
               </Button>
               <Button
                 onClick={() => navigate('/customAISolutions')}
@@ -75,6 +87,8 @@ export const Header: React.FC<HeaderProps> = () => {
                 >
                   Custom AI Solutions
                 </Text>
+                {pathname === '/customAISolutions' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
+
               </Button>
               <Button
                 onClick={() => navigate('/articles')}
@@ -87,6 +101,8 @@ export const Header: React.FC<HeaderProps> = () => {
                 >
                   Articles
                 </Text>
+                {pathname === '/articles' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
+
               </Button>
               <div className="flex h-16 justify-end ml-9 md:ml-[0] relative w-[13%] md:w-full">
                 <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-1.5 ml-auto mr-[33px] mt-auto rounded-[50%] w-8"></div>
