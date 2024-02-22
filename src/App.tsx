@@ -1,4 +1,4 @@
-import { GoogleOAuthProvider } from "@react-oauth/google";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 import { ConfigProvider, theme } from 'antd'
 import Routes from "./Routes";
 
@@ -8,9 +8,9 @@ function App() {
 
   return (
     <ConfigProvider theme={{ algorithm: darkAlgorithm }}>
-      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+      {/* <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}> */}
         <Routes />
-      </GoogleOAuthProvider>
+      {/* </GoogleOAuthProvider> */}
     </ConfigProvider>
   );
 }

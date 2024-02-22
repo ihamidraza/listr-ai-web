@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useGoogleLogin } from "@react-oauth/google";
+// import { useGoogleLogin } from "@react-oauth/google";
 
 import { Button, Img, Input, Line, List, SelectBox, Text, SubscribeForm } from "components";
 
@@ -22,12 +22,12 @@ const howCanBusinessesAndIndividualsUseTheListrAiToolForAiDevelopmentOptionsList
   ];
 
 const HomePagePage: React.FC = () => {
-  const googleSignIn = useGoogleLogin({
-    onSuccess: (res) => {
-      console.log("res", res);
-      alert("Login successfull. 😍");
-    },
-  });
+  // const googleSignIn = useGoogleLogin({
+  //   onSuccess: (res) => {
+  //     console.log("res", res);
+  //     alert("Login successfull. 😍");
+  //   },
+  // });
 
   return (
     <>
