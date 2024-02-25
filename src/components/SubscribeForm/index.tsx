@@ -3,9 +3,11 @@ import React from "react";
 
 import { Button, Input, Text, Img } from "components";
 
-export const SubscribeForm = (props) => {
+export const SubscribeForm = () => {
   return (
-    <div className="h-[422px] md:h-[512px] max-w-[1212px] mt-[90px] mx-auto md:px-5 relative w-full">
+    <div className="h-[422px] md:h-[512px] max-w-[1212px] mt-[90px] mx-auto md:px-5 relative w-full"
+    style={{ marginBottom: 20 }}
+    >
       <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col h-full items-center justify-start m-auto pt-0.5 rounded-[15px] w-full">
         <Img
           className="h-[420px] md:h-auto object-cover rounded-tl-[15px] rounded-tr-[15px]"

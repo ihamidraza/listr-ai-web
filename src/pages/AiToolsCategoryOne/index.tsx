@@ -1,17 +1,58 @@
 import React from "react";
+import { Select } from 'antd'
 
-import { Button, CheckBox, Img, Input, SelectBox, Text } from "components";
+import { Button, CheckBox, Img, Input, Text, SubscribeForm } from "components";
+import AiToolsCategoryfilterModal from "modals/AiToolsCategoryfilter";
 
 
 const newOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
+  {
+    label: <div className="flex flex-row gap-2.5 items-end justify-start w-full">
+      <Img
+        className="h-6 w-6"
+        src="images/img_checkmark_white_a700_24x24.svg"
+        alt="checkmark"
+      />
+      <Text
+        className="text-sm text-white-A700"
+        size="txtPlusJakartaSansRomanMedium14WhiteA700"
+      >
+        Verified
+      </Text>
+    </div>, value: "option1"
+  },
+  { label:  <div className="flex flex-row gap-2.5 items-end justify-start w-full">
+  <Img
+    className="h-6 w-6"
+    src="images/img_bookmark_white_a700.svg"
+    alt="bookmark"
+  />
+  <Text
+    className="mt-[5px] text-sm text-white-A700"
+    size="txtPlusJakartaSansRomanMedium14WhiteA700"
+  >
+    Popular
+  </Text>
+</div>, value: "option2" },
+  { label:  <div className="flex flex-row gap-2.5 items-start justify-start w-[76%] md:w-full">
+  <Img
+    className="h-6 w-6"
+    src="images/img_close_white_a700_24x24.svg"
+    alt="close_One"
+  />
+  <Text
+    className="mt-[3px] text-sm text-white-A700"
+    size="txtPlusJakartaSansRomanMedium14WhiteA700"
+  >
+    New
+  </Text>
+</div>, value: "option3" },
 ];
 
 const AiToolsCategoryOnePage: React.FC = () => {
   return (
     <>
+    <AiToolsCategoryfilterModal visible={true} />
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
         <div className="flex flex-col items-center justify-start w-full" style={{ marginTop: 100 }}>
           <div className="md:h-[813px] h-[817px] md:px-5 relative w-full">
@@ -40,7 +81,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
                   >
                     Compelling Content Made Easy - Top AI Copywriting Tools
                   </Text>
-                  <div className="flex md:flex-col flex-row gap-[39px] items-center justify-between mt-[46px] w-full">
+                  <div className="flex md:flex-col flex-row gap-[39px] items-center mt-[46px] w-full" style={{ marginLeft: '20vw' }}>
                     <Input
                       name="group320"
                       placeholder="Search for tools…"
@@ -49,16 +90,20 @@ const AiToolsCategoryOnePage: React.FC = () => {
                       color="black_900_33"
                       size="lg"
                       variant="fill"
+                      style={{ width: '40vw' }}
                     ></Input>
                     <div className="flex h-[70px] justify-end relative w-[9%] md:w-full">
                       <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[37px] mb-1.5 ml-auto mr-[15px] mt-auto rounded-[18px] w-[37px]"></div>
-                      <div className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto">
+                      <Button
+                        className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto"
+                      >
+
                         <Img
-                          className="h-10 w-10"
+                          className="h-10 w-20"
                           src="images/img_save_white_a700.svg"
                           alt="save"
                         />
-                      </div>
+                      </Button>
                     </div>
                   </div>
                   <div className="flex sm:flex-col flex-row gap-[30px] items-center justify-start mt-[33px] w-[54%] md:w-full">
@@ -106,7 +151,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
             >
               AI Tools List
             </Text>
-          
+
           </div>
           <div className="flex flex-row md:gap-10 items-center justify-between max-w-[1214px] mt-[47px] mx-auto md:px-5 w-full">
             <Button
@@ -125,7 +170,13 @@ const AiToolsCategoryOnePage: React.FC = () => {
             >
               <div className="font-medium text-left text-sm">Filters</div>
             </Button>
-            <SelectBox
+            <Select
+              placeholder='Select Tools'
+              size='large'
+              options={newOptionsList}
+              style={{ width: 250 }}
+            />
+            {/* <SelectBox
               className="!text-white-A700 border border-blue_gray-900 border-solid sm:flex-1 font-medium text-left text-sm w-[11%] sm:w-full"
               placeholderClassName="!text-white-A700"
               indicator={
@@ -156,7 +207,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
               color="black_900_33"
               size="xs"
               variant="fill"
-            />
+            /> */}
           </div>
           <div className="md:gap-5 gap-[22px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center max-w-[1214px] min-h-[auto] mt-[30px] mx-auto md:px-5 w-full">
             <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[11px] rounded-[15px] w-full">
@@ -712,50 +763,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="h-[422px] md:h-[622px] max-w-[1212px] mt-[200px] mx-auto md:px-5 relative w-full">
-            <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col h-full items-center justify-start m-auto pt-0.5 rounded-[15px] w-full">
-              <Img
-                className="h-[420px] md:h-auto object-cover rounded-tl-[15px] rounded-tr-[15px]"
-                src="images/img_maskgroup.png"
-                alt="maskgroup"
-              />
-            </div>
-            <div className="absolute h-[422px] inset-[0] justify-center m-auto w-full">
-              <Img
-                className="h-[422px] m-auto object-cover w-full"
-                src="images/img_image_422x1212.png"
-                alt="image_Two"
-              />
-              <div className="absolute flex flex-col md:gap-10 gap-[82px] h-max inset-[0] items-center justify-center m-auto w-[84%]">
-                <Text
-                  className="leading-[60.00px] sm:text-4xl md:text-[42px] text-[46px] text-center text-white-A700 w-[85%] sm:w-full"
-                  size="txtPlusJakartaSansRomanSemiBold46"
-                >
-                  Join 30,000+ subscribers and get our 3 min daily newsletter on
-                  AI.
-                </Text>
-                <div className="bg-black-900_0c border border-blue_gray-900 border-solid flex flex-row sm:gap-10 items-center justify-between p-4 rounded-[15px] w-full">
-                  <Text
-                    className="ml-[5px] text-blue_gray-800 text-sm"
-                    size="txtPlusJakartaSansRomanMedium14"
-                  >
-                    Enter Your Email
-                  </Text>
-                  <div className="flex h-[58px] justify-end mr-2.5 relative w-[17%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[3px] ml-auto mr-[39px] mt-auto rounded-[50%] w-8"></div>
-                    <Button
-                      className="absolute border border-amber-500 border-solid cursor-pointer font-semibold h-full inset-[0] m-auto min-w-[163px] rounded-[7px] text-center text-lg uppercase"
-                      color="amber_500_19"
-                      size="xl"
-                      variant="fill"
-                    >
-                      Subscribe
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SubscribeForm />
         </div>
       </div>
     </>

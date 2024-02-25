@@ -110,7 +110,7 @@ const AiToolsCategoryTwoPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <Header3 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
+            {/* <Header3 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" /> */}
           </div>
           <div className="flex flex-row md:gap-10 items-center justify-between max-w-[1214px] mt-[52px] mx-auto md:px-5 w-full">
             <Button
@@ -130,15 +130,15 @@ const AiToolsCategoryTwoPage: React.FC = () => {
               <div className="font-medium text-left text-sm">Filters</div>
             </Button>
             <SelectBox
-              className="!text-white-A700 border border-blue_gray-900 border-solid sm:flex-1 font-medium text-left text-sm w-[11%] sm:w-full"
+              className="!text-white-A700 border border-blue_gray-900 border-solid sm:flex-1 font-medium text-left text-sm w-[18%] sm:w-full"
               placeholderClassName="!text-white-A700"
-              indicator={
-                <Img
-                  className="h-6 mr-[0] w-6"
-                  src="images/img_arrowdown_white_a700_24x24.svg"
-                  alt="arrow_down"
-                />
-              }
+              // indicator={
+              //   <Img
+              //     className="h-6 mr-[0] w-6"
+              //     src="images/img_arrowdown_white_a700_24x24.svg"
+              //     alt="arrow_down"
+              //   />
+              // }
               isSearchable={false}
               placeholder="New"
               getOptionLabel={(e) =>

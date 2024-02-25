@@ -46,8 +46,8 @@ const ProjectRoutes = () => {
             <Route path="" element={<HomePage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPageOne />} />
-            <Route path="/aiToolsCategoryOne" element={<AiToolsCategoryOne />} />
-            <Route path="/aiToolsCategory" element={<AiToolsCategory />} />
+            <Route path="/aiToolsCategory" element={<AiToolsCategoryOne />} />
+            <Route path="/aiToolsCategories" element={<AiToolsCategory />} />
             <Route path="/aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
             <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
             {/* <Route path="registerpage" element={<RegisterPage />} /> */}

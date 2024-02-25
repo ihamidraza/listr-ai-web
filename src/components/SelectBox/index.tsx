@@ -86,6 +86,7 @@ const SelectBox = React.forwardRef<any, SelectProps>(
             container: (provided) => ({
               ...provided,
               zIndex: 0,
+              backgroundColor: '#000'
             }),
             control: (provided) => ({
               ...provided,
@@ -99,9 +100,9 @@ const SelectBox = React.forwardRef<any, SelectProps>(
             }),
             option: (provided, state) => ({
               ...provided,
-              color: state.isSelected && "#fafafa",
-              backgroundColor: state.isSelected && "#ffc10719",
-              "&:hover": { backgroundColor: "#ffc10719", color: "#ffffff" },
+              color: state.isSelected && "#fff",
+              backgroundColor: state.isSelected && "#000",
+              "&:hover": { backgroundColor: "#000", color: "#fff" },
             }),
             singleValue: (provided) => ({
               ...provided,
