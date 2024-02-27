@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Select } from 'antd'
-
+import { useNavigate } from 'react-router-dom'
 import { Button, CheckBox, Img, Input, Text, SubscribeForm } from "components";
 import AiToolsCategoryfilterModal from "modals/AiToolsCategoryfilter";
 
@@ -50,9 +50,15 @@ const newOptionsList = [
 ];
 
 const AiToolsCategoryOnePage: React.FC = () => {
+
+  const navigate = useNavigate()
+
+  const [modal, toggleModal] = useState(false)
   return (
     <>
-    <AiToolsCategoryfilterModal visible={true} />
+
+    <AiToolsCategoryfilterModal modal={modal} toggleModal={toggleModal} />
+
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
         <div className="flex flex-col items-center justify-start w-full" style={{ marginTop: 100 }}>
           <div className="md:h-[813px] h-[817px] md:px-5 relative w-full">
@@ -136,6 +142,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
                       color="amber_500_33"
                       size="xl"
                       variant="fill"
+                      onClick={() => navigate('/aiToolsCategories')}
                     >
                       <div className="font-medium text-left text-sm">
                         View All Categories
@@ -167,6 +174,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
               color="black_900_33"
               size="xl"
               variant="fill"
+              onClick={() => toggleModal(true)}
             >
               <div className="font-medium text-left text-sm">Filters</div>
             </Button>

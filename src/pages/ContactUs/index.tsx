@@ -105,7 +105,6 @@ const ContactUsPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <Header2 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
         </div>
         <div className="flex h-16 md:h-[70px] justify-end mt-1.5 md:px-5 relative w-[18%]">
           <div className="backdrop-opacity-[0.5] bg-white-A700 blur-[24.00px] h-[35px] mb-[3px] ml-auto mr-[82px] mt-auto rounded-[17px] w-[13%]"></div>
@@ -118,7 +117,7 @@ const ContactUsPage: React.FC = () => {
             Join Slack Community
           </Button>
         </div>
-        <Footer className="flex items-center justify-center mt-[60px] md:px-5 w-full" />
+
       </div>
     </>
   );

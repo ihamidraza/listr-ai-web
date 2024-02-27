@@ -1,8 +1,6 @@
 import React from "react";
 
-import { Button, Img, Input, Text } from "components";
-import Footer from "components/Footer";
-import Header2 from "components/Header2";
+import { Img, Text } from "components";
 
 const AboutUsPage: React.FC = () => {
   return (
@@ -51,7 +49,7 @@ const AboutUsPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <Header2 className="absolute bg-black-900_33 flex md:flex-col flex-row md:gap-5 inset-x-[0] items-center justify-center mx-auto shadow-bs top-[0] w-full" />
+          
           <div className="absolute bottom-[0] flex flex-col font-montserrat h-[373px] md:h-auto items-center justify-start left-[14%] rounded-[20px] shadow-bs1 w-[328px]">
             <div className="bg-black-900_33 border border-blue_gray-800_02 border-solid flex flex-col items-center justify-start rounded-[20px] shadow-bs2 w-[328px]">
               <div className="flex flex-col items-center justify-start w-full">
@@ -179,7 +177,6 @@ const AboutUsPage: React.FC = () => {
             </div>
           </div>
         </div>
-        <Footer className="flex items-center justify-center md:px-5 w-full" />
       </div>
     </>
   );

@@ -12,8 +12,8 @@ export const Footer: React.FC<FooterProps> = (props) => {
   return (
     <>
       <footer className={props.className}>
-        <div className="bg-black-900 flex flex-col items-center justify-center pt-[43px] md:px-10 sm:px-5 px-[43px] w-full">
-          <div className="flex flex-col gap-[47px] items-center justify-center w-[90%] md:w-full">
+        <div className="bg-black-900 flex flex-col items-center justify-center pt-[43px] md:px-10 sm:px-5 px-[43px] w-full" >
+          <div className="flex flex-col gap-[47px] items-center justify-center w-[90%] md:w-full" >
             <div className="flex md:flex-col flex-row md:gap-10 items-start justify-between w-full">
               <div className="flex md:flex-1 flex-col gap-[31px] items-start justify-start w-[21%] md:w-full">
                 <div className="flex flex-col gap-[22px] items-start justify-start w-full">

@@ -46,20 +46,21 @@ const ProjectRoutes = () => {
             <Route path="" element={<HomePage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPageOne />} />
-            <Route path="/aiToolsCategory" element={<AiToolsCategoryOne />} />
-            <Route path="/aiToolsCategories" element={<AiToolsCategory />} />
-            <Route path="/aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
-            <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
-            {/* <Route path="registerpage" element={<RegisterPage />} /> */}
-            {/* <Route path="aiToolMapper" element={<AitoolMapper />} />
-            <Route path="aiToolMapperLogin" element={<AitoolMapperlogin />} />
-            <Route path="aiToolMapperLoginone" element={<AitoolMapperloginOne />} />
+            <Route path="aiToolsCategory" element={<AiToolsCategoryOne />} />
+            <Route path="aiToolsCategories" element={<AiToolsCategory />} />
+            <Route path="aiToolMapper" element={<AitoolMapper />} />
             <Route path="customAISolutions" element={<CustomAISolutions />} />
-            <Route path="contactUs" element={<ContactUs />} />
-            <Route path="/termsConditions" element={<TermsConditions />} />
             <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/termsConditions" element={<TermsConditions />} />
+            <Route path="contactUs" element={<ContactUs />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/articlesOne" element={<ArticlesOne />} />
+            {/* <Route path="registerpage" element={<RegisterPage />} /> */}
+            {/* 
+            <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
+            <Route path="aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
+            <Route path="aiToolMapperLogin" element={<AitoolMapperlogin />} />
+            <Route path="aiToolMapperLoginone" element={<AitoolMapperloginOne />} />
             <Route path="/submitTool" element={<Submittool />} />
             <Route path="/submitToolOne" element={<SubmittoolOne />} />
             <Route path="/homeOne" element={<HomePageOne />} />
