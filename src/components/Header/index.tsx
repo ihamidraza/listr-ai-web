@@ -45,7 +45,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     >
                       <Text size="txtPlusJakartaSansRomanRegular16">
                         Home
-                      {pathname === '/' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
+                        {pathname === '/' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
                       </Text>
                     </Button>
                   </li>
@@ -56,14 +56,14 @@ export const Header: React.FC<HeaderProps> = () => {
                     >
                       <Text size="txtPlusJakartaSansRomanRegular16">
                         Ai Tools Category
-                      {pathname === '/aiToolsCategory' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
+                        {pathname === '/aiToolsCategory' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
                       </Text>
 
                     </Button>
 
                   </li>
                 </ul>
-              
+
               </div>
               <Button
                 onClick={() => navigate('/aiToolMapper')}
@@ -73,7 +73,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   size="txtPlusJakartaSansRomanRegular16"
                 >
                   Ai Tools Mapper
-                {pathname === '/aiToolMapper' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
+                  {pathname === '/aiToolMapper' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
                 </Text>
 
               </Button>
@@ -86,7 +86,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   size="txtPlusJakartaSansRomanRegular16"
                 >
                   Custom AI Solutions
-                {pathname === '/customAISolutions' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
+                  {pathname === '/customAISolutions' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
                 </Text>
 
               </Button>
@@ -100,7 +100,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   size="txtPlusJakartaSansRomanRegular16"
                 >
                   Articles
-                {pathname === '/articles' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
+                  {pathname === '/articles' && <Line className="bg-amber-500 h-1 rounded-sm w-full" />}
                 </Text>
 
               </Button>
@@ -134,7 +134,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   color="green_A400_19"
                   size="2xl"
                   variant="fill"
-                  onClick={() => navigate('/')}
+                  onClick={() => navigate('/submitTool')}
 
                 >
                   Submit Ai tools

@@ -7,7 +7,9 @@ const TermsConditionsPage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans justify-start mx-auto w-full">
-        <div className="flex flex-col items-center w-full">
+        <div className="flex flex-col items-center w-full" 
+        style={{ marginTop: 100 }}
+        >
           <div className="h-[813px] md:px-5 relative w-full">
             <div className="h-[813px] m-auto w-full">
               <Img

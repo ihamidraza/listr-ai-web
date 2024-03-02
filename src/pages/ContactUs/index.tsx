@@ -8,7 +8,9 @@ const ContactUsPage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="md:h-[1106px] h-[813px] md:px-5 relative w-full">
+        <div className="md:h-[1106px] h-[813px] md:px-5 relative w-full"
+        style={{ marginTop: 100 }}
+        >
           <div className="md:h-[1106px] h-[813px] m-auto w-full">
             <Img
               className="h-[622px] object-cover"

@@ -6,7 +6,9 @@ const AboutUsPage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans gap-[39px] items-center justify-start mx-auto w-full">
-        <div className="md:h-[813px] h-[904px] md:px-5 relative w-full">
+        <div className="md:h-[813px] h-[904px] md:px-5 relative w-full"
+        style={{ marginTop: 100 }}
+        >
           <div className="absolute h-[813px] inset-x-[0] mx-auto top-[0] w-full">
             <Img
               className="h-[622px] object-cover"

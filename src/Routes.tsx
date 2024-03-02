@@ -55,15 +55,15 @@ const ProjectRoutes = () => {
             <Route path="contactUs" element={<ContactUs />} />
             <Route path="/articles" element={<Articles />} />
             <Route path="/articlesOne" element={<ArticlesOne />} />
+            <Route path="submitTool" element={<SubmittoolOne />} />
             {/* <Route path="registerpage" element={<RegisterPage />} /> */}
             {/* 
             <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
             <Route path="aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
             <Route path="aiToolMapperLogin" element={<AitoolMapperlogin />} />
             <Route path="aiToolMapperLoginone" element={<AitoolMapperloginOne />} />
-            <Route path="/submitTool" element={<Submittool />} />
-            <Route path="/submitToolOne" element={<SubmittoolOne />} />
             <Route path="/homeOne" element={<HomePageOne />} />
+            <Route path="/submitTool" element={<Submittool />} />
             <Route path="/bookmarkWebsiteLinkOne" element={<BookmarkWebsitLinkpageOne />} />
             <Route path="/bookmarkWebsiteLinkPage" element={<BookmarkWebsitLinkpage />} />
             <Route path="/favoritesLogin" element={<FavoritesPageLogin />} />
