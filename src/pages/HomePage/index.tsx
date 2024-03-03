@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useGoogleLogin } from "@react-oauth/google";
+// import { useGoogleLogin } from "@react-oauth/google";
 
 import { Button, Img, Input, Line, List, SelectBox, Text, SubscribeForm } from "components";
 
@@ -22,12 +22,12 @@ const howCanBusinessesAndIndividualsUseTheListrAiToolForAiDevelopmentOptionsList
   ];
 
 const HomePagePage: React.FC = () => {
-  const googleSignIn = useGoogleLogin({
-    onSuccess: (res) => {
-      console.log("res", res);
-      alert("Login successfull. 😍");
-    },
-  });
+  // const googleSignIn = useGoogleLogin({
+  //   onSuccess: (res) => {
+  //     console.log("res", res);
+  //     alert("Login successfull. 😍");
+  //   },
+  // });
 
   return (
     <>
@@ -931,7 +931,7 @@ const HomePagePage: React.FC = () => {
                   <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[7px] ml-auto mr-[116px] mt-auto rounded-[50%] w-8"></div>
                   <Button
                     className="common-pointer absolute border border-amber-500 border-solid capitalize cursor-pointer font-semibold h-full inset-[0] m-auto min-w-[283px] text-center text-lg"
-                    onClick={() => googleSignIn()}
+                    // onClick={() => googleSignIn()}
                     shape="round"
                     color="amber_500_19"
                     size="xl"

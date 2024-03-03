@@ -107,7 +107,7 @@ const Text: React.FC<React.PropsWithChildren<TextProps>> = ({
   as,
   ...restProps
 }) => {
-  const Component = as || "p";
+  const Component = as || "div";
 
   return (
     <Component
