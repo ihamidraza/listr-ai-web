@@ -15,7 +15,7 @@ const RegisterPageOnePage: React.FC = () => {
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
 
-  const onFinish = () => {
+  const onFinish = async () => {
 
     if (!name) return message.error('Name is required')
     if (!email) return message.error('Email is required')
@@ -31,7 +31,10 @@ const RegisterPageOnePage: React.FC = () => {
         password
       }
 
-      server.post('/signup', data)
+      await server.post('/users', data)
+
+      message.success('Signed up successfully')
+      navigate('/login')
     }
     catch (err) {
 

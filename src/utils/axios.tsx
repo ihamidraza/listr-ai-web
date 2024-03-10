@@ -1,8 +1,9 @@
 import axios from 'axios';
 
+const serverURL = import.meta.env.SERVER_URL || 'http://localhost:3000'
 // Create an instance of axios
 export const server = axios.create({
-    baseURL: 'https://your-api-url.com'
+    baseURL: serverURL
 });
 
 // Set the AUTH token for any request

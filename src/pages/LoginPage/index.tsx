@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { message } from 'antd'
 
 import { Button, Img, Input, Line, Text } from "components";
-import { server } from "utils";
+import { server, setAuth } from "utils";
 
 const LoginPagePage: React.FC = () => {
 
@@ -13,7 +13,7 @@ const LoginPagePage: React.FC = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const onFinish = () => {
+  const onFinish = async () => {
 
     if (!email) return message.error('Email is required')
     if (!isValidEmail(email)) return message.error('Email is not valid')
@@ -21,16 +21,20 @@ const LoginPagePage: React.FC = () => {
 
 
     try {
-      const data = {
+      const payload = {
         email,
         password
       }
 
-      server.post('/signin', data)
+      const { data } = await server.post('/auth/login', payload)
+      console.log(data)
+      setAuth(data.access_token)
+      message.success('Logged in successfully')
+      navigate('/')
     }
     catch (err) {
 
-      message.error(err?.message || 'Error while signing in')
+      message.error(err?.message || 'Error while logging in')
 
     }
   }
@@ -81,22 +85,22 @@ const LoginPagePage: React.FC = () => {
                 </Text>
                 <div className="flex flex-col items-start justify-start mt-[19px] w-[79%] md:w-full">
                   <Button
-                      className="border border-blue_gray-900 border-solid capitalize cursor-pointer max-h-[70px] inset-[0] m-auto min-w-[361px] text-center text-lg"
-                      shape="round"
-                      color="white_A700"
-                      size="xl"
-                      variant="fill"
-                      style={{ backgroundColor: '#fff' }}
-                      // onClick={onFinish}
-                    >
-                      <Img
-                        className="h-6 mr-[15px] my-auto"
-                        src="images/img_google57226179_1.svg"
-                        alt="Google-57226179 1"
-                        style={{ display: 'inline' }}
-                      /> 
-                      Continue With Google
-                    </Button>
+                    className="border border-blue_gray-900 border-solid capitalize cursor-pointer max-h-[70px] inset-[0] m-auto min-w-[361px] text-center text-lg"
+                    shape="round"
+                    color="white_A700"
+                    size="xl"
+                    variant="fill"
+                    style={{ backgroundColor: '#fff' }}
+                  // onClick={onFinish}
+                  >
+                    <Img
+                      className="h-6 mr-[15px] my-auto"
+                      src="images/img_google57226179_1.svg"
+                      alt="Google-57226179 1"
+                      style={{ display: 'inline' }}
+                    />
+                    Continue With Google
+                  </Button>
                   <div className="flex flex-row gap-2.5 items-start justify-center md:ml-[0] ml-[73px] mt-[22px] w-3/5 md:w-full">
                     <Line className="bg-white-A700 h-px mb-1.5 mt-2.5 w-[41%]" />
                     <Text

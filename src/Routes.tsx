@@ -56,23 +56,24 @@ const ProjectRoutes = () => {
             <Route path="/articles" element={<Articles />} />
             <Route path="/articlesOne" element={<ArticlesOne />} />
             <Route path="submitTool" element={<SubmittoolOne />} />
-            {/* <Route path="registerpage" element={<RegisterPage />} /> */}
+            <Route path="registerpage" element={<RegisterPage />} />
+            <Route path="/newsLetter" element={<NewsletterPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/newsOne" element={<NewsPageOne />} />
+            <Route path="/newsDetail" element={<NewsPageDetail />} /> 
             {/* 
             <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
+            <Route path="/submitTool" element={<Submittool />} />
             <Route path="aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
             <Route path="aiToolMapperLogin" element={<AitoolMapperlogin />} />
             <Route path="aiToolMapperLoginone" element={<AitoolMapperloginOne />} />
             <Route path="/homeOne" element={<HomePageOne />} />
-            <Route path="/submitTool" element={<Submittool />} />
             <Route path="/bookmarkWebsiteLinkOne" element={<BookmarkWebsitLinkpageOne />} />
             <Route path="/bookmarkWebsiteLinkPage" element={<BookmarkWebsitLinkpage />} />
             <Route path="/favoritesLogin" element={<FavoritesPageLogin />} />
             <Route path="/favoritesNoResult" element={<FavoritesPageNoResult />} />
             <Route path="/favoritesNoResultOne" element={<FavoritesPageNoResultOne />} />
-            <Route path="/newsLetter" element={<NewsletterPage />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/newsOne" element={<NewsPageOne />} />
-            <Route path="/newsDetail" element={<NewsPageDetail />} /> */}
+            */}
           </Route>
         </Routes>
       </Router>
