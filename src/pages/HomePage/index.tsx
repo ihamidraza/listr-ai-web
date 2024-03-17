@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 // import { useGoogleLogin } from "@react-oauth/google";
 
 import { Button, Img, Input, Line, List, SelectBox, Text, SubscribeForm } from "components";
+import { useNavigate } from "react-router-dom";
 
 const languageOptionsList = [
   { label: "Option1", value: "option1" },
@@ -28,6 +29,16 @@ const HomePagePage: React.FC = () => {
   //     alert("Login successfull. 😍");
   //   },
   // });
+
+  const navigate = useNavigate()
+
+  const [search, setSearch] = useState('')
+
+  const handleSearch = () => {
+
+    console.log(search)
+
+  }
 
   return (
     <>
@@ -79,6 +90,7 @@ const HomePagePage: React.FC = () => {
                         color="black_900_33"
                         size="lg"
                         variant="fill"
+                        onChange={setSearch}
                         style={{ width: '30vw' }}
                       ></Input>
                       <div className="flex h-[70px] justify-end relative w-[14%] md:w-full">
@@ -86,7 +98,8 @@ const HomePagePage: React.FC = () => {
                        
                           <Button
                         className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto"
-                          >
+                         onClick={handleSearch}
+                         >
 
                           <Img
                             className="h-10 w-20"
@@ -110,6 +123,7 @@ const HomePagePage: React.FC = () => {
                         color="amber_500_33"
                         size="xl"
                         variant="fill"
+                        onClick={() => navigate('aiToolMapper')}
                       >
                         <div className="font-medium text-left text-sm">
                           Use AI Tools Mapping Feature
@@ -127,6 +141,7 @@ const HomePagePage: React.FC = () => {
                         color="amber_500_33"
                         size="xl"
                         variant="fill"
+                        onClick={() => navigate('aiToolsCategories')}
                       >
                         <div className="font-medium text-left text-sm">
                           View All Categories
@@ -1012,6 +1027,8 @@ const HomePagePage: React.FC = () => {
                       color="white_A700"
                       size="xl"
                       variant="outline"
+                      onClick={() => navigate('aiToolMapper')}
+
                     >
                       Explore Now
                     </Button>
@@ -1046,6 +1063,8 @@ const HomePagePage: React.FC = () => {
                       color="white_A700"
                       size="xl"
                       variant="outline"
+                      onClick={() => navigate('customAISolutions')}
+
                     >
                       Get a Custom Solution
                     </Button>
@@ -1077,6 +1096,8 @@ const HomePagePage: React.FC = () => {
                       color="white_A700"
                       size="xl"
                       variant="outline"
+                      onClick={() => navigate('register')}
+
                     >
                       Sign Up Now
                     </Button>
@@ -1851,6 +1872,7 @@ const HomePagePage: React.FC = () => {
               color="amber_500_19"
               size="xl"
               variant="fill"
+              onClick={() => navigate('aiToolsCategory')}
             >
               Browse All AI Tools
             </Button>
@@ -2200,6 +2222,7 @@ const HomePagePage: React.FC = () => {
               color="amber_500_19"
               size="xl"
               variant="fill"
+              onClick={() => navigate('articles')}
             >
               View Articles
             </Button>

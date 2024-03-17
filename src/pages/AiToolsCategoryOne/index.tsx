@@ -125,6 +125,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
                       color="amber_500_33"
                       size="xl"
                       variant="fill"
+                      onClick={() => navigate('/aiToolMapper')}
                     >
                       <div className="font-medium text-left text-sm">
                         Use AI Tools Mapping Feature

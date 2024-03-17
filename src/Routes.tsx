@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Spin } from 'antd'
 
-import { Layout } from './layout'
+import { Layout } from 'layout'
+import {AuthProvider} from 'features'
 import NotFound from "pages/NotFound";
 
 const NewsPageDetail = React.lazy(() => import("pages/NewsPageDetail"));
@@ -39,6 +40,7 @@ const LoginPage = React.lazy(() => import("pages/LoginPage"));
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<Spin />}>
+      <AuthProvider>
       <Router>
         <Routes>
           <Route path="*" element={<NotFound />} />
@@ -61,22 +63,23 @@ const ProjectRoutes = () => {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/newsOne" element={<NewsPageOne />} />
             <Route path="/newsDetail" element={<NewsPageDetail />} /> 
-            {/* 
-            <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
-            <Route path="/submitTool" element={<Submittool />} />
-            <Route path="aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
+            <Route path="/submitTool1" element={<Submittool />} />
             <Route path="aiToolMapperLogin" element={<AitoolMapperlogin />} />
             <Route path="aiToolMapperLoginone" element={<AitoolMapperloginOne />} />
-            <Route path="/homeOne" element={<HomePageOne />} />
-            <Route path="/bookmarkWebsiteLinkOne" element={<BookmarkWebsitLinkpageOne />} />
-            <Route path="/bookmarkWebsiteLinkPage" element={<BookmarkWebsitLinkpage />} />
-            <Route path="/favoritesLogin" element={<FavoritesPageLogin />} />
+            <Route path="bookmarkWebsiteLinkOne" element={<BookmarkWebsitLinkpageOne />} />
+            <Route path="bookmarkWebsiteLinkPage" element={<BookmarkWebsitLinkpage />} />
+            <Route path="favoritesLogin" element={<FavoritesPageLogin />} />
             <Route path="/favoritesNoResult" element={<FavoritesPageNoResult />} />
             <Route path="/favoritesNoResultOne" element={<FavoritesPageNoResultOne />} />
+            {/* 
+            <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
+            <Route path="aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
+            <Route path="/homeOne" element={<HomePageOne />} />
             */}
           </Route>
         </Routes>
       </Router>
+      </AuthProvider>
     </React.Suspense>
   );
 };

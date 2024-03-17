@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { message } from 'antd'
 
 import { Button, Img, Input, Line, Text } from "components";
 import { server, setAuth } from "utils";
+import {useAuth}  from 'features'
 
 const LoginPagePage: React.FC = () => {
 
   const navigate = useNavigate()
 
+  const { setIsAuthenticated } = useAuth()
+
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+
+  useEffect(() => {
+
+  },[])
 
   const onFinish = async () => {
 
@@ -28,6 +36,7 @@ const LoginPagePage: React.FC = () => {
 
       const { data } = await server.post('/auth/login', payload)
       console.log(data)
+      setIsAuthenticated(true)
       setAuth(data.access_token)
       message.success('Logged in successfully')
       navigate('/')
