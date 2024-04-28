@@ -48,10 +48,26 @@ const LoginPagePage: React.FC = () => {
     }
   }
 
+  const handleLoginWithGoogle = async () => {
+    try {
+      // const result = await server.get('/google')
+
+      // console.log(result)
+      window.location.href = 'http://localhost:3000/google';
+
+
+    }
+    catch(err) {
+
+    }
+  }
+
   function isValidEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
+
+
 
   return (
     <>
@@ -100,7 +116,7 @@ const LoginPagePage: React.FC = () => {
                     size="xl"
                     variant="fill"
                     style={{ backgroundColor: '#fff' }}
-                  // onClick={onFinish}
+                  onClick={handleLoginWithGoogle}
                   >
                     <Img
                       className="h-6 mr-[15px] my-auto"
