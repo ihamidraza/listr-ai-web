@@ -31,9 +31,12 @@ const howCanBusinessesAndIndividualsUseTheListrAiToolForAiDevelopmentOptionsList
 const CustomAISolutionsPage: React.FC = () => {
   return (
     <>
-      <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full" >
+      <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
         <div className="flex flex-col justify-start w-full">
-          <div className="flex flex-col md:px-5 relative w-full" style={{ marginTop: 100 }}>
+          <div
+            className="flex flex-col md:px-5 relative w-full"
+            style={{ marginTop: 100 }}
+          >
             <div className="h-[813px] mx-auto w-full">
               <Img
                 className="h-[622px] object-cover"
@@ -90,7 +93,7 @@ const CustomAISolutionsPage: React.FC = () => {
                 </div>
               </div>
             </div>
-           
+
             <div className="bg-gray-900_01 border border-blue_gray-800_02 border-solid flex flex-col gap-[21px] justify-end mt-[-257px] mx-auto rounded-[15px] w-[72%] z-[1]">
               <Img
                 className="h-3.5 md:ml-[0] ml-[33px] mr-[924px] mt-5"
@@ -391,7 +394,7 @@ const CustomAISolutionsPage: React.FC = () => {
           <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-[54px] p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
             <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
               <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12"
+                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12   flex-shrink-0"
                 size="txtPlusJakartaSansRomanBold18Gray900"
               >
                 1
@@ -419,7 +422,7 @@ const CustomAISolutionsPage: React.FC = () => {
           <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
             <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
               <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12"
+                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
                 size="txtPlusJakartaSansRomanBold18Gray900"
               >
                 2
@@ -446,7 +449,7 @@ const CustomAISolutionsPage: React.FC = () => {
           <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
             <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
               <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12"
+                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
                 size="txtPlusJakartaSansRomanBold18Gray900"
               >
                 3
@@ -474,7 +477,7 @@ const CustomAISolutionsPage: React.FC = () => {
           <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
             <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
               <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12"
+                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
                 size="txtPlusJakartaSansRomanBold18Gray900"
               >
                 4
@@ -501,7 +504,7 @@ const CustomAISolutionsPage: React.FC = () => {
           <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
             <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
               <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12"
+                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
                 size="txtPlusJakartaSansRomanBold18Gray900"
               >
                 5
@@ -528,7 +531,7 @@ const CustomAISolutionsPage: React.FC = () => {
           <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
             <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
               <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12"
+                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
                 size="txtPlusJakartaSansRomanBold18Gray900"
               >
                 6
@@ -555,7 +558,7 @@ const CustomAISolutionsPage: React.FC = () => {
           <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
             <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
               <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12"
+                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
                 size="txtPlusJakartaSansRomanBold18Gray900"
               >
                 7
