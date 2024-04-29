@@ -2,7 +2,17 @@ import React, { useState } from "react";
 
 // import { useGoogleLogin } from "@react-oauth/google";
 
-import { Button, Img, Input, Line, List, SelectBox, Text, SubscribeForm } from "components";
+import {
+  Button,
+  Img,
+  Input,
+  Line,
+  List,
+  SelectBox,
+  Text,
+  SubscribeForm,
+  FAQs,
+} from "components";
 import { useNavigate } from "react-router-dom";
 
 const languageOptionsList = [
@@ -30,21 +40,22 @@ const HomePagePage: React.FC = () => {
   //   },
   // });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("");
 
   const handleSearch = () => {
-
-    console.log(search)
-
-  }
+    console.log(search);
+  };
 
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
         <div className="flex flex-col items-center justify-start w-full">
-          <div className="md:h-[1053px] h-[813px] md:px-5 relative w-full" style={{marginTop: 100}}>
+          <div
+            className="md:h-[1053px] h-[813px] md:px-5 relative w-full"
+            style={{ marginTop: 100 }}
+          >
             <div className="md:h-[1053px] h-[813px] m-auto w-full">
               <Img
                 className="h-[622px] object-cover"
@@ -91,23 +102,21 @@ const HomePagePage: React.FC = () => {
                         size="lg"
                         variant="fill"
                         onChange={setSearch}
-                        style={{ width: '30vw' }}
+                        style={{ width: "30vw" }}
                       ></Input>
                       <div className="flex h-[70px] justify-end relative w-[14%] md:w-full">
                         <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[37px] mb-1.5 ml-auto mr-[15px] mt-auto rounded-[18px] w-[37px]"></div>
-                       
-                          <Button
-                        className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto"
-                         onClick={handleSearch}
-                         >
 
+                        <Button
+                          className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto"
+                          onClick={handleSearch}
+                        >
                           <Img
                             className="h-10 w-20"
                             src="images/img_save_white_a700.svg"
                             alt="save"
-                            />
-                            </Button>
-              
+                          />
+                        </Button>
                       </div>
                     </div>
                     <div className="flex sm:flex-col flex-row gap-[15px] items-center justify-start md:ml-[0] ml-[34px] mt-[33px] w-4/5 md:w-full">
@@ -123,7 +132,7 @@ const HomePagePage: React.FC = () => {
                         color="amber_500_33"
                         size="xl"
                         variant="fill"
-                        onClick={() => navigate('aiToolMapper')}
+                        onClick={() => navigate("aiToolMapper")}
                       >
                         <div className="font-medium text-left text-sm">
                           Use AI Tools Mapping Feature
@@ -141,7 +150,7 @@ const HomePagePage: React.FC = () => {
                         color="amber_500_33"
                         size="xl"
                         variant="fill"
-                        onClick={() => navigate('aiToolsCategories')}
+                        onClick={() => navigate("aiToolsCategories")}
                       >
                         <div className="font-medium text-left text-sm">
                           View All Categories
@@ -157,7 +166,6 @@ const HomePagePage: React.FC = () => {
                 </div>
               </div>
             </div>
-
           </div>
           <Text
             className="mt-[33px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
@@ -1027,8 +1035,7 @@ const HomePagePage: React.FC = () => {
                       color="white_A700"
                       size="xl"
                       variant="outline"
-                      onClick={() => navigate('aiToolMapper')}
-
+                      onClick={() => navigate("aiToolMapper")}
                     >
                       Explore Now
                     </Button>
@@ -1063,8 +1070,7 @@ const HomePagePage: React.FC = () => {
                       color="white_A700"
                       size="xl"
                       variant="outline"
-                      onClick={() => navigate('customAISolutions')}
-
+                      onClick={() => navigate("customAISolutions")}
                     >
                       Get a Custom Solution
                     </Button>
@@ -1096,8 +1102,7 @@ const HomePagePage: React.FC = () => {
                       color="white_A700"
                       size="xl"
                       variant="outline"
-                      onClick={() => navigate('register')}
-
+                      onClick={() => navigate("register")}
                     >
                       Sign Up Now
                     </Button>
@@ -1872,7 +1877,7 @@ const HomePagePage: React.FC = () => {
               color="amber_500_19"
               size="xl"
               variant="fill"
-              onClick={() => navigate('aiToolsCategory')}
+              onClick={() => navigate("aiToolsCategory")}
             >
               Browse All AI Tools
             </Button>
@@ -2222,78 +2227,14 @@ const HomePagePage: React.FC = () => {
               color="amber_500_19"
               size="xl"
               variant="fill"
-              onClick={() => navigate('articles')}
+              onClick={() => navigate("articles")}
             >
               View Articles
             </Button>
           </div>
-          <Text
-            className="mt-[106px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-            size="txtPlusJakartaSansExtraBold36"
-          >
-            FAQ’s
-          </Text>
-          <div className="flex flex-col gap-[15px] items-center justify-start max-w-[1106px] mt-[54px] mx-auto md:px-5 w-full">
-            <SelectBox
-              className="font-bold leading-[normal] text-left text-lg text-white-A700 w-full"
-              placeholderClassName="text-white-A700"
-              indicator={
-                <Img
-                  className="h-6 mr-[0] w-6"
-                  src="images/img_arrowdown_amber_500.svg"
-                  alt="arrow_down"
-                />
-              }
-              isMulti={false}
-              name="language"
-              options={languageOptionsList}
-              isSearchable={false}
-              placeholder="What is the  ListrAITool and how can it be used?"
-            />
-            <Line className="bg-blue_gray-800_02 h-px w-full" />
-          </div>
-          <div className="flex flex-col gap-[13px] items-center justify-start max-w-[1106px] mt-[29px] mx-auto md:px-5 w-full">
-            <SelectBox
-              className="font-bold leading-[normal] text-left text-lg text-white-A700 w-full"
-              placeholderClassName="text-white-A700"
-              indicator={
-                <Img
-                  className="h-6 mr-[0] w-6"
-                  src="images/img_arrowdown_amber_500.svg"
-                  alt="arrow_down"
-                />
-              }
-              isMulti={false}
-              name="group480"
-              options={whatAreTheBenefitsOfUsingTheListrAiToolOptionsList}
-              isSearchable={false}
-              placeholder="What are the benefits of using the ListrAITool?"
-            />
-            <Line className="bg-blue_gray-800_02 h-px w-full" />
-          </div>
-          <div className="flex flex-col gap-[13px] items-center justify-start max-w-[1106px] mt-[29px] mx-auto md:px-5 w-full">
-            <SelectBox
-              className="font-bold leading-[normal] text-left text-lg text-white-A700 w-full"
-              placeholderClassName="text-white-A700"
-              indicator={
-                <Img
-                  className="h-6 mr-[0] w-6"
-                  src="images/img_arrowdown_amber_500.svg"
-                  alt="arrow_down"
-                />
-              }
-              isMulti={false}
-              name="group482"
-              options={
-                howCanBusinessesAndIndividualsUseTheListrAiToolForAiDevelopmentOptionsList
-              }
-              isSearchable={false}
-              placeholder="How can businesses and individuals use the ListrAITool for AI development?"
-            />
-            <Line className="bg-blue_gray-800_02 h-px w-full" />
-          </div>
-          <SubscribeForm />
+          <FAQs />
 
+          <SubscribeForm />
         </div>
       </div>
     </>

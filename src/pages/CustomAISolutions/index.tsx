@@ -3,6 +3,7 @@ import React from "react";
 import {
   Button,
   CheckBox,
+  FAQs,
   Img,
   Input,
   Line,
@@ -593,64 +594,56 @@ const CustomAISolutionsPage: React.FC = () => {
               </Text>
               <ul className="list-disc list-2xl text-white-A700 text-base w-full">
                 <li className="leading-[22.00px] text-base text-white-A700 w-full">
-                  From mom-and-pop shops to large organizations, we provide
-                  tailored AI consulting for businesses of all sizes.
+                  <Text
+                    className="leading-[22.00px] mt-[18px] text-base text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular16"
+                  >
+                    From mom-and-pop shops to large organizations, we provide
+                    tailored AI consulting for businesses of all sizes.
+                  </Text>
+                </li>
+                <li className="leading-[22.00px] text-base text-white-A700 w-full">
+                  <Text
+                    className="leading-[22.00px] mt-[18px] text-base text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular16"
+                  >
+                    Small Businesses and Freelancers
+                  </Text>
+                </li>
+                <li className="leading-[22.00px] text-base text-white-A700 w-full">
+                  <Text
+                    className="leading-[22.00px] mt-[18px] text-base text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular16"
+                  >
+                    Professional Practices
+                  </Text>
+                </li>
+                <li className="leading-[22.00px] text-base text-white-A700 w-full">
+                  <Text
+                    className="leading-[22.00px] mt-[18px] text-base text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular16"
+                  >
+                    Service Businesses and Contractors
+                  </Text>
+                </li>
+                <li className="leading-[22.00px] text-base text-white-A700 w-full">
+                  <Text
+                    className="leading-[22.00px] mt-[18px] text-base text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular16"
+                  >
+                    Educational Institutions
+                  </Text>
+                </li>
+                <li className="leading-[22.00px] text-base text-white-A700 w-full">
+                  <Text
+                    className="leading-[22.00px] mt-[18px] text-base text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular16"
+                  >
+                    E-Commerce Businesses
+                  </Text>
                 </li>
               </ul>
-              <Text
-                className="leading-[22.00px] mt-[18px] text-base text-white-A700 w-full"
-                size="txtPlusJakartaSansRomanRegular16"
-              ></Text>
-              <CheckBox
-                className="font-semibold md:ml-[0] ml-[22px] mr-[332px] mt-[30px] text-left text-sm"
-                inputClassName="h-6 mr-[5px] rounded-[12px] w-6"
-                name="smallbusinesses_One"
-                id="smallbusinesses_One"
-                label="Small Businesses and Freelancers"
-                color="white_A700"
-                size="sm"
-                variant="fill"
-              ></CheckBox>
-              <CheckBox
-                className="font-semibold md:ml-[0] ml-[22px] mr-[406px] mt-[15px] text-left text-sm"
-                inputClassName="h-6 mr-[5px] rounded-[12px] w-6"
-                name="professionalpra_One"
-                id="professionalpra_One"
-                label="Professional Practices"
-                color="white_A700"
-                size="sm"
-                variant="fill"
-              ></CheckBox>
-              <CheckBox
-                className="font-semibold md:ml-[0] ml-[22px] mr-[315px] mt-[15px] text-left text-sm"
-                inputClassName="h-6 mr-[5px] rounded-[12px] w-6"
-                name="servicebusiness_One"
-                id="servicebusiness_One"
-                label="Service Businesses and Contractors"
-                color="white_A700"
-                size="sm"
-                variant="fill"
-              ></CheckBox>
-              <CheckBox
-                className="font-semibold md:ml-[0] ml-[22px] mr-[398px] mt-[15px] text-left text-sm"
-                inputClassName="h-6 mr-[5px] rounded-[12px] w-6"
-                name="educationalinst_One"
-                id="educationalinst_One"
-                label="Educational Institutions"
-                color="white_A700"
-                size="sm"
-                variant="fill"
-              ></CheckBox>
-              <CheckBox
-                className="font-semibold md:ml-[0] ml-[22px] mr-[386px] mt-[15px] text-left text-sm"
-                inputClassName="h-6 mr-[5px] rounded-[12px] w-6"
-                name="ecommercebusine_One"
-                id="ecommercebusine_One"
-                label="E-Commerce Businesses"
-                color="white_A700"
-                size="sm"
-                variant="fill"
-              ></CheckBox>
+
               <div className="flex flex-col items-center justify-start mt-[50px] w-[37%] md:w-full">
                 <Button
                   className="cursor-pointer flex items-center justify-center min-w-[222px]"
@@ -694,7 +687,7 @@ const CustomAISolutionsPage: React.FC = () => {
                   operational efficiency, and vastly improve our customer
                   interactions.
                 </Text>
-                <div className="md:h-11 h-6 mt-5 relative w-[31%]">
+                <div className="md:h-11 h-6 ml-10 mt-5 relative w-[31%]">
                   <Img
                     className="h-6 ml-6 my-auto rounded-[1px] w-6"
                     src="images/img_star2.svg"
@@ -942,7 +935,7 @@ const CustomAISolutionsPage: React.FC = () => {
                     </Text>
                   </div>
                 </div>
-                <div className="h-6 relative w-[38%]">
+                <div className="h-6 ml-10 relative w-[38%]">
                   <Img
                     className="h-6 ml-6 my-auto rounded-[1px] w-6"
                     src="images/img_star2_24x24.svg"
@@ -1015,7 +1008,7 @@ const CustomAISolutionsPage: React.FC = () => {
                     </Text>
                   </div>
                 </div>
-                <div className="h-6 relative w-[39%]">
+                <div className="h-6 ml-10 relative w-[39%]">
                   <Img
                     className="h-6 ml-6 my-auto rounded-[1px] w-6"
                     src="images/img_star2_1.svg"
@@ -1088,7 +1081,7 @@ const CustomAISolutionsPage: React.FC = () => {
                     </Text>
                   </div>
                 </div>
-                <div className="h-6 relative w-[39%]">
+                <div className="h-6 ml-10 relative w-[39%]">
                   <Img
                     className="h-6 ml-6 my-auto rounded-[1px] w-6"
                     src="images/img_star2_2.svg"
@@ -1139,77 +1132,16 @@ const CustomAISolutionsPage: React.FC = () => {
               </div>
             </div>
           </List>
-          <Text
-            className="md:ml-[0] ml-[662px] mt-20 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-            size="txtPlusJakartaSansExtraBold36"
-          >
-            FAQ’s
-          </Text>
-          <div className="flex flex-col gap-[15px] items-center justify-start max-w-[1106px] mt-[54px] mx-auto md:px-5 w-full">
-            <SelectBox
-              className="font-bold leading-[normal] text-left text-lg text-white-A700 w-full"
-              placeholderClassName="text-white-A700"
-              indicator={
-                <Img
-                  className="h-6 mr-[0] w-6"
-                  src="images/img_arrowdown_amber_500.svg"
-                  alt="arrow_down"
-                />
-              }
-              isMulti={false}
-              name="language"
-              options={languageOptionsList}
-              isSearchable={false}
-              placeholder="What is the  ListrAITool and how can it be used?"
-            />
-            <Line className="bg-blue_gray-800_02 h-px w-full" />
+          <FAQs />
+          <div className="flex justify-center mb-10">
+            <Text
+              className="mt-[106px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+              size="txtPlusJakartaSansExtraBold36"
+            >
+              Ready to get started? Contact us!
+            </Text>
           </div>
-          <div className="flex flex-col gap-[13px] items-center justify-start max-w-[1106px] mt-[29px] mx-auto md:px-5 w-full">
-            <SelectBox
-              className="font-bold leading-[normal] text-left text-lg text-white-A700 w-full"
-              placeholderClassName="text-white-A700"
-              indicator={
-                <Img
-                  className="h-6 mr-[0] w-6"
-                  src="images/img_arrowdown_amber_500.svg"
-                  alt="arrow_down"
-                />
-              }
-              isMulti={false}
-              name="group548"
-              options={whatAreTheBenefitsOfUsingTheListrAiToolOptionsList}
-              isSearchable={false}
-              placeholder="What are the benefits of using the ListrAITool?"
-            />
-            <Line className="bg-blue_gray-800_02 h-px w-full" />
-          </div>
-          <div className="flex flex-col gap-[13px] items-center justify-start max-w-[1106px] mt-[29px] mx-auto md:px-5 w-full">
-            <SelectBox
-              className="font-bold leading-[normal] text-left text-lg text-white-A700 w-full"
-              placeholderClassName="text-white-A700"
-              indicator={
-                <Img
-                  className="h-6 mr-[0] w-6"
-                  src="images/img_arrowdown_amber_500.svg"
-                  alt="arrow_down"
-                />
-              }
-              isMulti={false}
-              name="group550"
-              options={
-                howCanBusinessesAndIndividualsUseTheListrAiToolForAiDevelopmentOptionsList
-              }
-              isSearchable={false}
-              placeholder="How can businesses and individuals use the ListrAITool for AI development?"
-            />
-            <Line className="bg-blue_gray-800_02 h-px w-full" />
-          </div>
-          <Text
-            className="md:ml-[0] ml-[393px] mt-[81px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-            size="txtPlusJakartaSansExtraBold36"
-          >
-            Ready to get started? Contact us!
-          </Text>
+
           <div className="flex md:flex-col flex-row gap-[22px] items-center justify-start max-w-[1212px] mt-[23px] mx-auto md:px-5 w-full">
             <div className="flex md:flex-1 flex-col gap-[9px] items-start justify-start w-1/2 md:w-full">
               <Text
@@ -1278,7 +1210,7 @@ const CustomAISolutionsPage: React.FC = () => {
               Submit
             </Button>
           </div>
-          <div className="flex md:flex-col flex-row md:gap-5 items-center justify-start md:ml-[0] ml-[113px] mt-[82px] md:px-5 w-[79%] md:w-full">
+          <div className="flex md:flex-col flex-row md:gap-5 items-center justify-start md:ml-[0] ml-[113px] mt-[82px] mb-20 md:px-5 w-[79%] md:w-full">
             <div className="flex h-20 justify-end relative w-20">
               <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-11 mb-1.5 ml-auto mr-[11px] mt-auto rounded-[22px] w-1/2"></div>
               <div className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col md:h-auto h-full inset-[0] items-center justify-center m-auto p-5 rounded-[50%] w-20">
