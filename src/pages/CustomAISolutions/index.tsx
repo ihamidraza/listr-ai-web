@@ -591,13 +591,16 @@ const CustomAISolutionsPage: React.FC = () => {
               >
                 Who We Serve
               </Text>
+              <ul className="list-disc list-2xl text-white-A700 text-base w-full">
+                <li className="leading-[22.00px] text-base text-white-A700 w-full">
+                  From mom-and-pop shops to large organizations, we provide
+                  tailored AI consulting for businesses of all sizes.
+                </li>
+              </ul>
               <Text
                 className="leading-[22.00px] mt-[18px] text-base text-white-A700 w-full"
                 size="txtPlusJakartaSansRomanRegular16"
-              >
-                From mom-and-pop shops to large organizations, we provide
-                tailored AI consulting for businesses of all sizes.
-              </Text>
+              ></Text>
               <CheckBox
                 className="font-semibold md:ml-[0] ml-[22px] mr-[332px] mt-[30px] text-left text-sm"
                 inputClassName="h-6 mr-[5px] rounded-[12px] w-6"
