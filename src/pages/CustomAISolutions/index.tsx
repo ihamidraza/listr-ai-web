@@ -1141,6 +1141,7 @@ const CustomAISolutionsPage: React.FC = () => {
               Ready to get started? Contact us!
             </Text>
           </div>
+          
 
           <div className="flex md:flex-col flex-row gap-[22px] items-center justify-start max-w-[1212px] mt-[23px] mx-auto md:px-5 w-full">
             <div className="flex md:flex-1 flex-col gap-[9px] items-start justify-start w-1/2 md:w-full">
