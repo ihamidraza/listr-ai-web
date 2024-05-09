@@ -8,29 +8,11 @@ import {
   Input,
   Line,
   List,
-  SelectBox,
   Text,
   SubscribeForm,
   FAQs,
 } from "components";
 import { useNavigate } from "react-router-dom";
-
-const languageOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
-const whatAreTheBenefitsOfUsingTheListrAiToolOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
-const howCanBusinessesAndIndividualsUseTheListrAiToolForAiDevelopmentOptionsList =
-  [
-    { label: "Option1", value: "option1" },
-    { label: "Option2", value: "option2" },
-    { label: "Option3", value: "option3" },
-  ];
 
 const HomePagePage: React.FC = () => {
   // const googleSignIn = useGoogleLogin({
@@ -104,11 +86,11 @@ const HomePagePage: React.FC = () => {
                         onChange={setSearch}
                         style={{ width: "30vw" }}
                       ></Input>
-                      <div className="flex h-[70px] justify-end relative w-[14%] md:w-full">
+                      <div className="flex h-[70px] justify-end relative w-[20%] md:w-full">
                         <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[37px] mb-1.5 ml-auto mr-[15px] mt-auto rounded-[18px] w-[37px]"></div>
 
                         <Button
-                          className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto"
+                          className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-20"
                           onClick={handleSearch}
                         >
                           <Img
@@ -915,23 +897,23 @@ const HomePagePage: React.FC = () => {
             <div className="flex md:flex-col flex-row gap-[30px] items-start justify-start mb-[30px] mt-6 w-[95%] md:w-full">
               <div className="md:h-[154px] h-[163px] relative w-[14%] md:w-full">
                 <div className="absolute h-[154px] inset-x-[0] mx-auto top-[0] w-[154px]">
-                  <Img
+                  {/* <Img
                     className="h-[66px] ml-auto mr-[17px] mt-[15px] object-cover w-[66px]"
                     src="images/img_userprofilein.png"
                     alt="userprofilein"
-                  />
-                  <Img
+                  /> */}
+                  {/* <Img
                     className="absolute h-[154px] inset-[0] justify-center m-auto object-cover w-[154px]"
                     src="images/img_accepthandgesture.png"
                     alt="accepthandgestu"
-                  />
+                  /> */}
                 </div>
-                <Text
+                {/* <Text
                   className="absolute bottom-[0] right-[20%] md:text-2xl sm:text-[22px] text-[26px] text-white-A700"
                   size="txtPlusJakartaSansRomanBold26"
                 >
                   Login
-                </Text>
+                </Text> */}
               </div>
               <div className="flex flex-col items-start justify-start md:mt-0 mt-4 w-[84%] md:w-full">
                 <Text

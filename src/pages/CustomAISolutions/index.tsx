@@ -12,23 +12,6 @@ import {
   Text,
 } from "components";
 
-const languageOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
-const whatAreTheBenefitsOfUsingTheListrAiToolOptionsList = [
-  { label: "Option1", value: "option1" },
-  { label: "Option2", value: "option2" },
-  { label: "Option3", value: "option3" },
-];
-const howCanBusinessesAndIndividualsUseTheListrAiToolForAiDevelopmentOptionsList =
-  [
-    { label: "Option1", value: "option1" },
-    { label: "Option2", value: "option2" },
-    { label: "Option3", value: "option3" },
-  ];
-
 const CustomAISolutionsPage: React.FC = () => {
   return (
     <>
@@ -308,12 +291,14 @@ const CustomAISolutionsPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <Text
-            className="md:ml-[0] ml-[453px] mt-[54px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-            size="txtPlusJakartaSansExtraBold36"
-          >
-            Benefits of Implementing AI
-          </Text>
+          <div className="flex items-center justify-center">
+            <Text
+              className="md:ml-[0] mt-[54px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+              size="txtPlusJakartaSansExtraBold36"
+            >
+              Benefits of Implementing AI
+            </Text>
+          </div>
           <div className="flex md:flex-col flex-row gap-5 items-center justify-start max-w-[1213px] mt-6 mx-auto md:px-5 w-full">
             <div className="bg-gradient  border border-blue_gray-900 border-solid flex md:flex-1 flex-col items-center justify-end p-[19px] rounded-[15px] w-[33%] md:w-full">
               <Img
@@ -386,206 +371,213 @@ const CustomAISolutionsPage: React.FC = () => {
               </div>
             </List>
           </div>
-          <Text
-            className="md:ml-[0] ml-[409px] mt-14 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-            size="txtPlusJakartaSansExtraBold36"
-          >
-            We Provide End-to-End Service
-          </Text>
-          <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-[54px] p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
-            <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
-              <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12   flex-shrink-0"
-                size="txtPlusJakartaSansRomanBold18Gray900"
-              >
-                1
-              </Text>
-              <div className="flex flex-col gap-[9px] items-start justify-start md:mt-0 mt-[11px]">
+          <div className="flex items-center justify-center">
+            <Text
+              className="md:ml-[0] mt-14 text-center text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+              size="txtPlusJakartaSansExtraBold36"
+            >
+              We Provide End-to-End Service
+            </Text>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] mt-[54px] p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
+              <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
                 <Text
-                  className="text-lg text-white-A700"
-                  size="txtPlusJakartaSansRomanBold18"
+                  className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12   flex-shrink-0"
+                  size="txtPlusJakartaSansRomanBold18Gray900"
                 >
-                  Free Consultation
+                  1
                 </Text>
+                <div className="flex flex-col gap-[9px] items-start justify-start md:mt-0 mt-[11px]">
+                  <Text
+                    className="text-lg text-white-A700"
+                    size="txtPlusJakartaSansRomanBold18"
+                  >
+                    Free Consultation
+                  </Text>
+                  <Text
+                    className="leading-[22.00px] text-sm text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular14"
+                  >
+                    We begin with an exploratory discussion where we aim to
+                    understand your business, its operations, existing
+                    technology stack, and key pain points. We also delve into
+                    your strategic goals to ensure our solutions align with your
+                    long-term vision.
+                  </Text>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
+              <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
                 <Text
-                  className="leading-[22.00px] text-sm text-white-A700 w-full"
-                  size="txtPlusJakartaSansRomanRegular14"
+                  className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
+                  size="txtPlusJakartaSansRomanBold18Gray900"
                 >
-                  We begin with an exploratory discussion where we aim to
-                  understand your business, its operations, existing technology
-                  stack, and key pain points. We also delve into your strategic
-                  goals to ensure our solutions align with your long-term
-                  vision.
+                  2
                 </Text>
+                <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
+                  <Text
+                    className="text-lg text-white-A700"
+                    size="txtPlusJakartaSansRomanBold18"
+                  >
+                    Opportunity Identification
+                  </Text>
+                  <Text
+                    className="leading-[22.00px] text-sm text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular14"
+                  >
+                    Using our deep understanding of your business, we identify
+                    areas where AI and automation can bring significant value.
+                    We prioritize opportunities based on potential impact,
+                    feasibility, and alignment with your business goals.
+                  </Text>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
+              <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
+                <Text
+                  className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
+                  size="txtPlusJakartaSansRomanBold18Gray900"
+                >
+                  3
+                </Text>
+                <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
+                  <Text
+                    className="text-lg text-white-A700"
+                    size="txtPlusJakartaSansRomanBold18"
+                  >
+                    Solution Design
+                  </Text>
+                  <Text
+                    className="leading-[22.00px] text-sm text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular14"
+                  >
+                    Once opportunities are identified, our team of AI experts
+                    and developers get to work on designing the right solution.
+                    This involves conceptualizing the AI model or automation
+                    system, defining how it integrates with existing processes,
+                    and planning for scalability.
+                  </Text>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
+              <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
+                <Text
+                  className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
+                  size="txtPlusJakartaSansRomanBold18Gray900"
+                >
+                  4
+                </Text>
+                <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
+                  <Text
+                    className="text-lg text-white-A700"
+                    size="txtPlusJakartaSansRomanBold18"
+                  >
+                    Development & Testing
+                  </Text>
+                  <Text
+                    className="leading-[22.00px] text-sm text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular14"
+                  >
+                    We employ agile development practices to ensure rapid and
+                    quality solution delivery. Throughout the process, we
+                    maintain regular communication with you. Thorough testing is
+                    performed to guarantee the functionality and robustness of
+                    the solution.
+                  </Text>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
+              <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
+                <Text
+                  className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
+                  size="txtPlusJakartaSansRomanBold18Gray900"
+                >
+                  5
+                </Text>
+                <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
+                  <Text
+                    className="text-lg text-white-A700"
+                    size="txtPlusJakartaSansRomanBold18"
+                  >
+                    Implementation & Integration
+                  </Text>
+                  <Text
+                    className="leading-[22.00px] text-sm text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular14"
+                  >
+                    After the solution is fine-tuned and approved, we proceed
+                    with its implementation. We ensure seamless integration with
+                    your existing systems and workflows, minimizing disruption
+                    to your ongoing operations.
+                  </Text>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
+              <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
+                <Text
+                  className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
+                  size="txtPlusJakartaSansRomanBold18Gray900"
+                >
+                  6
+                </Text>
+                <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
+                  <Text
+                    className="text-lg text-white-A700"
+                    size="txtPlusJakartaSansRomanBold18"
+                  >
+                    Training & Support
+                  </Text>
+                  <Text
+                    className="leading-[22.00px] text-sm text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular14"
+                  >
+                    We provide comprehensive training to your team, equipping
+                    them to effectively use and manage the new tools.
+                    Furthermore, we offer ongoing support and maintenance
+                    services to ensure your solution continues to deliver
+                    optimal results.
+                  </Text>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
+              <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
+                <Text
+                  className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
+                  size="txtPlusJakartaSansRomanBold18Gray900"
+                >
+                  7
+                </Text>
+                <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
+                  <Text
+                    className="text-lg text-white-A700"
+                    size="txtPlusJakartaSansRomanBold18"
+                  >
+                    Review & Optimization
+                  </Text>
+                  <Text
+                    className="leading-[22.00px] text-sm text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular14"
+                  >
+                    As your business evolves, so should our solutions. We
+                    continuously monitor the performance of our solutions,
+                    gather feedback, and optimize them to better serve your
+                    needs, in addition to implementating the latest AI
+                    technologies as they become available.
+                  </Text>
+                </div>
               </div>
             </div>
           </div>
-          <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
-            <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
-              <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
-                size="txtPlusJakartaSansRomanBold18Gray900"
-              >
-                2
-              </Text>
-              <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
-                <Text
-                  className="text-lg text-white-A700"
-                  size="txtPlusJakartaSansRomanBold18"
-                >
-                  Opportunity Identification
-                </Text>
-                <Text
-                  className="leading-[22.00px] text-sm text-white-A700 w-full"
-                  size="txtPlusJakartaSansRomanRegular14"
-                >
-                  Using our deep understanding of your business, we identify
-                  areas where AI and automation can bring significant value. We
-                  prioritize opportunities based on potential impact,
-                  feasibility, and alignment with your business goals.
-                </Text>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
-            <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
-              <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
-                size="txtPlusJakartaSansRomanBold18Gray900"
-              >
-                3
-              </Text>
-              <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
-                <Text
-                  className="text-lg text-white-A700"
-                  size="txtPlusJakartaSansRomanBold18"
-                >
-                  Solution Design
-                </Text>
-                <Text
-                  className="leading-[22.00px] text-sm text-white-A700 w-full"
-                  size="txtPlusJakartaSansRomanRegular14"
-                >
-                  Once opportunities are identified, our team of AI experts and
-                  developers get to work on designing the right solution. This
-                  involves conceptualizing the AI model or automation system,
-                  defining how it integrates with existing processes, and
-                  planning for scalability.
-                </Text>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
-            <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
-              <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
-                size="txtPlusJakartaSansRomanBold18Gray900"
-              >
-                4
-              </Text>
-              <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
-                <Text
-                  className="text-lg text-white-A700"
-                  size="txtPlusJakartaSansRomanBold18"
-                >
-                  Development & Testing
-                </Text>
-                <Text
-                  className="leading-[22.00px] text-sm text-white-A700 w-full"
-                  size="txtPlusJakartaSansRomanRegular14"
-                >
-                  We employ agile development practices to ensure rapid and
-                  quality solution delivery. Throughout the process, we maintain
-                  regular communication with you. Thorough testing is performed
-                  to guarantee the functionality and robustness of the solution.
-                </Text>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
-            <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
-              <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
-                size="txtPlusJakartaSansRomanBold18Gray900"
-              >
-                5
-              </Text>
-              <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
-                <Text
-                  className="text-lg text-white-A700"
-                  size="txtPlusJakartaSansRomanBold18"
-                >
-                  Implementation & Integration
-                </Text>
-                <Text
-                  className="leading-[22.00px] text-sm text-white-A700 w-full"
-                  size="txtPlusJakartaSansRomanRegular14"
-                >
-                  After the solution is fine-tuned and approved, we proceed with
-                  its implementation. We ensure seamless integration with your
-                  existing systems and workflows, minimizing disruption to your
-                  ongoing operations.
-                </Text>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
-            <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
-              <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
-                size="txtPlusJakartaSansRomanBold18Gray900"
-              >
-                6
-              </Text>
-              <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
-                <Text
-                  className="text-lg text-white-A700"
-                  size="txtPlusJakartaSansRomanBold18"
-                >
-                  Training & Support
-                </Text>
-                <Text
-                  className="leading-[22.00px] text-sm text-white-A700 w-full"
-                  size="txtPlusJakartaSansRomanRegular14"
-                >
-                  We provide comprehensive training to your team, equipping them
-                  to effectively use and manage the new tools. Furthermore, we
-                  offer ongoing support and maintenance services to ensure your
-                  solution continues to deliver optimal results.
-                </Text>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[365px] mt-5 p-[15px] md:px-5 rounded-[15px] w-1/2 md:w-full">
-            <div className="flex md:flex-col flex-row gap-[15px] items-start justify-between mb-[33px] mt-[17px] w-full">
-              <Text
-                className="bg-white-A700 flex h-12 items-center justify-center mb-[62px] rounded-[50%] text-center text-gray-900 text-lg w-12  flex-shrink-0"
-                size="txtPlusJakartaSansRomanBold18Gray900"
-              >
-                7
-              </Text>
-              <div className="flex flex-col gap-[7px] items-start justify-start md:mt-0 mt-[13px]">
-                <Text
-                  className="text-lg text-white-A700"
-                  size="txtPlusJakartaSansRomanBold18"
-                >
-                  Review & Optimization
-                </Text>
-                <Text
-                  className="leading-[22.00px] text-sm text-white-A700 w-full"
-                  size="txtPlusJakartaSansRomanRegular14"
-                >
-                  As your business evolves, so should our solutions. We
-                  continuously monitor the performance of our solutions, gather
-                  feedback, and optimize them to better serve your needs, in
-                  addition to implementating the latest AI technologies as they
-                  become available.
-                </Text>
-              </div>
-            </div>
-          </div>
-          <div className="flex md:flex-col flex-row md:gap-10 gap-[86px] items-start justify-start md:ml-[0] ml-[113px] mt-[50px] md:px-5 w-[79%] md:w-full">
-            <div className="flex flex-col justify-start md:mt-0 mt-[59px] w-[55%] md:w-full">
+
+          <div className="flex md:flex-col flex-row md:gap-10 gap-[86px] items-center justify-center md:ml-[0] ml-[200px] mt-[50px] md:px-5 w-[79%] md:w-full">
+            <div className="flex flex-col justify-center md:mt-0 mt-[59px] md:w-full">
               <Text
                 className="text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
                 size="txtPlusJakartaSansExtraBold36"
@@ -644,7 +636,7 @@ const CustomAISolutionsPage: React.FC = () => {
                 </li>
               </ul>
 
-              <div className="flex flex-col items-center justify-start mt-[50px] w-[37%] md:w-full">
+              <div className="flex flex-col items-start justify-start mt-[50px] w-[37%] md:w-full">
                 <Button
                   className="cursor-pointer flex items-center justify-center min-w-[222px]"
                   rightIcon={
@@ -671,7 +663,7 @@ const CustomAISolutionsPage: React.FC = () => {
               alt="rectangleSixtyFive"
             />
           </div>
-          <div className="flex md:flex-col flex-row md:gap-10 gap-[84px] items-center justify-start max-w-[1209px] mt-[50px] mx-auto md:px-5 w-full">
+          <div className="flex md:flex-col flex-row md:gap-10 gap-[84px] items-center justify-center max-w-[1209px] mt-[50px] mx-auto md:px-5 w-full">
             <div className="bg-gradient  border border-blue_gray-900 border-solid flex md:flex-1 flex-col items-center justify-start p-5 rounded-[15px] w-[37%] md:w-full">
               <div className="flex flex-col items-start justify-start mb-11 mt-2.5 w-full">
                 <Text
@@ -864,7 +856,7 @@ const CustomAISolutionsPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="flex md:flex-col flex-row md:gap-5 items-center justify-start md:ml-[0] ml-[113px] mt-[99px] md:px-5 w-[79%] md:w-full">
+          <div className="flex md:flex-col flex-row md:gap-10 items-center justify-center md:ml-[0] mt-[99px] md:px-5 md:w-full">
             <div className="flex h-20 justify-end relative w-20">
               <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-11 mb-1.5 ml-auto mr-[11px] mt-auto rounded-[22px] w-1/2"></div>
               <div className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col md:h-auto h-full inset-[0] items-center justify-center m-auto p-5 rounded-[50%] w-20">
@@ -875,7 +867,7 @@ const CustomAISolutionsPage: React.FC = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-col gap-[9px] items-start justify-start ml-5 md:ml-[0]">
+            <div className="flex flex-col gap-[9px] items-center justify-center ml-5 md:ml-[0]">
               <Text
                 className="text-2xl md:text-[22px] text-white-A700 sm:text-xl tracking-[1.20px]"
                 size="txtPlusJakartaSansExtraBold24"
@@ -902,12 +894,14 @@ const CustomAISolutionsPage: React.FC = () => {
               </Button>
             </div>
           </div>
-          <Text
-            className="md:ml-[0] ml-[600px] mt-[72px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-            size="txtPlusJakartaSansExtraBold36"
-          >
-            Testimonials
-          </Text>
+          <div className="flex items-center justify-center">
+            <Text
+              className="md:ml-[0] mt-[72px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+              size="txtPlusJakartaSansExtraBold36"
+            >
+              Testimonials
+            </Text>
+          </div>
           <List
             className="sm:flex-col flex-row gap-5 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center max-w-[1213px] mt-7 mx-auto md:px-5 w-full"
             orientation="horizontal"
@@ -1141,7 +1135,6 @@ const CustomAISolutionsPage: React.FC = () => {
               Ready to get started? Contact us!
             </Text>
           </div>
-          
 
           <div className="flex md:flex-col flex-row gap-[22px] items-center justify-start max-w-[1212px] mt-[23px] mx-auto md:px-5 w-full">
             <div className="flex md:flex-1 flex-col gap-[9px] items-start justify-start w-1/2 md:w-full">
@@ -1211,7 +1204,7 @@ const CustomAISolutionsPage: React.FC = () => {
               Submit
             </Button>
           </div>
-          <div className="flex md:flex-col flex-row md:gap-5 items-center justify-start md:ml-[0] ml-[113px] mt-[82px] mb-20 md:px-5 w-[79%] md:w-full">
+          <div className="flex md:flex-col flex-row md:gap-5 items-center justify-center md:ml-[0] mt-[82px] mb-20 md:px-5 md:w-full">
             <div className="flex h-20 justify-end relative w-20">
               <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-11 mb-1.5 ml-auto mr-[11px] mt-auto rounded-[22px] w-1/2"></div>
               <div className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col md:h-auto h-full inset-[0] items-center justify-center m-auto p-5 rounded-[50%] w-20">

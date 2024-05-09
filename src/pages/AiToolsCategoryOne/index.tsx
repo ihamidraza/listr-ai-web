@@ -1,66 +1,79 @@
 import React, { useState } from "react";
-import { Select } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { Select } from "antd";
+import { useNavigate } from "react-router-dom";
 import { Button, CheckBox, Img, Input, Text, SubscribeForm } from "components";
 import AiToolsCategoryfilterModal from "modals/AiToolsCategoryfilter";
 
-
 const newOptionsList = [
   {
-    label: <div className="flex flex-row gap-2.5 items-end justify-start w-full">
-      <Img
-        className="h-6 w-6"
-        src="images/img_checkmark_white_a700_24x24.svg"
-        alt="checkmark"
-      />
-      <Text
-        className="text-sm text-white-A700"
-        size="txtPlusJakartaSansRomanMedium14WhiteA700"
-      >
-        Verified
-      </Text>
-    </div>, value: "option1"
+    label: (
+      <div className="flex flex-row gap-2.5 items-end justify-start w-full">
+        <Img
+          className="h-6 w-6"
+          src="images/img_checkmark_white_a700_24x24.svg"
+          alt="checkmark"
+        />
+        <Text
+          className="text-sm text-white-A700"
+          size="txtPlusJakartaSansRomanMedium14WhiteA700"
+        >
+          Verified
+        </Text>
+      </div>
+    ),
+    value: "verified",
   },
-  { label:  <div className="flex flex-row gap-2.5 items-end justify-start w-full">
-  <Img
-    className="h-6 w-6"
-    src="images/img_bookmark_white_a700.svg"
-    alt="bookmark"
-  />
-  <Text
-    className="mt-[5px] text-sm text-white-A700"
-    size="txtPlusJakartaSansRomanMedium14WhiteA700"
-  >
-    Popular
-  </Text>
-</div>, value: "option2" },
-  { label:  <div className="flex flex-row gap-2.5 items-start justify-start w-[76%] md:w-full">
-  <Img
-    className="h-6 w-6"
-    src="images/img_close_white_a700_24x24.svg"
-    alt="close_One"
-  />
-  <Text
-    className="mt-[3px] text-sm text-white-A700"
-    size="txtPlusJakartaSansRomanMedium14WhiteA700"
-  >
-    New
-  </Text>
-</div>, value: "option3" },
+  {
+    label: (
+      <div className="flex flex-row gap-2.5 items-end justify-start w-full">
+        <Img
+          className="h-6 w-6"
+          src="images/img_bookmark_white_a700.svg"
+          alt="bookmark"
+        />
+        <Text
+          className="mt-[5px] text-sm text-white-A700"
+          size="txtPlusJakartaSansRomanMedium14WhiteA700"
+        >
+          Popular
+        </Text>
+      </div>
+    ),
+    value: "popular",
+  },
+  {
+    label: (
+      <div className="flex flex-row gap-2.5 items-start justify-start w-[76%] md:w-full">
+        <Img
+          className="h-6 w-6"
+          src="images/img_close_white_a700_24x24.svg"
+          alt="close_One"
+        />
+        <Text
+          className="mt-[3px] text-sm text-white-A700"
+          size="txtPlusJakartaSansRomanMedium14WhiteA700"
+        >
+          New
+        </Text>
+      </div>
+    ),
+    value: "new",
+  },
 ];
 
 const AiToolsCategoryOnePage: React.FC = () => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-
-  const [modal, toggleModal] = useState(false)
+  const [modal, toggleModal] = useState(false);
   return (
     <>
-
-    <AiToolsCategoryfilterModal modal={modal} toggleModal={toggleModal} />
+      <AiToolsCategoryfilterModal modal={modal} toggleModal={toggleModal} />
 
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="flex flex-col items-center justify-start w-full" style={{ marginTop: 100 }}>
+        <div
+          className="flex flex-col items-center justify-start w-full"
+          style={{ marginTop: 100 }}
+        >
           <div className="md:h-[813px] h-[817px] md:px-5 relative w-full">
             <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full">
               <Img
@@ -74,7 +87,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
                   src="images/img_image.png"
                   alt="image"
                 />
-                <div className="absolute bottom-[27%] flex flex-col items-center justify-start right-[13%] w-[66%]">
+                <div className="absolute bottom-[27%] flex flex-col items-center justify-start right-[20%] w-[66%]">
                   <Text
                     className="text-5xl sm:text-[38px] md:text-[44px] text-white-A700"
                     size="txtPlusJakartaSansRomanSemiBold48"
@@ -87,7 +100,10 @@ const AiToolsCategoryOnePage: React.FC = () => {
                   >
                     Compelling Content Made Easy - Top AI Copywriting Tools
                   </Text>
-                  <div className="flex md:flex-col flex-row gap-[39px] items-center mt-[46px] w-full" style={{ marginLeft: '20vw' }}>
+                  <div
+                    className="flex md:flex-col flex-row gap-[39px] items-center mt-[46px] w-full"
+                    style={{ marginLeft: "20vw" }}
+                  >
                     <Input
                       name="group320"
                       placeholder="Search for tools…"
@@ -96,14 +112,11 @@ const AiToolsCategoryOnePage: React.FC = () => {
                       color="black_900_33"
                       size="lg"
                       variant="fill"
-                      style={{ width: '40vw' }}
+                      style={{ width: "40vw" }}
                     ></Input>
                     <div className="flex h-[70px] justify-end relative w-[9%] md:w-full">
                       <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[37px] mb-1.5 ml-auto mr-[15px] mt-auto rounded-[18px] w-[37px]"></div>
-                      <Button
-                        className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto"
-                      >
-
+                      <Button className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto">
                         <Img
                           className="h-10 w-20"
                           src="images/img_save_white_a700.svg"
@@ -125,7 +138,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
                       color="amber_500_33"
                       size="xl"
                       variant="fill"
-                      onClick={() => navigate('/aiToolMapper')}
+                      onClick={() => navigate("/aiToolMapper")}
                     >
                       <div className="font-medium text-left text-sm">
                         Use AI Tools Mapping Feature
@@ -143,7 +156,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
                       color="amber_500_33"
                       size="xl"
                       variant="fill"
-                      onClick={() => navigate('/aiToolsCategories')}
+                      onClick={() => navigate("/aiToolsCategories")}
                     >
                       <div className="font-medium text-left text-sm">
                         View All Categories
@@ -159,7 +172,6 @@ const AiToolsCategoryOnePage: React.FC = () => {
             >
               AI Tools List
             </Text>
-
           </div>
           <div className="flex flex-row md:gap-10 items-center justify-between max-w-[1214px] mt-[47px] mx-auto md:px-5 w-full">
             <Button
@@ -180,8 +192,8 @@ const AiToolsCategoryOnePage: React.FC = () => {
               <div className="font-medium text-left text-sm">Filters</div>
             </Button>
             <Select
-              placeholder='Select Tools'
-              size='large'
+              placeholder="Select Tools"
+              size="large"
               options={newOptionsList}
               style={{ width: 250 }}
             />

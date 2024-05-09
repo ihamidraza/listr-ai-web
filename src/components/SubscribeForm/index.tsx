@@ -5,8 +5,9 @@ import { Button, Input, Text, Img } from "components";
 
 export const SubscribeForm = () => {
   return (
-    <div className="h-[422px] md:h-[512px] max-w-[1212px] mt-[90px] mx-auto md:px-5 relative w-full"
-    style={{ marginBottom: 20 }}
+    <div
+      className="h-[422px] md:h-[512px] max-w-[1212px] mt-[90px] mx-auto md:px-5 relative w-full"
+      style={{ marginBottom: 20 }}
     >
       <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col h-full items-center justify-start m-auto pt-0.5 rounded-[15px] w-full">
         <Img
@@ -26,17 +27,14 @@ export const SubscribeForm = () => {
             className="leading-[60.00px] sm:text-4xl md:text-[42px] text-[46px] text-center text-white-A700 w-[85%] sm:w-full"
             size="txtPlusJakartaSansRomanSemiBold46"
           >
-            Join 30,000+ subscribers and get our 3 min daily newsletter on
-            AI.
+            Join 2,000+ subscribers and get our 3 min daily newsletter on AI
           </Text>
           <div className="bg-black-900_0c border border-blue_gray-900 border-solid flex flex-row sm:gap-10 items-center justify-between p-4 rounded-[15px] w-full">
             <Input
               className="ml-[5px] text-blue_gray-800 text-sm"
               // size="txtPlusJakartaSansRomanMedium14"
               placeholder=" Enter Your Email"
-            >
-
-            </Input>
+            ></Input>
             <div className="flex h-[58px] justify-end mr-2.5 relative w-[17%]">
               <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[3px] ml-auto mr-[39px] mt-auto rounded-[50%] w-8"></div>
               <Button

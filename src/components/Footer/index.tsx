@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import { Img, Input, Text } from "components";
 import { useNavigate } from "react-router-dom";
 
@@ -11,12 +10,12 @@ type FooterProps = React.DetailedHTMLProps<
   Partial<{}>;
 
 export const Footer: React.FC<FooterProps> = (props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <footer className={props.className}>
-        <div className="bg-black-900 flex flex-col items-center justify-center pt-[43px] md:px-10 sm:px-5 px-[43px] w-full" >
-          <div className="flex flex-col gap-[47px] items-center justify-center w-[90%] md:w-full" >
+        <div className="bg-black-900 flex flex-col items-center justify-center pt-[43px] md:px-10 sm:px-5 px-[43px] w-full">
+          <div className="flex flex-col gap-[47px] items-center justify-center w-[90%] md:w-full">
             <div className="flex md:flex-col flex-row md:gap-10 items-start justify-between w-full">
               <div className="flex md:flex-1 flex-col gap-[31px] items-start justify-start w-[21%] md:w-full">
                 <div className="flex flex-col gap-[22px] items-start justify-start w-full">
@@ -84,8 +83,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
                       Useful Links
                     </Text>
                     <ul className="flex flex-col gap-5 items-start justify-start w-full common-column-list">
-                      <li
-                      onClick={() => navigate('/')}>
+                      <li onClick={() => navigate("/")}>
                         <Text
                           className="text-base text-white-A700"
                           size="txtPlusJakartaSansRomanMedium16"
@@ -93,10 +91,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
                           Home
                         </Text>
                       </li>
-                      <li
-                      onClick={() => navigate('/aiToolMapper')}
-                      
-                      >
+                      <li onClick={() => navigate("/aiToolMapper")}>
                         <Text
                           className="text-base text-white-A700"
                           size="txtPlusJakartaSansRomanMedium16"
@@ -104,9 +99,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
                           AI Tool Mapper
                         </Text>
                       </li>
-                      <li
-                      onClick={() => navigate('/aiToolsCategory')}
-                      >
+                      <li onClick={() => navigate("/aiToolsCategory")}>
                         <Text
                           className="text-base text-white-A700"
                           size="txtPlusJakartaSansRomanMedium16"
@@ -114,10 +107,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
                           Ai Tools Category
                         </Text>
                       </li>
-                      <li
-                      onClick={() => navigate('/customAISolutions')}
-                      
-                      >
+                      <li onClick={() => navigate("/customAISolutions")}>
                         <Text
                           className="text-base text-white-A700"
                           size="txtPlusJakartaSansRomanMedium16"
@@ -128,23 +118,19 @@ export const Footer: React.FC<FooterProps> = (props) => {
                     </ul>
                   </div>
                   <ul className="flex md:flex-1 flex-col items-start justify-start sm:mt-0 mt-[57px] w-[61%] md:w-full common-column-list">
-                    <li
-                    
-                    >
+                    <li>
                       <div className="flex flex-row items-start justify-between">
                         <Text
                           className="text-base text-white-A700"
                           size="txtPlusJakartaSansRomanMedium16"
-                          onClick={() => navigate('/aboutUs')}
-
+                          onClick={() => navigate("/aboutUs")}
                         >
                           About Us
                         </Text>
                         <Text
                           className="text-base text-white-A700"
                           size="txtPlusJakartaSansRomanMedium16"
-                          onClick={() => navigate('/login')}
-
+                          onClick={() => navigate("/login")}
                         >
                           Sign In / Register
                         </Text>
@@ -155,16 +141,14 @@ export const Footer: React.FC<FooterProps> = (props) => {
                         <Text
                           className="text-base text-white-A700"
                           size="txtPlusJakartaSansRomanMedium16"
-                          onClick={() => navigate('/contactUs')}
-
+                          onClick={() => navigate("/contactUs")}
                         >
                           Contact Us
                         </Text>
                         <Text
                           className="text-base text-white-A700"
                           size="txtPlusJakartaSansRomanMedium16"
-                          onClick={() => navigate('/submitTool')}
-
+                          onClick={() => navigate("/submitTool")}
                         >
                           Submit AI Tool
                         </Text>
@@ -191,8 +175,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
                         <Text
                           className="text-base text-white-A700"
                           size="txtPlusJakartaSansRomanMedium16"
-                          onClick={() => navigate('/termsConditions')}
-
+                          onClick={() => navigate("/termsConditions")}
                         >
                           Terms & Condition
                         </Text>
