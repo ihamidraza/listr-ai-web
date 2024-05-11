@@ -5,7 +5,7 @@ import { Img, Text } from "components";
 const AboutUsPage: React.FC = () => {
   return (
     <>
-      <div className="bg-gray-900 flex flex-col font-plusjakartasans gap-[39px] items-center justify-start mx-auto w-full">
+      <div className="bg-gray-900 flex flex-col font-plusjakartasans gap-[39px] items-center justify-start mx-auto pb-[100px] w-full">
         <div
           className="md:h-[813px] h-[904px] md:px-5 relative w-full mb-100"
           style={{ marginTop: 100 }}

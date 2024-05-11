@@ -7,9 +7,10 @@ import Header2 from "components/Header2";
 const ContactUsPage: React.FC = () => {
   return (
     <>
-      <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="md:h-[1106px] h-[813px] md:px-5 relative w-full"
-        style={{ marginTop: 100 }}
+      <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto pb-[200px] w-full">
+        <div
+          className="md:h-[1106px] h-[813px] md:px-5 relative w-full"
+          style={{ marginTop: 100 }}
         >
           <div className="md:h-[1106px] h-[813px] m-auto w-full">
             <Img
@@ -119,7 +120,6 @@ const ContactUsPage: React.FC = () => {
             Join Slack Community
           </Button>
         </div>
-
       </div>
     </>
   );

@@ -1,13 +1,14 @@
 import React from "react";
 
-import { Button, CheckBox, Img, SubscribeForm, Text } from "components";
+import { Button, Img, SubscribeForm, Text } from "components";
 
 const SubmittoolOnePage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans gap-[39px] items-center justify-start mx-auto w-full">
-        <div className="h-[1237px] sm:h-[1292px] md:h-[854px] md:px-5 relative w-full"
-        style={{ marginTop: 100 }}
+        <div
+          className="h-[1237px] sm:h-[1292px] md:h-[854px] md:px-5 relative w-full"
+          style={{ marginTop: 100 }}
         >
           <div className="absolute h-[1237px] sm:h-[1292px] md:h-[854px] inset-[0] justify-center m-auto w-full">
             <div className="absolute bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto w-[85%]">
@@ -47,17 +48,22 @@ const SubmittoolOnePage: React.FC = () => {
                       >
                         Basic
                       </Text>
+
                       <div className="absolute bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto w-full">
                         <div className="flex flex-col items-start justify-start w-full">
-                          <CheckBox
-                            className="font-medium text-left text-white-A700 text-xs tracking-[0.60px]"
-                            inputClassName="mr-[5px]"
-                            name="submitoneaitool_One"
-                            id="submitoneaitool_One"
-                            label="Submit one AI tool for listing."
-                            shape="square"
-                            size="sm"
-                          ></CheckBox>
+                          <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
+                            <Img
+                              className="h-6 rounded-[50%] w-6"
+                              src="images/img_checkmark_amber_500.svg"
+                              alt="checkmark"
+                            />
+                            <Text
+                              className="sm:flex-1 leading-[16.00px] text-white-A700 text-xs tracking-[0.60px] w-[91%] sm:w-full"
+                              size="txtPlusJakartaSansRomanMedium12"
+                            >
+                              <>Submit one AI tool for listing</>
+                            </Text>
+                          </div>
                           <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
                             <Img
                               className="h-6 w-6"
@@ -70,7 +76,7 @@ const SubmittoolOnePage: React.FC = () => {
                             >
                               <>
                                 Tool will be featured on the website&#39;s
-                                homepage on a rotating basis for 7 days.
+                                homepage on a rotating basis for 7 days
                               </>
                             </Text>
                           </div>
@@ -88,15 +94,19 @@ const SubmittoolOnePage: React.FC = () => {
                               for 7 days.
                             </Text>
                           </div>
-                          <CheckBox
-                            className="font-medium mt-[15px] text-left text-white-A700 text-xs tracking-[0.60px]"
-                            inputClassName="mr-[5px]"
-                            name="standardsupport_One"
-                            id="standardsupport_One"
-                            label="Standard support."
-                            shape="square"
-                            size="sm"
-                          ></CheckBox>
+                          <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
+                            <Img
+                              className="h-6 rounded-[50%] w-6"
+                              src="images/img_checkmark_amber_500.svg"
+                              alt="checkmark"
+                            />
+                            <Text
+                              className="sm:flex-1 leading-[16.00px] text-white-A700 text-xs tracking-[0.60px] w-[91%] sm:w-full"
+                              size="txtPlusJakartaSansRomanMedium12"
+                            >
+                              <>Standard support</>
+                            </Text>
+                          </div>
                         </div>
                       </div>
                       <Text
@@ -106,7 +116,7 @@ const SubmittoolOnePage: React.FC = () => {
                         One Time Free
                       </Text>
                       <Button
-                        className="absolute cursor-pointer font-bold inset-x-[0] leading-[normal] min-w-[293px] mx-auto rounded-[7px] text-center text-lg top-[18%]"
+                        className=" cursor-pointer font-bold inset-x-[0] leading-[normal] mt-[60px] w-[100%] mx-auto rounded-[7px] text-center text-lg top-[18%]"
                         color="amber_500"
                         size="md"
                         variant="fill"
@@ -138,31 +148,53 @@ const SubmittoolOnePage: React.FC = () => {
                           Submit one AI tool for listing.
                         </Text>
                       </div>
-                      <CheckBox
-                        className="font-medium leading-[16.00px] mt-[11px] text-left text-white-A700 text-xs tracking-[0.60px]"
-                        inputClassName="mr-[5px]"
-                        name="toolwillbefeatu_One"
-                        id="toolwillbefeatu_One"
-                        label="Tool will be featured on the website&#39;s homepage on a rotating basis for 7 days."
-                        shape="square"
-                      ></CheckBox>
-                      <CheckBox
-                        className="font-medium leading-[16.00px] mt-[15px] text-left text-white-A700 text-xs tracking-[0.60px]"
-                        inputClassName="mr-[5px]"
-                        name="displayingtheto_One"
-                        id="displayingtheto_One"
-                        label="Displaying the tool at the top of that category for 7 days."
-                        shape="square"
-                      ></CheckBox>
-                      <CheckBox
-                        className="font-medium mt-[15px] text-left text-white-A700 text-xs tracking-[0.60px]"
-                        inputClassName="mr-[5px]"
-                        name="standardsupport_Three"
-                        id="standardsupport_Three"
-                        label="Standard support."
-                        shape="square"
-                        size="sm"
-                      ></CheckBox>
+                      <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
+                        <Img
+                          className="h-6 rounded-[50%] w-6"
+                          src="images/img_checkmark_amber_500.svg"
+                          alt="checkmark"
+                        />
+                        <Text
+                          className="sm:flex-1 leading-[16.00px] text-white-A700 text-xs tracking-[0.60px] w-[91%] sm:w-full"
+                          size="txtPlusJakartaSansRomanMedium12"
+                        >
+                          <>
+                            Tool will be featured on the website&#39;s homepage
+                            on a rotating basis for 7 days
+                          </>
+                        </Text>
+                      </div>
+
+                      <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
+                        <Img
+                          className="h-6 rounded-[50%] w-6"
+                          src="images/img_checkmark_amber_500.svg"
+                          alt="checkmark"
+                        />
+                        <Text
+                          className="sm:flex-1 leading-[16.00px] text-white-A700 text-xs tracking-[0.60px] w-[91%] sm:w-full"
+                          size="txtPlusJakartaSansRomanMedium12"
+                        >
+                          <>
+                            Displaying the tool at the top of that category for
+                            7 days
+                          </>
+                        </Text>
+                      </div>
+
+                      <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
+                        <Img
+                          className="h-6 rounded-[50%] w-6"
+                          src="images/img_checkmark_amber_500.svg"
+                          alt="checkmark"
+                        />
+                        <Text
+                          className="sm:flex-1 leading-[16.00px] text-white-A700 text-xs tracking-[0.60px] w-[91%] sm:w-full"
+                          size="txtPlusJakartaSansRomanMedium12"
+                        >
+                          <>Standard support</>
+                        </Text>
+                      </div>
                     </div>
                   </div>
                   <div className="absolute flex flex-col items-start justify-start left-[5%] top-[6%] w-[32%]">
@@ -200,7 +232,7 @@ const SubmittoolOnePage: React.FC = () => {
                     </Text>
                   </div>
                   <Button
-                    className="absolute cursor-pointer font-bold inset-x-[0] leading-[normal] min-w-[293px] mx-auto rounded-[7px] text-center text-lg top-[36%]"
+                    className=" cursor-pointer font-bold inset-x-[0] leading-[normal] ml-[20px] mt-[170px] w-[90%] mx-auto rounded-[7px] text-center text-lg top-[18%]"
                     color="amber_500"
                     size="md"
                     variant="fill"
@@ -242,49 +274,74 @@ const SubmittoolOnePage: React.FC = () => {
                     >
                       One Time Free
                     </Text>
-                    <div className="bg-amber-500 flex flex-col items-center justify-end ml-6 md:ml-[0] mt-[31px] p-2.5 rounded-[7px]">
-                      <Text
-                        className="text-gray-900_06 text-lg"
-                        size="txtPlusJakartaSansRomanBold18Gray90006"
-                      >
-                        Select Plan
-                      </Text>
-                    </div>
+                    {/* <div className="bg-amber-500 flex flex-col items-center justify-end ml-6 md:ml-[0] mt-[31px] p-2.5 rounded-[7px]"> */}
+                    <Button
+                      className=" cursor-pointer font-bold inset-x-[0] leading-[normal] ml-[20px] mt-[40px] w-[90%] mx-auto rounded-[7px] text-center text-lg top-[18%]"
+                      color="amber_500"
+                      size="md"
+                      variant="fill"
+                    >
+                      Select Plan
+                    </Button>
                     <div className="flex flex-col items-start justify-start mt-[31px] w-full">
-                      <CheckBox
-                        className="font-medium text-left text-white-A700 text-xs tracking-[0.60px]"
-                        inputClassName="mr-[5px]"
-                        name="submitoneaitool_Five"
-                        id="submitoneaitool_Five"
-                        label="Submit one AI tool for listing."
-                        shape="square"
-                        size="sm"
-                      ></CheckBox>
-                      <CheckBox
-                        className="font-medium leading-[16.00px] mt-[11px] text-left text-white-A700 text-xs tracking-[0.60px]"
-                        inputClassName="mr-[5px]"
-                        name="toolwillbefeatu_Three"
-                        id="toolwillbefeatu_Three"
-                        label="Tool will be featured on the website&#39;s homepage on a rotating basis for 7 days."
-                        shape="square"
-                      ></CheckBox>
-                      <CheckBox
-                        className="font-medium leading-[16.00px] mt-[15px] text-left text-white-A700 text-xs tracking-[0.60px]"
-                        inputClassName="mr-[5px]"
-                        name="displayingtheto_Three"
-                        id="displayingtheto_Three"
-                        label="Displaying the tool at the top of that category for 7 days."
-                        shape="square"
-                      ></CheckBox>
-                      <CheckBox
-                        className="font-medium mt-[15px] text-left text-white-A700 text-xs tracking-[0.60px]"
-                        inputClassName="mr-[5px]"
-                        name="standardsupport_Five"
-                        id="standardsupport_Five"
-                        label="Standard support."
-                        shape="square"
-                        size="sm"
-                      ></CheckBox>
+                      <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
+                        <Img
+                          className="h-6 rounded-[50%] w-6"
+                          src="images/img_checkmark_amber_500.svg"
+                          alt="checkmark"
+                        />
+                        <Text
+                          className="sm:flex-1 leading-[16.00px] text-white-A700 text-xs tracking-[0.60px] w-[91%] sm:w-full"
+                          size="txtPlusJakartaSansRomanMedium12"
+                        >
+                          <>Submit one AI tool for listing</>
+                        </Text>
+                      </div>
+                      <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
+                        <Img
+                          className="h-6 rounded-[50%] w-6"
+                          src="images/img_checkmark_amber_500.svg"
+                          alt="checkmark"
+                        />
+                        <Text
+                          className="sm:flex-1 leading-[16.00px] text-white-A700 text-xs tracking-[0.60px] w-[91%] sm:w-full"
+                          size="txtPlusJakartaSansRomanMedium12"
+                        >
+                          <>
+                            Tool will be featured on the website&#39;s homepage
+                            on a rotating basis for 7 days
+                          </>
+                        </Text>
+                      </div>
+                      <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
+                        <Img
+                          className="h-6 rounded-[50%] w-6"
+                          src="images/img_checkmark_amber_500.svg"
+                          alt="checkmark"
+                        />
+                        <Text
+                          className="sm:flex-1 leading-[16.00px] text-white-A700 text-xs tracking-[0.60px] w-[91%] sm:w-full"
+                          size="txtPlusJakartaSansRomanMedium12"
+                        >
+                          <>
+                            Displaying the tool at the top of that category for
+                            7 days
+                          </>
+                        </Text>
+                      </div>
+                      <div className="flex flex-row gap-2.5 items-start justify-start mt-[11px] w-full">
+                        <Img
+                          className="h-6 rounded-[50%] w-6"
+                          src="images/img_checkmark_amber_500.svg"
+                          alt="checkmark"
+                        />
+                        <Text
+                          className="sm:flex-1 leading-[16.00px] text-white-A700 text-xs tracking-[0.60px] w-[91%] sm:w-full"
+                          size="txtPlusJakartaSansRomanMedium12"
+                        >
+                          <>Standard support</>
+                        </Text>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -302,7 +359,7 @@ const SubmittoolOnePage: React.FC = () => {
                   src="images/img_image.png"
                   alt="image"
                 />
-                <div className="absolute bottom-[6%] flex flex-col gap-2.5 inset-x-[0] items-center justify-start mx-auto w-[85%]">
+                <div className="absolute bottom-[8%] flex flex-col gap-2.5 inset-x-[0] items-center justify-start mx-auto w-[85%]">
                   <Text
                     className="text-4xl sm:text-[32px] md:text-[34px] text-center text-white-A700 tracking-[1.80px]"
                     size="txtPlusJakartaSansExtraBold36"
@@ -310,7 +367,7 @@ const SubmittoolOnePage: React.FC = () => {
                     Submit AI Tool
                   </Text>
                   <Text
-                    className="leading-[16.00px] text-center text-white-A700 text-xs tracking-[0.60px] w-[92%] sm:w-full"
+                    className="leading-[16.00px] text-center text-white-A700 text-xs tracking-[0.60px] w-[80%] sm:w-full"
                     size="txtPlusJakartaSansRomanSemiBold12"
                   >
                     <>
@@ -323,7 +380,7 @@ const SubmittoolOnePage: React.FC = () => {
                   </Text>
                   <div className="bg-black-900_33 border border-blue_gray-900 border-solid md:h-[331px] h-[445px] pb-[25px] sm:pl-5 pl-[25px] relative rounded-[15px] w-full">
                     <Text
-                      className="absolute bottom-[8%] right-[12%] rotate-[90deg] md:text-5xl text-[130px] text-gray-900_7f"
+                      className="mt-[50%] right-[12%] rotate-[90deg] md:text-5xl text-[130px] text-gray-900_7f"
                       size="txtPlusJakartaSansRomanBold130"
                     >
                       Free
@@ -372,7 +429,7 @@ const SubmittoolOnePage: React.FC = () => {
                         className="leading-[16.00px] md:mt-0 mt-1 text-white-A700 text-xs tracking-[0.60px] w-[97%] sm:w-full"
                         size="txtPlusJakartaSansRomanMedium12"
                       >
-                        Write a post about Listar.ai. For example, share your
+                        Write a post about Listr.ai. For example, share your
                         experience with our tool, describe a certain feature you
                         like, or share your thoughts on who can use an AI tools
                         library.
@@ -442,9 +499,9 @@ const SubmittoolOnePage: React.FC = () => {
                         impressions.
                       </Text>
                     </div>
-                    <div className="absolute bg-amber-500 border-2 border-solid border-white-A700 flex flex-col items-end justify-start p-[11px] right-[0] rotate-[-45deg] rounded-[15px] top-[0] w-[199px]">
+                    <div className="absolute bg-amber-500 mt-[60px] border-2 border-solid border-white-A700 flex flex-col items-end justify-start p-[11px] right-[0] rotate-[-20deg] rounded-[15px] top-[0] mr-[50px] w-[199px]">
                       <Text
-                        className="mb-[54px] mr-[3px] text-gray-900_05 text-lg"
+                        className="mb-[10px] mt-[7px] mr-[7px] text-gray-900_05 text-lg"
                         size="txtPlusJakartaSansRomanBold18Gray90005"
                       >
                         RECOMMENDED
@@ -463,7 +520,7 @@ const SubmittoolOnePage: React.FC = () => {
           </Text>
         </div>
         <Text
-          className="text-white-A700 text-xs"
+          className="text-white-A700 text-xs w-[80%]"
           size="txtPlusJakartaSansRomanMedium12"
         >
           <>
@@ -524,7 +581,6 @@ const SubmittoolOnePage: React.FC = () => {
           </>
         </Text>
         <SubscribeForm />
-      
       </div>
     </>
   );
