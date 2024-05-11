@@ -50,7 +50,7 @@ export const Header: React.FC<HeaderProps> = () => {
                         className="hover:font-extrabold mb-1 ml-[30px] mt-[7px] text-base text-white-A700"
                         size="txtPlusJakartaSansRomanRegular16"
                       >
-                        Ai Tools Category
+                        AI Tools Category
                         {pathname === "/aiToolsCategory" && (
                           <Line className="bg-amber-500 h-1 rounded-sm w-full" />
                         )}
@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = () => {
                         className="hover:font-extrabold mb-1 ml-[30px] mt-[7px] text-base text-white-A700"
                         size="txtPlusJakartaSansRomanRegular16"
                       >
-                        Ai Tools Mapper
+                        AI Tools Mapper
                         {pathname === "/aiToolMapper" && (
                           <Line className="bg-amber-500 h-1 rounded-sm w-full" />
                         )}
@@ -123,7 +123,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   variant="fill"
                   onClick={() => navigate("/submitTool")}
                 >
-                  Submit Ai tools
+                  Submit AI tools
                 </Button>
               </div>
             </div>

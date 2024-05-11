@@ -27,7 +27,8 @@ export const SubscribeForm = () => {
             className="leading-[60.00px] sm:text-4xl md:text-[42px] text-[46px] text-center text-white-A700 w-[85%] sm:w-full"
             size="txtPlusJakartaSansRomanSemiBold46"
           >
-            Join 2,000+ subscribers and get our 3 min daily newsletter on AI
+            Join 2,000+ subscribers and get our
+            <br />3 min daily newsletter on AI
           </Text>
           <div className="bg-black-900_0c border border-blue_gray-900 border-solid flex flex-row sm:gap-10 items-center justify-between p-4 rounded-[15px] w-full">
             <Input

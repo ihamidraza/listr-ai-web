@@ -1,14 +1,14 @@
 import React from "react";
 
-import { Button, Img, Input, Text } from "components";
-import Header2 from "components/Header2";
+import { Img, Text } from "components";
 
 const TermsConditionsPage: React.FC = () => {
   return (
     <>
-      <div className="bg-gray-900 flex flex-col font-plusjakartasans justify-start mx-auto w-full">
-        <div className="flex flex-col items-center w-full" 
-        style={{ marginTop: 100 }}
+      <div className="bg-gray-900 flex flex-col font-plusjakartasans justify-start mx-auto  pb-[100px] w-full">
+        <div
+          className="flex flex-col items-center w-full"
+          style={{ marginTop: 100 }}
         >
           <div className="h-[813px] md:px-5 relative w-full">
             <div className="h-[813px] m-auto w-full">
@@ -23,15 +23,15 @@ const TermsConditionsPage: React.FC = () => {
                   src="images/img_image.png"
                   alt="image"
                 />
-                <div className="absolute bottom-[4%] flex flex-col inset-x-[0] items-start justify-start mx-auto">
+                <div className="absolute bottom-[4%] flex flex-col inset-x-[0] items-center justify-center mx-auto">
                   <Text
-                    className="md:ml-[0] ml-[309px] md:text-5xl text-[64px] text-center text-white-A700"
+                    className="md:ml-[0] md:text-5xl text-[64px] text-center text-white-A700"
                     size="txtPlusJakartaSansRomanSemiBold64"
                   >
                     Terms & Conditions
                   </Text>
                   <Text
-                    className="leading-[28.00px] ml-1.5 md:ml-[0] mt-[55px] text-lg text-white-A700"
+                    className="leading-[28.00px] ml-1.5 md:ml-[0] mt-[55px] text-lg text-white-A700 w-[80%]"
                     size="txtPlusJakartaSansRomanRegular18"
                   >
                     <>
@@ -74,7 +74,7 @@ const TermsConditionsPage: React.FC = () => {
                     Cookies
                   </Text>
                   <Text
-                    className="leading-[28.00px] ml-1.5 md:ml-[0] mt-[18px] text-lg text-white-A700 w-[98%] sm:w-full"
+                    className="leading-[28.00px] ml-1.5 md:ml-[0] mt-[18px] text-lg text-white-A700 w-[80%] sm:w-full"
                     size="txtPlusJakartaSansRomanRegular18"
                   >
                     <>
@@ -92,15 +92,15 @@ const TermsConditionsPage: React.FC = () => {
             </div>
           </div>
         </div>
-        <Text
-          className="md:ml-[0] ml-[113px] mt-2 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-          size="txtPlusJakartaSansExtraBold36"
-        >
-          License
-        </Text>
-        <div className="flex flex-col items-center mt-[18px] md:px-10 sm:px-5 px-[119px]">
+        <div className="flex flex-col items-center  mt-[18px] md:px-10 sm:px-5 px-[119px]">
           <Text
-            className="leading-[28.00px] text-lg text-white-A700 w-[98%] sm:w-full"
+            className=" mt-2 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+            size="txtPlusJakartaSansExtraBold36"
+          >
+            License
+          </Text>
+          <Text
+            className="leading-[28.00px] mt-[18px] text-lg text-white-A700 w-[90%] sm:w-full"
             size="txtPlusJakartaSansRomanRegular18"
           >
             <>
@@ -119,15 +119,15 @@ const TermsConditionsPage: React.FC = () => {
             </>
           </Text>
         </div>
-        <Text
-          className="md:ml-[0] ml-[113px] mt-11 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-          size="txtPlusJakartaSansExtraBold36"
-        >
-          Hyperlinking to our Content
-        </Text>
         <div className="flex flex-col items-center mt-3.5 md:px-10 sm:px-5 px-[119px]">
           <Text
-            className="leading-[28.00px] text-lg text-white-A700 w-[98%] sm:w-full"
+            className="mt-11 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+            size="txtPlusJakartaSansExtraBold36"
+          >
+            Hyperlinking to our Content
+          </Text>
+          <Text
+            className="leading-[28.00px] mt-[18px] text-lg text-white-A700 w-[90%] sm:w-full"
             size="txtPlusJakartaSansRomanRegular18"
           >
             <>
@@ -146,7 +146,7 @@ const TermsConditionsPage: React.FC = () => {
             </>
           </Text>
           <Text
-            className="leading-[28.00px] text-lg text-white-A700 w-[98%] sm:w-full"
+            className="leading-[28.00px] text-lg text-white-A700 w-[90%] sm:w-full"
             size="txtPlusJakartaSansRomanRegular18"
           >
             <>
@@ -165,15 +165,15 @@ const TermsConditionsPage: React.FC = () => {
             </>
           </Text>
         </div>
-        <Text
-          className="md:ml-[0] ml-[113px] mt-10 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-          size="txtPlusJakartaSansExtraBold36"
-        >
-          iFrames
-        </Text>
-        <div className="flex flex-col items-center mt-[18px] md:px-10 sm:px-5 px-[119px]">
+        <div className="flex flex-col items-center md:px-10 sm:px-5 px-[119px]">
           <Text
-            className="leading-[28.00px] text-lg text-white-A700 w-[98%] sm:w-full"
+            className=" mt-10 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+            size="txtPlusJakartaSansExtraBold36"
+          >
+            iFrames
+          </Text>
+          <Text
+            className="leading-[28.00px] mt-[18px] text-lg text-white-A700 w-[90%] sm:w-full"
             size="txtPlusJakartaSansRomanRegular18"
           >
             <>
@@ -183,15 +183,15 @@ const TermsConditionsPage: React.FC = () => {
             </>
           </Text>
         </div>
-        <Text
-          className="md:ml-[0] ml-[113px] mt-11 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-          size="txtPlusJakartaSansExtraBold36"
-        >
-          Content Liability
-        </Text>
-        <div className="flex flex-col items-center mt-3.5 md:px-10 sm:px-5 px-[119px]">
+        <div className="flex flex-col items-center md:px-10 sm:px-5 px-[119px]">
           <Text
-            className="leading-[28.00px] text-lg text-white-A700 w-[98%] sm:w-full"
+            className=" mt-11 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+            size="txtPlusJakartaSansExtraBold36"
+          >
+            Content Liability
+          </Text>
+          <Text
+            className="leading-[28.00px] mt-[18px] text-lg text-white-A700 w-[90%] sm:w-full"
             size="txtPlusJakartaSansRomanRegular18"
           >
             <>
@@ -210,15 +210,15 @@ const TermsConditionsPage: React.FC = () => {
             </>
           </Text>
         </div>
-        <Text
-          className="md:ml-[0] ml-[113px] mt-11 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-          size="txtPlusJakartaSansExtraBold36"
-        >
-          Reservation of Rights
-        </Text>
-        <div className="flex flex-col items-center mt-3.5 md:px-10 sm:px-5 px-[119px]">
+        <div className="flex flex-col items-center md:px-10 sm:px-5 px-[119px]">
           <Text
-            className="leading-[28.00px] text-lg text-white-A700 w-[98%] sm:w-full"
+            className=" mt-11 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+            size="txtPlusJakartaSansExtraBold36"
+          >
+            Reservation of Rights
+          </Text>
+          <Text
+            className="leading-[28.00px] mt-[18px] text-lg text-white-A700 w-[90%] sm:w-full"
             size="txtPlusJakartaSansRomanRegular18"
           >
             <>
@@ -228,15 +228,15 @@ const TermsConditionsPage: React.FC = () => {
             </>
           </Text>
         </div>
-        <Text
-          className="md:ml-[0] ml-[113px] mt-10 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-          size="txtPlusJakartaSansExtraBold36"
-        >
-          Removal of links from our website
-        </Text>
-        <div className="flex flex-col items-center mt-[18px] md:px-10 sm:px-5 px-[119px]">
+        <div className="flex flex-col items-center md:px-10 sm:px-5 px-[119px]">
           <Text
-            className="leading-[28.00px] text-lg text-white-A700 w-[98%] sm:w-full"
+            className=" mt-10 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+            size="txtPlusJakartaSansExtraBold36"
+          >
+            Removal of links from our website
+          </Text>
+          <Text
+            className="leading-[28.00px] mt-[18px] text-lg text-white-A700 w-[90%] sm:w-full"
             size="txtPlusJakartaSansRomanRegular18"
           >
             <>
@@ -255,15 +255,15 @@ const TermsConditionsPage: React.FC = () => {
             </>
           </Text>
         </div>
-        <Text
-          className="md:ml-[0] ml-[113px] mt-10 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
-          size="txtPlusJakartaSansExtraBold36"
-        >
-          Disclaimer
-        </Text>
-        <div className="flex flex-col md:gap-10 gap-[149px] items-center mt-[18px] pr-[3px] w-full">
+        <div className="flex flex-col items-center pr-[3px] w-full">
           <Text
-            className="leading-[28.00px] text-lg text-white-A700 w-[82%] sm:w-full"
+            className="mt-10 text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
+            size="txtPlusJakartaSansExtraBold36"
+          >
+            Disclaimer
+          </Text>
+          <Text
+            className="leading-[28.00px] mt-[18px] text-lg text-white-A700 w-[77%] sm:w-full"
             size="txtPlusJakartaSansRomanRegular18"
           >
             <>
