@@ -248,6 +248,7 @@ const HomePagePage: React.FC = () => {
                 </div>
               </div>
             </div>
+
             <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
               <div className="flex flex-col items-start justify-start mb-3.5 w-full">
                 <Img
