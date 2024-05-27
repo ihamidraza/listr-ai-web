@@ -6,7 +6,10 @@ const ArticlesPage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="md:h-[1051px] h-[1276px] sm:h-[1451px] md:px-5 relative w-full" style={{ marginTop: 100 }}>
+        <div
+          className="md:h-[1051px] h-[1276px] sm:h-[1451px] md:px-5 relative w-full"
+          style={{ marginTop: 100 }}
+        >
           <div className="absolute md:h-[1051px] h-[813px] inset-x-[0] mx-auto top-[0] w-full">
             <Img
               className="h-[622px] object-cover"
@@ -919,7 +922,6 @@ const ArticlesPage: React.FC = () => {
           </Button>
         </div>
         <SubscribeForm />
-
       </div>
     </>
   );

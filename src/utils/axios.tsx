@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { BASE_URL } from "../../apiConfig";
 
-console.log(import.meta.env.SERVER_URL);
+console.log(import.meta.env.SERVER_URL, BASE_URL);
 // Create an instance of axios
 export const server = axios.create({
   baseURL: BASE_URL,
