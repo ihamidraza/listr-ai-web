@@ -16,3 +16,4 @@ export { Footer } from "./Footer";
 export * from "./SubscribeForm";
 export * from "./FAQs";
 export * from "./Card";
+export * from "./ArticleCard";

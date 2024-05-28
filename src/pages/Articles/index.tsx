@@ -1,12 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button, Img, Line, List, SubscribeForm, Text } from "components";
+import { server } from "utils";
 
 const ArticlesPage: React.FC = () => {
+  const [fetching, toggleFetching] = useState(false);
+
+  const [trendingArticles, setTrendingArticles] = useState<any[]>([]);
+  const [featuredArticles, setFeaturedArticles] = useState<any[]>([]);
+  const [latestArticles, setLatestArticles] = useState<any[]>([]);
+
+  console.log(trendingArticles);
+
+  const getTrendingArticles = async () => {
+    toggleFetching(true);
+    try {
+      const { data } = await server.get("/articles");
+
+      setTrendingArticles(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getFeaturedArticles = async () => {
+    toggleFetching(true);
+    try {
+      const { data } = await server.get("/articles");
+
+      setFeaturedArticles(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getLatestArticles = async () => {
+    toggleFetching(true);
+    try {
+      const { data } = await server.get("/articles");
+
+      setLatestArticles(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getTrendingArticles();
+    getFeaturedArticles();
+    getLatestArticles();
+  }, []);
+
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="md:h-[1051px] h-[1276px] sm:h-[1451px] md:px-5 relative w-full" style={{ marginTop: 100 }}>
+        <div
+          className="md:h-[1051px] h-[1276px] sm:h-[1451px] md:px-5 relative w-full"
+          style={{ marginTop: 100 }}
+        >
           <div className="absolute md:h-[1051px] h-[813px] inset-x-[0] mx-auto top-[0] w-full">
             <Img
               className="h-[622px] object-cover"
@@ -919,7 +970,6 @@ const ArticlesPage: React.FC = () => {
           </Button>
         </div>
         <SubscribeForm />
-
       </div>
     </>
   );
