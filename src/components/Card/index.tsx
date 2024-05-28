@@ -1,5 +1,5 @@
+import { Tag } from "antd";
 import { Button, Img, Text } from "components";
-import { title } from "process";
 
 interface Props {
   title: string;
@@ -7,8 +7,8 @@ interface Props {
   image: string;
   button: string;
   category: string;
-  bookmarks: number;
-  type: string;
+  bookmarkCount: number;
+  tags: any[];
   handleBookmark: () => void;
   onClick: () => void;
 }
@@ -45,7 +45,11 @@ export const Card = (props: Props) => {
         >
           {props.description}
         </Text>
-        <Button
+        {props.tags?.map(({ name }) => (
+          <Tag>{name}</Tag>
+        ))}
+
+        {/* <Button
           className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
           leftIcon={
             <Img
@@ -58,16 +62,16 @@ export const Card = (props: Props) => {
           size="xs"
           variant="outline"
         >
-          <div className="text-left text-xs">{props.type}</div>
-        </Button>
+          <div className="text-left text-xs">{props.tags}</div>
+        </Button> */}
         <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
           <div className="flex h-[70px] justify-end relative w-[49%]">
             <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
             <Button
-              className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
+              className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[100px] px-[20px] py-[15px]"
               leftIcon={
                 <Img
-                  className="h-6 mr-2.5 right-[7%] absolute"
+                  className="h-5 mr-2.5"
                   src="images/img_globe.svg"
                   alt="globe"
                 />
@@ -77,17 +81,17 @@ export const Card = (props: Props) => {
               variant="fill"
               onClick={props.onClick}
             >
-              <div className="capitalize font-semibold sm:px-5 text-left text-lg">
+              <div className="capitalize font-semibold sm:px-5 text-left">
                 Visit
               </div>
             </Button>
           </div>
           <div className="flex flex-col items-center justify-start w-[47%]">
             <Button
-              className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
+              className="cursor-pointer flex items-center justify-center min-w-[100px] px-[22px] py-[15px]"
               leftIcon={
                 <Img
-                  className="h-6 mr-2.5"
+                  className="h-5 mr-2.5"
                   src="images/img_bookmark.svg"
                   alt="bookmark"
                 />
@@ -97,8 +101,8 @@ export const Card = (props: Props) => {
               variant="outline"
               onClick={props.handleBookmark}
             >
-              <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                {props.bookmarks}
+              <div className="capitalize font-semibold sm:px-5 text-left">
+                {props.bookmarkCount || 0}
               </div>
             </Button>
           </div>

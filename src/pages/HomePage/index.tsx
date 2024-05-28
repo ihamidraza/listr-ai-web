@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { message } from "antd";
 
 // import { useGoogleLogin } from "@react-oauth/google";
 
@@ -11,8 +12,94 @@ import {
   Text,
   SubscribeForm,
   FAQs,
+  Card,
 } from "components";
 import { useNavigate } from "react-router-dom";
+
+import { server } from "utils";
+
+const dummy = [
+  {
+    id: 1,
+    createdAt: "2024-05-20T17:28:00.309Z",
+    updatedAt: "2024-05-20T17:28:00.309Z",
+    name: "Understanding AI",
+    description: "A comprehensive guide to artificial intelligence.",
+    body: "This article explores the fundamentals of artificial intelligence, its applications, and future trends.",
+    imgurl: "https://example.com/images/ai-guide.jpg",
+    topic: "Technology",
+    views: 1523,
+    published: true,
+    featured: true,
+    verified: true,
+    subCategoryId: 3,
+    tagId: 7,
+  },
+  {
+    id: 2,
+    createdAt: "2024-05-21T10:15:00.309Z",
+    updatedAt: "2024-05-21T10:15:00.309Z",
+    name: "Healthy Eating Tips",
+    description: "Simple tips for a healthier diet.",
+    body: "Learn how to make healthier food choices and incorporate nutritious foods into your daily meals.",
+    imgurl: "https://example.com/images/healthy-eating.jpg",
+    topic: "Health",
+    views: 894,
+    published: true,
+    featured: false,
+    verified: true,
+    subCategoryId: 5,
+    tagId: 12,
+  },
+  {
+    id: 3,
+    createdAt: "2024-05-19T08:45:00.309Z",
+    updatedAt: "2024-05-19T08:45:00.309Z",
+    name: "Traveling on a Budget",
+    description: "How to see the world without breaking the bank.",
+    body: "Discover the best tips and tricks for budget-friendly travel, including how to find cheap flights and affordable accommodations.",
+    imgurl: "https://example.com/images/budget-travel.jpg",
+    topic: "Travel",
+    views: 2376,
+    published: true,
+    featured: true,
+    verified: true,
+    subCategoryId: 8,
+    tagId: 4,
+  },
+  {
+    id: 4,
+    createdAt: "2024-05-18T14:22:00.309Z",
+    updatedAt: "2024-05-18T14:22:00.309Z",
+    name: "The Future of Renewable Energy",
+    description: "Exploring the potential of renewable energy sources.",
+    body: "An in-depth look at the current state and future prospects of renewable energy, including solar, wind, and hydro power.",
+    imgurl: "https://example.com/images/renewable-energy.jpg",
+    topic: "Environment",
+    views: 3201,
+    published: true,
+    featured: false,
+    verified: true,
+    subCategoryId: 2,
+    tagId: 9,
+  },
+  {
+    id: 5,
+    createdAt: "2024-05-17T11:05:00.309Z",
+    updatedAt: "2024-05-17T11:05:00.309Z",
+    name: "Mastering the Art of Cooking",
+    description: "A beginner's guide to cooking delicious meals.",
+    body: "This guide provides essential cooking tips and recipes for those new to the kitchen.",
+    imgurl: "https://example.com/images/cooking-guide.jpg",
+    topic: "Lifestyle",
+    views: 1450,
+    published: true,
+    featured: true,
+    verified: true,
+    subCategoryId: 4,
+    tagId: 6,
+  },
+];
 
 const HomePagePage: React.FC = () => {
   // const googleSignIn = useGoogleLogin({
@@ -25,10 +112,37 @@ const HomePagePage: React.FC = () => {
   const navigate = useNavigate();
 
   const [search, setSearch] = useState("");
+  const [tools, setTools] = useState([]);
+
+  const fetchFeaturedTools = async () => {
+    try {
+      // const { data } = await server.get("/tools");
+
+      const dummyMap = dummy.map((d) => ({
+        title: d.name,
+        description: d.description,
+        image: d.imgurl,
+        button: "",
+        category: d.subCategoryId,
+        boomarkCount: d.views,
+        tags: ["test", "123"],
+        handleBookmark: () => console.log("bookmark clicked"),
+        onClick: () => console.log("tool clicked"),
+      }));
+
+      setTools(dummyMap);
+    } catch (err) {
+      message.error(err?.message || "Error while fetching featured tools");
+    }
+  };
 
   const handleSearch = () => {
     console.log(search);
   };
+
+  useEffect(() => {
+    fetchFeaturedTools();
+  }, []);
 
   return (
     <>
@@ -156,7 +270,10 @@ const HomePagePage: React.FC = () => {
             Featured AI Tools
           </Text>
           <div className="md:gap-5 gap-[17px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-center max-w-[1213px] min-h-[auto] mt-[25px] mx-auto md:px-5 w-full">
-            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
+            {tools.map((t) => (
+              <Card {...t} />
+            ))}
+            {/* <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
               <div className="flex flex-col items-start justify-start mb-3.5 w-[99%] md:w-full">
                 <Img
                   className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
@@ -892,7 +1009,7 @@ const HomePagePage: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col items-start justify-start max-w-[1213px] mt-10 mx-auto p-[17px] md:px-5 rounded-[15px] w-full">
             <div className="flex md:flex-col flex-row gap-[30px] items-start justify-start mb-[30px] mt-6 w-[95%] md:w-full">
