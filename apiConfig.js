@@ -1,2 +1,2 @@
 // apiConfig.js
-export const BASE_URL = "http://51.20.123.36:3000"; // Replace with your server URL
+export const BASE_URL = "https://fa29-182-177-42-225.ngrok-free.app"; // Replace with your server URL

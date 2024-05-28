@@ -6,7 +6,7 @@ import { Button, Img, Input, Line, SubscribeForm, Text } from "components";
 import { server, setAuth } from "utils";
 import { useAuth } from "features";
 
-const serverURL = "http://51.20.123.36:3000";
+const serverURL = "https://fa29-182-177-42-225.ngrok-free.app";
 
 const LoginPagePage: React.FC = () => {
   const navigate = useNavigate();
@@ -45,10 +45,10 @@ const LoginPagePage: React.FC = () => {
 
   const handleLoginWithGoogle = async () => {
     try {
-      const result = await server.get("/google");
+      // const result = await server.get("/google");
 
-      console.log(result);
-      // window.location.href = `${serverURL}/google`;
+      // console.log(result);
+      window.location.href = `${serverURL}/google`;
     } catch (err) {}
   };
 
