@@ -14,6 +14,7 @@ interface Props {
 }
 
 export const Card = (props: Props) => {
+  console.log(props.tags);
   return (
     <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
       <div className="flex flex-col items-start justify-start mb-[13px] w-full">
@@ -22,8 +23,8 @@ export const Card = (props: Props) => {
           src={props.image}
           alt="rectangleFortyNine"
         />
-        <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-          <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
+        <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[100%] md:w-full">
+          {/* <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div> */}
           <div className="flex flex-col items-start justify-start">
             <Text
               className="text-lg text-white-A700 tracking-[0.90px]"
@@ -45,7 +46,7 @@ export const Card = (props: Props) => {
         >
           {props.description}
         </Text>
-        {props.tags?.map(({ name }) => (
+        {props.tags?.map((name) => (
           <Tag>{name}</Tag>
         ))}
 

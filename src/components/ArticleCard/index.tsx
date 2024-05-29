@@ -10,6 +10,7 @@ interface Props {
   imgurl: string;
   topic: string;
   views: number;
+  tags: any[];
   published: boolean;
   featured: boolean;
   created_at: string;

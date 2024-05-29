@@ -15,7 +15,6 @@ import {
   Card,
 } from "components";
 import { useNavigate } from "react-router-dom";
-
 import { server } from "utils";
 
 const dummy = [
@@ -26,7 +25,7 @@ const dummy = [
     name: "Understanding AI",
     description: "A comprehensive guide to artificial intelligence.",
     body: "This article explores the fundamentals of artificial intelligence, its applications, and future trends.",
-    imgurl: "https://example.com/images/ai-guide.jpg",
+    imgurl: "https://via.placeholder.com/150/0000FF/808080?text=AI+Guide", // Valid placeholder image URL
     topic: "Technology",
     views: 1523,
     published: true,
@@ -34,6 +33,7 @@ const dummy = [
     verified: true,
     subCategoryId: 3,
     tagId: 7,
+    tags: ["hello", "Free"],
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ const dummy = [
     name: "Healthy Eating Tips",
     description: "Simple tips for a healthier diet.",
     body: "Learn how to make healthier food choices and incorporate nutritious foods into your daily meals.",
-    imgurl: "https://example.com/images/healthy-eating.jpg",
+    imgurl: "https://via.placeholder.com/150/00FF00/808080?text=Healthy+Eating", // Valid placeholder image URL
     topic: "Health",
     views: 894,
     published: true,
@@ -58,7 +58,7 @@ const dummy = [
     name: "Traveling on a Budget",
     description: "How to see the world without breaking the bank.",
     body: "Discover the best tips and tricks for budget-friendly travel, including how to find cheap flights and affordable accommodations.",
-    imgurl: "https://example.com/images/budget-travel.jpg",
+    imgurl: "https://via.placeholder.com/150/FF0000/808080?text=Budget+Travel", // Valid placeholder image URL
     topic: "Travel",
     views: 2376,
     published: true,
@@ -74,7 +74,8 @@ const dummy = [
     name: "The Future of Renewable Energy",
     description: "Exploring the potential of renewable energy sources.",
     body: "An in-depth look at the current state and future prospects of renewable energy, including solar, wind, and hydro power.",
-    imgurl: "https://example.com/images/renewable-energy.jpg",
+    imgurl:
+      "https://via.placeholder.com/150/FFFF00/808080?text=Renewable+Energy", // Valid placeholder image URL
     topic: "Environment",
     views: 3201,
     published: true,
@@ -90,7 +91,7 @@ const dummy = [
     name: "Mastering the Art of Cooking",
     description: "A beginner's guide to cooking delicious meals.",
     body: "This guide provides essential cooking tips and recipes for those new to the kitchen.",
-    imgurl: "https://example.com/images/cooking-guide.jpg",
+    imgurl: "https://via.placeholder.com/150/FF00FF/808080?text=Cooking+Guide", // Valid placeholder image URL
     topic: "Lifestyle",
     views: 1450,
     published: true,
@@ -117,6 +118,8 @@ const HomePagePage: React.FC = () => {
   const fetchFeaturedTools = async () => {
     try {
       // const { data } = await server.get("/tools");
+
+      // console.log(data);
 
       const dummyMap = dummy.map((d) => ({
         title: d.name,
