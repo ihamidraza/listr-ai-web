@@ -1,60 +1,82 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { message } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Input, Line, Text } from "components";
-import { server } from "utils";
+import { server, setAuth } from "utils";
+import { useAuth } from "features";
+import { CONTEXT, BASE_URL } from "../../../apiConfig";
 
 const RegisterPageOnePage: React.FC = () => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [password2, setPassword2] = useState('')
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+
+  useEffect(() => {
+    if (isAuthenticated) return navigate("/");
+
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("code");
+
+    if (token) {
+      setAuth(token);
+      setIsAuthenticated(true);
+      message.success("Authenticated successfully");
+      navigate("/");
+    }
+  });
+
+  const handleLoginWithGoogle = async () => {
+    try {
+      const googleLoginUrl = `${BASE_URL}/google?context=${CONTEXT}`;
+      window.location.href = googleLoginUrl;
+    } catch (err) {}
+  };
 
   const onFinish = async () => {
-
-    if (!name) return message.error('Name is required')
-    if (!email) return message.error('Email is required')
-    if (!isValidEmail(email)) return message.error('Email is not valid')
-    if (!password) return message.error('Password is required')
+    if (!name) return message.error("Name is required");
+    if (!email) return message.error("Email is required");
+    if (!isValidEmail(email)) return message.error("Email is not valid");
+    if (!password) return message.error("Password is required");
     if (password !== password2)
-      return message.error('Passwords are mismatched')
+      return message.error("Passwords are mismatched");
 
     try {
       const data = {
         name,
         email,
-        password
-      }
+        password,
+      };
 
-      await server.post('/users', data)
+      await server.post("/users", data);
 
-      message.success('Signed up successfully')
-      navigate('/login')
+      message.success("Signed up successfully");
+      navigate("/login");
+    } catch (err) {
+      message.error(err?.message || "Error while signing up");
     }
-    catch (err) {
-
-      message.error(err?.message || 'Error while signing up')
-
-    }
-  }
+  };
 
   function isValidEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
-
-
 
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="md:h-[813px] h-[825px] md:px-5 relative w-full" style={{ marginTop: 100 }}>
-          <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full" >
+        <div
+          className="md:h-[813px] h-[825px] md:px-5 relative w-full"
+          style={{ marginTop: 100 }}
+        >
+          <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full">
             <Img
               className="h-[622px] object-cover"
               src="images/img_divelementorw.png"
@@ -90,14 +112,14 @@ const RegisterPageOnePage: React.FC = () => {
                     color="white_A700"
                     size="xl"
                     variant="fill"
-                    style={{ backgroundColor: '#fff' }}
-                  // onClick={onFinish}
+                    style={{ backgroundColor: "#fff" }}
+                    onClick={handleLoginWithGoogle}
                   >
                     <Img
                       className="h-6 mr-[15px] my-auto"
                       src="images/img_google57226179_1.svg"
                       alt="Google-57226179 1"
-                      style={{ display: 'inline' }}
+                      style={{ display: "inline" }}
                     />
                     Continue With Google
                   </Button>
@@ -212,9 +234,7 @@ const RegisterPageOnePage: React.FC = () => {
           <span className="text-gray-100 font-plusjakartasans text-left font-normal">
             Need an account?{" "}
           </span>
-          <Button
-            onClick={() => navigate('/login')}>
-
+          <Button onClick={() => navigate("/login")}>
             <span className="text-amber-500 font-plusjakartasans text-left font-bold">
               Login Here!
             </span>

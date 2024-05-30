@@ -41,7 +41,7 @@ export const ArticleCard = (props: Props) => {
         <Img
           className="h-[213px] md:h-auto object-cover rounded-bl-[7px] rounded-br-[7px] w-full"
           src={imgurl}
-          alt="rectangleSixty"
+          alt={title}
         />
         <Text
           className="mt-[30px] text-lg text-white-A700 w-[88%] sm:w-full"
@@ -59,8 +59,8 @@ export const ArticleCard = (props: Props) => {
       <div className="flex flex-col items-center justify-start mb-3 w-full">
         <div className="flex flex-col gap-3.5 items-center justify-start w-full">
           <Line className="bg-blue_gray-800_02 h-px w-full" />
-          <div className="flex flex-row items-center justify-between w-[91%] md:w-full">
-            <div className="flex flex-row items-end justify-evenly w-[31%]">
+          <div className="flex flex-row items-center justify-between w-[100%] md:w-full">
+            <div className="flex flex-row items-end justify-evenly w-[50%]">
               <Img
                 className="h-6 w-6"
                 src="images/img_calendar.svg"
@@ -73,7 +73,7 @@ export const ArticleCard = (props: Props) => {
                 {moment(created_at).format("MMMM D, YYYY")}
               </Text>
             </div>
-            <div className="flex flex-row items-start justify-evenly w-[26%]">
+            <div className="flex flex-row items-start justify-evenly w-[50%]">
               <Text
                 className="mt-1 text-amber-500 text-xs hover:underline"
                 size="txtPlusJakartaSansRomanBold12"

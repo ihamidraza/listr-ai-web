@@ -10,8 +10,6 @@ const ArticlesPage: React.FC = () => {
   const [featuredArticles, setFeaturedArticles] = useState<any[]>([]);
   const [latestArticles, setLatestArticles] = useState<any[]>([]);
 
-  console.log(trendingArticles);
-
   const getTrendingArticles = async () => {
     toggleFetching(true);
     try {

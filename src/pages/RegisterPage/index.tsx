@@ -6,7 +6,10 @@ const RegisterPagePage: React.FC = () => {
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto pb-[486px] w-full">
-        <div className="h-[813px] md:px-5 relative w-full" style={{ marginTop: 100 }}>
+        <div
+          className="h-[813px] md:px-5 relative w-full"
+          style={{ marginTop: 100 }}
+        >
           <div className="absolute h-[813px] inset-[0] justify-center m-auto w-full">
             <Img
               className="h-[622px] object-cover"

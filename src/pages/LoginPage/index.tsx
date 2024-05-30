@@ -6,17 +6,30 @@ import { Button, Img, Input, Line, SubscribeForm, Text } from "components";
 import { server, setAuth } from "utils";
 import { useAuth } from "features";
 
-const serverURL = "http://51.20.123.36:3000";
+import { CONTEXT, BASE_URL } from "../../../apiConfig";
 
 const LoginPagePage: React.FC = () => {
   const navigate = useNavigate();
 
-  const { setIsAuthenticated } = useAuth();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (isAuthenticated) return navigate("/");
+
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("code");
+
+    if (token) {
+      message.success("Authenticated successfully");
+
+      setAuth(token);
+      setIsAuthenticated(true);
+      navigate("/");
+    }
+  }, []);
 
   const onFinish = async () => {
     if (!email) return message.error("Email is required");
@@ -45,12 +58,8 @@ const LoginPagePage: React.FC = () => {
 
   const handleLoginWithGoogle = async () => {
     try {
-      // const result = await server.get("/google");
-
-      // console.log(result);
-      const googleLoginUrl = `${serverURL}/google?origin=${encodeURIComponent('http://localhost:5137')}`;
+      const googleLoginUrl = `${BASE_URL}/google?context=${CONTEXT}`;
       window.location.href = googleLoginUrl;
-      // window.location.href = `${serverURL}/google`;
     } catch (err) {}
   };
 

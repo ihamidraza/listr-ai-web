@@ -13,129 +13,136 @@ import {
   SubscribeForm,
   FAQs,
   Card,
+  ArticleCard,
 } from "components";
 import { useNavigate } from "react-router-dom";
 import { server } from "utils";
+import { useAuth } from "features";
 
-const dummy = [
+const dummyArticles = [
   {
     id: 1,
-    createdAt: "2024-05-20T17:28:00.309Z",
-    updatedAt: "2024-05-20T17:28:00.309Z",
-    name: "Understanding AI",
-    description: "A comprehensive guide to artificial intelligence.",
-    body: "This article explores the fundamentals of artificial intelligence, its applications, and future trends.",
-    imgurl: "https://via.placeholder.com/150/0000FF/808080?text=AI+Guide", // Valid placeholder image URL
-    topic: "Technology",
-    views: 1523,
+    title: "Introduction to React",
+    description: "A comprehensive guide to getting started with React.",
+    body: "React is a JavaScript library for building user interfaces...",
+    imgurl:
+      "https://images.unsplash.com/photo-1584952237757-8b4e80dcd6c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHJlYWN0fGVufDB8fHx8MTYyNTU2NTI0Ng&ixlib=rb-1.2.1&q=80&w=400",
+    topic: "JavaScript",
+    views: 1500,
+    tags: ["react", "javascript", "frontend"],
     published: true,
     featured: true,
-    verified: true,
-    subCategoryId: 3,
-    tagId: 7,
-    tags: ["hello", "Free"],
+    created_at: "2023-05-01T10:00:00Z",
   },
   {
     id: 2,
-    createdAt: "2024-05-21T10:15:00.309Z",
-    updatedAt: "2024-05-21T10:15:00.309Z",
-    name: "Healthy Eating Tips",
-    description: "Simple tips for a healthier diet.",
-    body: "Learn how to make healthier food choices and incorporate nutritious foods into your daily meals.",
-    imgurl: "https://via.placeholder.com/150/00FF00/808080?text=Healthy+Eating", // Valid placeholder image URL
-    topic: "Health",
-    views: 894,
+    title: "Advanced CSS Techniques",
+    description: "Mastering CSS for responsive and modern web designs.",
+    body: "CSS is the language we use to style an HTML document...",
+    imgurl:
+      "https://images.unsplash.com/photo-1585366119951-87c32e9e7d1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGNzc3xlbnwwfHx8fDE2MjU1NjU3MzA&ixlib=rb-1.2.1&q=80&w=400",
+    topic: "CSS",
+    views: 2300,
+    tags: ["css", "web design", "responsive"],
     published: true,
     featured: false,
-    verified: true,
-    subCategoryId: 5,
-    tagId: 12,
+    created_at: "2023-05-10T14:30:00Z",
   },
   {
     id: 3,
-    createdAt: "2024-05-19T08:45:00.309Z",
-    updatedAt: "2024-05-19T08:45:00.309Z",
-    name: "Traveling on a Budget",
-    description: "How to see the world without breaking the bank.",
-    body: "Discover the best tips and tricks for budget-friendly travel, including how to find cheap flights and affordable accommodations.",
-    imgurl: "https://via.placeholder.com/150/FF0000/808080?text=Budget+Travel", // Valid placeholder image URL
-    topic: "Travel",
-    views: 2376,
-    published: true,
-    featured: true,
-    verified: true,
-    subCategoryId: 8,
-    tagId: 4,
+    title: "Understanding TypeScript",
+    description: "An in-depth look at TypeScript and its features.",
+    body: "TypeScript extends JavaScript by adding types...",
+    imgurl:
+      "https://images.unsplash.com/photo-1600585154340-be6161bbf937?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHR5cGVzY3JpcHR8ZW58MHx8fHwxNjI1NTY1ODAw&ixlib=rb-1.2.1&q=80&w=400",
+    topic: "TypeScript",
+    views: 1800,
+    tags: ["typescript", "javascript", "programming"],
+    published: false,
+    featured: false,
+    created_at: "2023-05-15T09:00:00Z",
   },
   {
     id: 4,
-    createdAt: "2024-05-18T14:22:00.309Z",
-    updatedAt: "2024-05-18T14:22:00.309Z",
-    name: "The Future of Renewable Energy",
-    description: "Exploring the potential of renewable energy sources.",
-    body: "An in-depth look at the current state and future prospects of renewable energy, including solar, wind, and hydro power.",
+    title: "Getting Started with Node.js",
+    description: "A beginner's guide to server-side JavaScript with Node.js.",
+    body: "Node.js is a runtime environment that allows you to run JavaScript on the server...",
     imgurl:
-      "https://via.placeholder.com/150/FFFF00/808080?text=Renewable+Energy", // Valid placeholder image URL
-    topic: "Environment",
-    views: 3201,
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDd8fG5vZGVqcyUyMHZlcnRleHxlbnwwfHx8fDE2MjU1NjU4NTE&ixlib=rb-1.2.1&q=80&w=400",
+    topic: "Node.js",
+    views: 2100,
+    tags: ["nodejs", "javascript", "backend"],
     published: true,
-    featured: false,
-    verified: true,
-    subCategoryId: 2,
-    tagId: 9,
+    featured: true,
+    created_at: "2023-06-01T12:00:00Z",
   },
   {
     id: 5,
-    createdAt: "2024-05-17T11:05:00.309Z",
-    updatedAt: "2024-05-17T11:05:00.309Z",
-    name: "Mastering the Art of Cooking",
-    description: "A beginner's guide to cooking delicious meals.",
-    body: "This guide provides essential cooking tips and recipes for those new to the kitchen.",
-    imgurl: "https://via.placeholder.com/150/FF00FF/808080?text=Cooking+Guide", // Valid placeholder image URL
-    topic: "Lifestyle",
-    views: 1450,
+    title: "Building REST APIs with Express",
+    description: "Learn how to create RESTful APIs using Express.js.",
+    body: "Express is a minimal and flexible Node.js web application framework...",
+    imgurl:
+      "https://images.unsplash.com/photo-1568301015834-35f4b0b7ceae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDd8fGV4cHJlc3MlMjBqc3xlbnwwfHx8fDE2MjU1NjU5MDA&ixlib=rb-1.2.1&q=80&w=400",
+    topic: "Express.js",
+    views: 1900,
+    tags: ["express", "nodejs", "api"],
     published: true,
+    featured: false,
+    created_at: "2023-06-10T16:00:00Z",
+  },
+  {
+    id: 6,
+    title: "Database Management with MongoDB",
+    description: "A guide to using MongoDB for managing databases.",
+    body: "MongoDB is a document-oriented NoSQL database used for high volume data storage...",
+    imgurl:
+      "https://images.unsplash.com/photo-1517346699856-dae1a54cd3f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDEwfHxtb25nb2RifGVufDB8fHx8MTYyNTU2NTk0NA&ixlib=rb-1.2.1&q=80&w=400",
+    topic: "Database",
+    views: 1700,
+    tags: ["mongodb", "database", "nosql"],
+    published: false,
     featured: true,
-    verified: true,
-    subCategoryId: 4,
-    tagId: 6,
+    created_at: "2023-06-15T11:30:00Z",
   },
 ];
 
 const HomePagePage: React.FC = () => {
-  // const googleSignIn = useGoogleLogin({
-  //   onSuccess: (res) => {
-  //     console.log("res", res);
-  //     alert("Login successfull. 😍");
-  //   },
-  // });
-
   const navigate = useNavigate();
 
+  const { isAuthenticated } = useAuth();
+
   const [search, setSearch] = useState("");
-  const [tools, setTools] = useState([]);
+  const [featuredTools, setFeaturedTools] = useState([]);
+  const [newTools, setNewTools] = useState([]);
+  const [latestArticles, setLatestArticles] = useState(dummyArticles);
 
   const fetchFeaturedTools = async () => {
     try {
-      // const { data } = await server.get("/tools");
+      const { data } = await server.get("/tools?featured=true");
 
-      // console.log(data);
-
-      const dummyMap = dummy.map((d) => ({
-        title: d.name,
-        description: d.description,
-        image: d.imgurl,
-        button: "",
-        category: d.subCategoryId,
-        boomarkCount: d.views,
-        tags: ["test", "123"],
-        handleBookmark: () => console.log("bookmark clicked"),
-        onClick: () => console.log("tool clicked"),
-      }));
-
-      setTools(dummyMap);
+      setFeaturedTools(data);
     } catch (err) {
       message.error(err?.message || "Error while fetching featured tools");
+    }
+  };
+
+  const fetchNewTools = async () => {
+    try {
+      const { data } = await server.get("/tools?orderBy=createdAt");
+
+      setNewTools(data);
+    } catch (err) {
+      message.error(err?.message || "Error while fetching new tools");
+    }
+  };
+
+  const fetchLatestArticles = async () => {
+    try {
+      const { data } = await server.get("/articles?orderBy=createdAt");
+
+      setLatestArticles(data);
+    } catch (err) {
+      message.error(err?.message || "Error while fetching latest articles");
     }
   };
 
@@ -145,6 +152,8 @@ const HomePagePage: React.FC = () => {
 
   useEffect(() => {
     fetchFeaturedTools();
+    fetchNewTools();
+    fetchLatestArticles();
   }, []);
 
   return (
@@ -273,802 +282,50 @@ const HomePagePage: React.FC = () => {
             Featured AI Tools
           </Text>
           <div className="md:gap-5 gap-[17px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-center max-w-[1213px] min-h-[auto] mt-[25px] mx-auto md:px-5 w-full">
-            {tools.map((t) => (
+            {featuredTools.map((t) => (
               <Card {...t} />
             ))}
-            {/* <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
-              <div className="flex flex-col items-start justify-start mb-3.5 w-[99%] md:w-full">
-                <Img
-                  className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                  src="images/img_rectangle16.png"
-                  alt="rectangleSixteen"
-                />
-                <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                  <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                  <div className="flex flex-col items-start justify-start">
-                    <Text
-                      className="text-lg text-white-A700 tracking-[0.90px]"
-                      size="txtPlusJakartaSansRomanSemiBold18"
-                    >
-                      Website Name
-                    </Text>
-                    <Text
-                      className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                      size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                    >
-                      Category of website
-                    </Text>
-                  </div>
-                </div>
-                <Text
-                  className="leading-[22.00px] ml-1.5 md:ml-[0] mt-[31px] text-white-A700 text-xs w-[98%] sm:w-full"
-                  size="txtPlusJakartaSansRomanRegular12"
-                >
-                  <>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the
-                    industry&#39;s standard dummy text ever since the 1500s,
-                  </>
-                </Text>
-                <Button
-                  className="cursor-pointer flex items-center justify-center min-w-[65px] ml-1.5 md:ml-[0] mt-[26px] rounded-[5px]"
-                  leftIcon={
-                    <Img
-                      className="h-[17px] mr-[7px]"
-                      src="images/img_checkmark.svg"
-                      alt="checkmark"
-                    />
-                  }
-                  color="white_A700"
-                  size="xs"
-                  variant="outline"
-                >
-                  <div className="text-left text-xs">Free</div>
-                </Button>
-                <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                  <div className="flex h-[70px] justify-end relative w-[49%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                    <Button
-                      className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5 right-[7%] absolute"
-                          src="images/img_globe.svg"
-                          alt="globe"
-                        />
-                      }
-                      shape="round"
-                      color="amber_500_19"
-                      variant="fill"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        Visit
-                      </div>
-                    </Button>
-                  </div>
-                  <div className="flex flex-col items-center justify-start w-[47%]">
-                    <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5"
-                          src="images/img_bookmark.svg"
-                          alt="bookmark"
-                        />
-                      }
-                      shape="round"
-                      color="white_A700"
-                      variant="outline"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        287
-                      </div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
-              <div className="flex flex-col items-start justify-start mb-3.5 w-full">
-                <Img
-                  className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                  src="images/img_rectangle47.png"
-                  alt="rectangleFortySeven"
-                />
-                <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                  <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                  <div className="flex flex-col items-start justify-start">
-                    <Text
-                      className="text-lg text-white-A700 tracking-[0.90px]"
-                      size="txtPlusJakartaSansRomanSemiBold18"
-                    >
-                      Website Name
-                    </Text>
-                    <Text
-                      className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                      size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                    >
-                      Category of website
-                    </Text>
-                  </div>
-                </div>
-                <Text
-                  className="leading-[22.00px] ml-1.5 md:ml-[0] mt-[17px] text-white-A700 text-xs w-[98%] sm:w-full"
-                  size="txtPlusJakartaSansRomanRegular12"
-                >
-                  <>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the
-                    industry&#39;s standard dummy text ever since the 1500s,
-                  </>
-                </Text>
-                <Button
-                  className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-6 rounded-[5px]"
-                  leftIcon={
-                    <Img
-                      className="h-[17px] mr-[7px]"
-                      src="images/img_checkmark.svg"
-                      alt="checkmark"
-                    />
-                  }
-                  color="white_A700"
-                  size="xs"
-                  variant="outline"
-                >
-                  <div className="text-left text-xs">Free</div>
-                </Button>
-                <div className="flex flex-row gap-[13px] items-center justify-between mt-3.5 w-full">
-                  <div className="flex h-[70px] justify-end relative w-[49%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                    <Button
-                      className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5 right-[7%] absolute"
-                          src="images/img_globe.svg"
-                          alt="globe"
-                        />
-                      }
-                      shape="round"
-                      color="amber_500_19"
-                      variant="fill"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        Visit
-                      </div>
-                    </Button>
-                  </div>
-                  <div className="flex flex-col items-center justify-start w-[47%]">
-                    <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5"
-                          src="images/img_bookmark.svg"
-                          alt="bookmark"
-                        />
-                      }
-                      shape="round"
-                      color="white_A700"
-                      variant="outline"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        287
-                      </div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
-              <div className="flex flex-col items-start justify-start mb-[13px] w-full">
-                <Img
-                  className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                  src="images/img_rectangle49.png"
-                  alt="rectangleFortyNine"
-                />
-                <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                  <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                  <div className="flex flex-col items-start justify-start">
-                    <Text
-                      className="text-lg text-white-A700 tracking-[0.90px]"
-                      size="txtPlusJakartaSansRomanSemiBold18"
-                    >
-                      Website Name
-                    </Text>
-                    <Text
-                      className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                      size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                    >
-                      Category of website
-                    </Text>
-                  </div>
-                </div>
-                <Text
-                  className="leading-[22.00px] ml-1.5 md:ml-[0] mt-4 text-white-A700 text-xs w-[98%] sm:w-full"
-                  size="txtPlusJakartaSansRomanRegular12"
-                >
-                  <>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the
-                    industry&#39;s standard dummy text ever since the 1500s,
-                  </>
-                </Text>
-                <Button
-                  className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
-                  leftIcon={
-                    <Img
-                      className="h-[17px] mr-[7px]"
-                      src="images/img_checkmark.svg"
-                      alt="checkmark"
-                    />
-                  }
-                  color="white_A700"
-                  size="xs"
-                  variant="outline"
-                >
-                  <div className="text-left text-xs">Free</div>
-                </Button>
-                <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                  <div className="flex h-[70px] justify-end relative w-[49%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                    <Button
-                      className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5 right-[7%] absolute"
-                          src="images/img_globe.svg"
-                          alt="globe"
-                        />
-                      }
-                      shape="round"
-                      color="amber_500_19"
-                      variant="fill"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        Visit
-                      </div>
-                    </Button>
-                  </div>
-                  <div className="flex flex-col items-center justify-start w-[47%]">
-                    <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5"
-                          src="images/img_bookmark.svg"
-                          alt="bookmark"
-                        />
-                      }
-                      shape="round"
-                      color="white_A700"
-                      variant="outline"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        287
-                      </div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
-              <div className="flex flex-col items-start justify-start mb-[13px] w-full">
-                <Img
-                  className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                  src="images/img_rectangle64.png"
-                  alt="rectangleSixtyFour"
-                />
-                <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                  <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                  <div className="flex flex-col items-start justify-start">
-                    <Text
-                      className="text-lg text-white-A700 tracking-[0.90px]"
-                      size="txtPlusJakartaSansRomanSemiBold18"
-                    >
-                      Website Name
-                    </Text>
-                    <Text
-                      className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                      size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                    >
-                      Category of website
-                    </Text>
-                  </div>
-                </div>
-                <Text
-                  className="leading-[22.00px] ml-1.5 md:ml-[0] mt-4 text-white-A700 text-xs w-[98%] sm:w-full"
-                  size="txtPlusJakartaSansRomanRegular12"
-                >
-                  <>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the
-                    industry&#39;s standard dummy text ever since the 1500s,
-                  </>
-                </Text>
-                <Button
-                  className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
-                  leftIcon={
-                    <Img
-                      className="h-[17px] mr-[7px]"
-                      src="images/img_checkmark.svg"
-                      alt="checkmark"
-                    />
-                  }
-                  color="white_A700"
-                  size="xs"
-                  variant="outline"
-                >
-                  <div className="text-left text-xs">Free</div>
-                </Button>
-                <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                  <div className="flex h-[70px] justify-end relative w-[49%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                    <Button
-                      className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5 right-[7%] absolute"
-                          src="images/img_globe.svg"
-                          alt="globe"
-                        />
-                      }
-                      shape="round"
-                      color="amber_500_19"
-                      variant="fill"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        Visit
-                      </div>
-                    </Button>
-                  </div>
-                  <div className="flex flex-col items-center justify-start w-[47%]">
-                    <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5"
-                          src="images/img_bookmark.svg"
-                          alt="bookmark"
-                        />
-                      }
-                      shape="round"
-                      color="white_A700"
-                      variant="outline"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        287
-                      </div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
-              <div className="flex flex-col items-start justify-start mb-3.5 w-[99%] md:w-full">
-                <Img
-                  className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                  src="images/img_rectangle69.png"
-                  alt="rectangleSixtyNine"
-                />
-                <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                  <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                  <div className="flex flex-col items-start justify-start">
-                    <Text
-                      className="text-lg text-white-A700 tracking-[0.90px]"
-                      size="txtPlusJakartaSansRomanSemiBold18"
-                    >
-                      Website Name
-                    </Text>
-                    <Text
-                      className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                      size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                    >
-                      Category of website
-                    </Text>
-                  </div>
-                </div>
-                <Text
-                  className="leading-[22.00px] ml-1.5 md:ml-[0] mt-[31px] text-white-A700 text-xs w-[98%] sm:w-full"
-                  size="txtPlusJakartaSansRomanRegular12"
-                >
-                  <>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the
-                    industry&#39;s standard dummy text ever since the 1500s,
-                  </>
-                </Text>
-                <Button
-                  className="cursor-pointer flex items-center justify-center min-w-[65px] ml-1.5 md:ml-[0] mt-[26px] rounded-[5px]"
-                  leftIcon={
-                    <Img
-                      className="h-[17px] mr-[7px]"
-                      src="images/img_checkmark.svg"
-                      alt="checkmark"
-                    />
-                  }
-                  color="white_A700"
-                  size="xs"
-                  variant="outline"
-                >
-                  <div className="text-left text-xs">Free</div>
-                </Button>
-                <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                  <div className="flex h-[70px] justify-end relative w-[49%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                    <Button
-                      className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5 right-[7%] absolute"
-                          src="images/img_globe.svg"
-                          alt="globe"
-                        />
-                      }
-                      shape="round"
-                      color="amber_500_19"
-                      variant="fill"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        Visit
-                      </div>
-                    </Button>
-                  </div>
-                  <div className="flex flex-col items-center justify-start w-[47%]">
-                    <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5"
-                          src="images/img_bookmark.svg"
-                          alt="bookmark"
-                        />
-                      }
-                      shape="round"
-                      color="white_A700"
-                      variant="outline"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        287
-                      </div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
-              <div className="flex flex-col items-start justify-start mb-3.5 w-full">
-                <Img
-                  className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                  src="images/img_rectangle70.png"
-                  alt="rectangleSeventy"
-                />
-                <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                  <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                  <div className="flex flex-col items-start justify-start">
-                    <Text
-                      className="text-lg text-white-A700 tracking-[0.90px]"
-                      size="txtPlusJakartaSansRomanSemiBold18"
-                    >
-                      Website Name
-                    </Text>
-                    <Text
-                      className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                      size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                    >
-                      Category of website
-                    </Text>
-                  </div>
-                </div>
-                <Text
-                  className="leading-[22.00px] ml-1.5 md:ml-[0] mt-[17px] text-white-A700 text-xs w-[98%] sm:w-full"
-                  size="txtPlusJakartaSansRomanRegular12"
-                >
-                  <>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the
-                    industry&#39;s standard dummy text ever since the 1500s,
-                  </>
-                </Text>
-                <Button
-                  className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-6 rounded-[5px]"
-                  leftIcon={
-                    <Img
-                      className="h-[17px] mr-[7px]"
-                      src="images/img_checkmark.svg"
-                      alt="checkmark"
-                    />
-                  }
-                  color="white_A700"
-                  size="xs"
-                  variant="outline"
-                >
-                  <div className="text-left text-xs">Free</div>
-                </Button>
-                <div className="flex flex-row gap-[13px] items-center justify-between mt-3.5 w-full">
-                  <div className="flex h-[70px] justify-end relative w-[49%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                    <Button
-                      className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5 right-[7%] absolute"
-                          src="images/img_globe.svg"
-                          alt="globe"
-                        />
-                      }
-                      shape="round"
-                      color="amber_500_19"
-                      variant="fill"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        Visit
-                      </div>
-                    </Button>
-                  </div>
-                  <div className="flex flex-col items-center justify-start w-[47%]">
-                    <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5"
-                          src="images/img_bookmark.svg"
-                          alt="bookmark"
-                        />
-                      }
-                      shape="round"
-                      color="white_A700"
-                      variant="outline"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        287
-                      </div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
-              <div className="flex flex-col items-start justify-start mb-[13px] w-full">
-                <Img
-                  className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                  src="images/img_rectangle71.png"
-                  alt="rectangleSeventyOne"
-                />
-                <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                  <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                  <div className="flex flex-col items-start justify-start">
-                    <Text
-                      className="text-lg text-white-A700 tracking-[0.90px]"
-                      size="txtPlusJakartaSansRomanSemiBold18"
-                    >
-                      Website Name
-                    </Text>
-                    <Text
-                      className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                      size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                    >
-                      Category of website
-                    </Text>
-                  </div>
-                </div>
-                <Text
-                  className="leading-[22.00px] ml-1.5 md:ml-[0] mt-4 text-white-A700 text-xs w-[98%] sm:w-full"
-                  size="txtPlusJakartaSansRomanRegular12"
-                >
-                  <>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the
-                    industry&#39;s standard dummy text ever since the 1500s,
-                  </>
-                </Text>
-                <Button
-                  className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
-                  leftIcon={
-                    <Img
-                      className="h-[17px] mr-[7px]"
-                      src="images/img_checkmark.svg"
-                      alt="checkmark"
-                    />
-                  }
-                  color="white_A700"
-                  size="xs"
-                  variant="outline"
-                >
-                  <div className="text-left text-xs">Free</div>
-                </Button>
-                <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                  <div className="flex h-[70px] justify-end relative w-[49%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                    <Button
-                      className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5 right-[7%] absolute"
-                          src="images/img_globe.svg"
-                          alt="globe"
-                        />
-                      }
-                      shape="round"
-                      color="amber_500_19"
-                      variant="fill"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        Visit
-                      </div>
-                    </Button>
-                  </div>
-                  <div className="flex flex-col items-center justify-start w-[47%]">
-                    <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5"
-                          src="images/img_bookmark.svg"
-                          alt="bookmark"
-                        />
-                      }
-                      shape="round"
-                      color="white_A700"
-                      variant="outline"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        287
-                      </div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
-              <div className="flex flex-col items-start justify-start mb-[13px] w-full">
-                <Img
-                  className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                  src="images/img_rectangle72.png"
-                  alt="rectangleSeventyTwo"
-                />
-                <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                  <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                  <div className="flex flex-col items-start justify-start">
-                    <Text
-                      className="text-lg text-white-A700 tracking-[0.90px]"
-                      size="txtPlusJakartaSansRomanSemiBold18"
-                    >
-                      Website Name
-                    </Text>
-                    <Text
-                      className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                      size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                    >
-                      Category of website
-                    </Text>
-                  </div>
-                </div>
-                <Text
-                  className="leading-[22.00px] ml-1.5 md:ml-[0] mt-4 text-white-A700 text-xs w-[98%] sm:w-full"
-                  size="txtPlusJakartaSansRomanRegular12"
-                >
-                  <>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the
-                    industry&#39;s standard dummy text ever since the 1500s,
-                  </>
-                </Text>
-                <Button
-                  className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
-                  leftIcon={
-                    <Img
-                      className="h-[17px] mr-[7px]"
-                      src="images/img_checkmark.svg"
-                      alt="checkmark"
-                    />
-                  }
-                  color="white_A700"
-                  size="xs"
-                  variant="outline"
-                >
-                  <div className="text-left text-xs">Free</div>
-                </Button>
-                <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                  <div className="flex h-[70px] justify-end relative w-[49%]">
-                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                    <Button
-                      className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5 right-[7%] absolute"
-                          src="images/img_globe.svg"
-                          alt="globe"
-                        />
-                      }
-                      shape="round"
-                      color="amber_500_19"
-                      variant="fill"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        Visit
-                      </div>
-                    </Button>
-                  </div>
-                  <div className="flex flex-col items-center justify-start w-[47%]">
-                    <Button
-                      className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                      leftIcon={
-                        <Img
-                          className="h-6 mr-2.5"
-                          src="images/img_bookmark.svg"
-                          alt="bookmark"
-                        />
-                      }
-                      shape="round"
-                      color="white_A700"
-                      variant="outline"
-                    >
-                      <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                        287
-                      </div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
-          <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col items-start justify-start max-w-[1213px] mt-10 mx-auto p-[17px] md:px-5 rounded-[15px] w-full">
-            <div className="flex md:flex-col flex-row gap-[30px] items-start justify-start mb-[30px] mt-6 w-[95%] md:w-full">
-              <div className="md:h-[154px] h-[163px] relative w-[14%] md:w-full">
-                <div className="absolute h-[154px] inset-x-[0] mx-auto top-[0] w-[154px]">
-                  {/* <Img
-                    className="h-[66px] ml-auto mr-[17px] mt-[15px] object-cover w-[66px]"
-                    src="images/img_userprofilein.png"
-                    alt="userprofilein"
-                  /> */}
-                  {/* <Img
-                    className="absolute h-[154px] inset-[0] justify-center m-auto object-cover w-[154px]"
-                    src="images/img_accepthandgesture.png"
-                    alt="accepthandgestu"
-                  /> */}
+          {!isAuthenticated && (
+            <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col items-start justify-start max-w-[1213px] mt-10 mx-auto p-[17px] md:px-5 rounded-[15px] w-full">
+              <div className="flex md:flex-col flex-row gap-[30px] items-start justify-start mb-[30px] mt-6 w-[95%] md:w-full">
+                <div className="md:h-[154px] h-[163px] relative w-[14%] md:w-full">
+                  <div className="absolute h-[154px] inset-x-[0] mx-auto top-[0] w-[154px]"></div>
                 </div>
-                {/* <Text
-                  className="absolute bottom-[0] right-[20%] md:text-2xl sm:text-[22px] text-[26px] text-white-A700"
-                  size="txtPlusJakartaSansRomanBold26"
-                >
-                  Login
-                </Text> */}
-              </div>
-              <div className="flex flex-col items-start justify-start md:mt-0 mt-4 w-[84%] md:w-full">
-                <Text
-                  className="md:text-2xl sm:text-[22px] text-[26px] text-amber-500 tracking-[1.30px]"
-                  size="txtPlusJakartaSansRomanSemiBold26"
-                >
-                  Create an account, bookmark tools and stay up to date!
-                </Text>
-                <Text
-                  className="leading-[22.00px] mt-[15px] text-sm text-white-A700 w-full"
-                  size="txtPlusJakartaSansRomanRegular14"
-                >
-                  Explore AI tools with Listr.ai - Your ultimate platform for
-                  discovering and managing AI tools. Create an account to
-                  personalize your experience, store your favorite tools, and
-                  receive the latest AI updates. Harness the power of artificial
-                  intelligence with ease and efficiency
-                </Text>
-                <div className="flex md:h-[103px] h-[58px] justify-end md:ml-[0] ml-[264px] mt-[45px] relative w-[31%]">
-                  <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[7px] ml-auto mr-[116px] mt-auto rounded-[50%] w-8"></div>
-                  <Button
-                    className="common-pointer absolute border border-amber-500 border-solid capitalize cursor-pointer font-semibold h-full inset-[0] m-auto min-w-[283px] text-center text-lg"
-                    // onClick={() => googleSignIn()}
-                    shape="round"
-                    color="amber_500_19"
-                    size="xl"
-                    variant="fill"
+                <div className="flex flex-col items-start justify-start md:mt-0 mt-4 w-[84%] md:w-full">
+                  <Text
+                    className="md:text-2xl sm:text-[22px] text-[26px] text-amber-500 tracking-[1.30px]"
+                    size="txtPlusJakartaSansRomanSemiBold26"
                   >
-                    Continue With Google
-                  </Button>
+                    Create an account, bookmark tools and stay up to date!
+                  </Text>
+                  <Text
+                    className="leading-[22.00px] mt-[15px] text-sm text-white-A700 w-full"
+                    size="txtPlusJakartaSansRomanRegular14"
+                  >
+                    Explore AI tools with Listr.ai - Your ultimate platform for
+                    discovering and managing AI tools. Create an account to
+                    personalize your experience, store your favorite tools, and
+                    receive the latest AI updates. Harness the power of
+                    artificial intelligence with ease and efficiency
+                  </Text>
+                  <div className="flex md:h-[103px] h-[58px] justify-end md:ml-[0] ml-[264px] mt-[45px] relative w-[31%]">
+                    <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[7px] ml-auto mr-[116px] mt-auto rounded-[50%] w-8"></div>
+                    <Button
+                      className="common-pointer absolute border border-amber-500 border-solid capitalize cursor-pointer font-semibold h-full inset-[0] m-auto min-w-[283px] text-center text-lg"
+                      // onClick={() => googleSignIn()}
+                      shape="round"
+                      color="amber_500_19"
+                      size="xl"
+                      variant="fill"
+                    >
+                      Continue With Google
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
           <Text
             className="mt-[71px] text-4xl sm:text-[32px] md:text-[34px] text-white-A700 tracking-[1.80px]"
             size="txtPlusJakartaSansExtraBold36"
@@ -1224,750 +481,9 @@ const HomePagePage: React.FC = () => {
               </Text>
               <div className="flex flex-col items-center justify-start w-full">
                 <div className="md:gap-5 gap-[17px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-center min-h-[auto] w-full">
-                  <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
-                    <div className="flex flex-col items-start justify-start mb-3.5 w-[99%] md:w-full">
-                      <Img
-                        className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                        src="images/img_rectangle81.png"
-                        alt="rectangleEightyOne"
-                      />
-                      <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                        <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                        <div className="flex flex-col items-start justify-start">
-                          <Text
-                            className="text-lg text-white-A700 tracking-[0.90px]"
-                            size="txtPlusJakartaSansRomanSemiBold18"
-                          >
-                            Website Name
-                          </Text>
-                          <Text
-                            className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                            size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                          >
-                            Category of website
-                          </Text>
-                        </div>
-                      </div>
-                      <Text
-                        className="leading-[22.00px] ml-1.5 md:ml-[0] mt-[31px] text-white-A700 text-xs w-[98%] sm:w-full"
-                        size="txtPlusJakartaSansRomanRegular12"
-                      >
-                        <>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry&#39;s standard dummy text ever since the
-                          1500s,
-                        </>
-                      </Text>
-                      <Button
-                        className="cursor-pointer flex items-center justify-center min-w-[65px] ml-1.5 md:ml-[0] mt-[26px] rounded-[5px]"
-                        leftIcon={
-                          <Img
-                            className="h-[17px] mr-[7px]"
-                            src="images/img_checkmark.svg"
-                            alt="checkmark"
-                          />
-                        }
-                        color="white_A700"
-                        size="xs"
-                        variant="outline"
-                      >
-                        <div className="text-left text-xs">Free</div>
-                      </Button>
-                      <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                        <div className="flex h-[70px] justify-end relative w-[49%]">
-                          <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                          <Button
-                            className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5 right-[7%] absolute"
-                                src="images/img_globe.svg"
-                                alt="globe"
-                              />
-                            }
-                            shape="round"
-                            color="amber_500_19"
-                            variant="fill"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              Visit
-                            </div>
-                          </Button>
-                        </div>
-                        <div className="flex flex-col items-center justify-start w-[47%]">
-                          <Button
-                            className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5"
-                                src="images/img_bookmark.svg"
-                                alt="bookmark"
-                              />
-                            }
-                            shape="round"
-                            color="white_A700"
-                            variant="outline"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              287
-                            </div>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
-                    <div className="flex flex-col items-start justify-start mb-3.5 w-full">
-                      <Img
-                        className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                        src="images/img_rectangle83.png"
-                        alt="rectangleEightyThree"
-                      />
-                      <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                        <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                        <div className="flex flex-col items-start justify-start">
-                          <Text
-                            className="text-lg text-white-A700 tracking-[0.90px]"
-                            size="txtPlusJakartaSansRomanSemiBold18"
-                          >
-                            Website Name
-                          </Text>
-                          <Text
-                            className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                            size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                          >
-                            Category of website
-                          </Text>
-                        </div>
-                      </div>
-                      <Text
-                        className="leading-[22.00px] ml-1.5 md:ml-[0] mt-[17px] text-white-A700 text-xs w-[98%] sm:w-full"
-                        size="txtPlusJakartaSansRomanRegular12"
-                      >
-                        <>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry&#39;s standard dummy text ever since the
-                          1500s,
-                        </>
-                      </Text>
-                      <Button
-                        className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-6 rounded-[5px]"
-                        leftIcon={
-                          <Img
-                            className="h-[17px] mr-[7px]"
-                            src="images/img_checkmark.svg"
-                            alt="checkmark"
-                          />
-                        }
-                        color="white_A700"
-                        size="xs"
-                        variant="outline"
-                      >
-                        <div className="text-left text-xs">Free</div>
-                      </Button>
-                      <div className="flex flex-row gap-[13px] items-center justify-between mt-3.5 w-full">
-                        <div className="flex h-[70px] justify-end relative w-[49%]">
-                          <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                          <Button
-                            className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5 right-[7%] absolute"
-                                src="images/img_globe.svg"
-                                alt="globe"
-                              />
-                            }
-                            shape="round"
-                            color="amber_500_19"
-                            variant="fill"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              Visit
-                            </div>
-                          </Button>
-                        </div>
-                        <div className="flex flex-col items-center justify-start w-[47%]">
-                          <Button
-                            className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5"
-                                src="images/img_bookmark.svg"
-                                alt="bookmark"
-                              />
-                            }
-                            shape="round"
-                            color="white_A700"
-                            variant="outline"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              287
-                            </div>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
-                    <div className="flex flex-col items-start justify-start mb-[13px] w-full">
-                      <Img
-                        className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                        src="images/img_rectangle85.png"
-                        alt="rectangleEightyFive"
-                      />
-                      <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                        <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                        <div className="flex flex-col items-start justify-start">
-                          <Text
-                            className="text-lg text-white-A700 tracking-[0.90px]"
-                            size="txtPlusJakartaSansRomanSemiBold18"
-                          >
-                            Website Name
-                          </Text>
-                          <Text
-                            className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                            size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                          >
-                            Category of website
-                          </Text>
-                        </div>
-                      </div>
-                      <Text
-                        className="leading-[22.00px] ml-1.5 md:ml-[0] mt-4 text-white-A700 text-xs w-[98%] sm:w-full"
-                        size="txtPlusJakartaSansRomanRegular12"
-                      >
-                        <>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry&#39;s standard dummy text ever since the
-                          1500s,
-                        </>
-                      </Text>
-                      <Button
-                        className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
-                        leftIcon={
-                          <Img
-                            className="h-[17px] mr-[7px]"
-                            src="images/img_checkmark.svg"
-                            alt="checkmark"
-                          />
-                        }
-                        color="white_A700"
-                        size="xs"
-                        variant="outline"
-                      >
-                        <div className="text-left text-xs">Free</div>
-                      </Button>
-                      <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                        <div className="flex h-[70px] justify-end relative w-[49%]">
-                          <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                          <Button
-                            className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5 right-[7%] absolute"
-                                src="images/img_globe.svg"
-                                alt="globe"
-                              />
-                            }
-                            shape="round"
-                            color="amber_500_19"
-                            variant="fill"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              Visit
-                            </div>
-                          </Button>
-                        </div>
-                        <div className="flex flex-col items-center justify-start w-[47%]">
-                          <Button
-                            className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5"
-                                src="images/img_bookmark.svg"
-                                alt="bookmark"
-                              />
-                            }
-                            shape="round"
-                            color="white_A700"
-                            variant="outline"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              287
-                            </div>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
-                    <div className="flex flex-col items-start justify-start mb-[13px] w-full">
-                      <Img
-                        className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                        src="images/img_rectangle87.png"
-                        alt="rectangleEightySeven"
-                      />
-                      <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                        <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                        <div className="flex flex-col items-start justify-start">
-                          <Text
-                            className="text-lg text-white-A700 tracking-[0.90px]"
-                            size="txtPlusJakartaSansRomanSemiBold18"
-                          >
-                            Website Name
-                          </Text>
-                          <Text
-                            className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                            size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                          >
-                            Category of website
-                          </Text>
-                        </div>
-                      </div>
-                      <Text
-                        className="leading-[22.00px] ml-1.5 md:ml-[0] mt-4 text-white-A700 text-xs w-[98%] sm:w-full"
-                        size="txtPlusJakartaSansRomanRegular12"
-                      >
-                        <>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry&#39;s standard dummy text ever since the
-                          1500s,
-                        </>
-                      </Text>
-                      <Button
-                        className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
-                        leftIcon={
-                          <Img
-                            className="h-[17px] mr-[7px]"
-                            src="images/img_checkmark.svg"
-                            alt="checkmark"
-                          />
-                        }
-                        color="white_A700"
-                        size="xs"
-                        variant="outline"
-                      >
-                        <div className="text-left text-xs">Free</div>
-                      </Button>
-                      <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                        <div className="flex h-[70px] justify-end relative w-[49%]">
-                          <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                          <Button
-                            className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5 right-[7%] absolute"
-                                src="images/img_globe.svg"
-                                alt="globe"
-                              />
-                            }
-                            shape="round"
-                            color="amber_500_19"
-                            variant="fill"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              Visit
-                            </div>
-                          </Button>
-                        </div>
-                        <div className="flex flex-col items-center justify-start w-[47%]">
-                          <Button
-                            className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5"
-                                src="images/img_bookmark.svg"
-                                alt="bookmark"
-                              />
-                            }
-                            shape="round"
-                            color="white_A700"
-                            variant="outline"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              287
-                            </div>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
-                    <div className="flex flex-col items-start justify-start mb-3.5 w-[99%] md:w-full">
-                      <Img
-                        className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                        src="images/img_rectangle82.png"
-                        alt="rectangleEightyTwo"
-                      />
-                      <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                        <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                        <div className="flex flex-col items-start justify-start">
-                          <Text
-                            className="text-lg text-white-A700 tracking-[0.90px]"
-                            size="txtPlusJakartaSansRomanSemiBold18"
-                          >
-                            Website Name
-                          </Text>
-                          <Text
-                            className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                            size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                          >
-                            Category of website
-                          </Text>
-                        </div>
-                      </div>
-                      <Text
-                        className="leading-[22.00px] ml-1.5 md:ml-[0] mt-[31px] text-white-A700 text-xs w-[98%] sm:w-full"
-                        size="txtPlusJakartaSansRomanRegular12"
-                      >
-                        <>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry&#39;s standard dummy text ever since the
-                          1500s,
-                        </>
-                      </Text>
-                      <Button
-                        className="cursor-pointer flex items-center justify-center min-w-[65px] ml-1.5 md:ml-[0] mt-[26px] rounded-[5px]"
-                        leftIcon={
-                          <Img
-                            className="h-[17px] mr-[7px]"
-                            src="images/img_checkmark.svg"
-                            alt="checkmark"
-                          />
-                        }
-                        color="white_A700"
-                        size="xs"
-                        variant="outline"
-                      >
-                        <div className="text-left text-xs">Free</div>
-                      </Button>
-                      <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                        <div className="flex h-[70px] justify-end relative w-[49%]">
-                          <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                          <Button
-                            className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5 right-[7%] absolute"
-                                src="images/img_globe.svg"
-                                alt="globe"
-                              />
-                            }
-                            shape="round"
-                            color="amber_500_19"
-                            variant="fill"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              Visit
-                            </div>
-                          </Button>
-                        </div>
-                        <div className="flex flex-col items-center justify-start w-[47%]">
-                          <Button
-                            className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5"
-                                src="images/img_bookmark.svg"
-                                alt="bookmark"
-                              />
-                            }
-                            shape="round"
-                            color="white_A700"
-                            variant="outline"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              287
-                            </div>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
-                    <div className="flex flex-col items-start justify-start mb-3.5 w-full">
-                      <Img
-                        className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                        src="images/img_rectangle84.png"
-                        alt="rectangleEightyFour"
-                      />
-                      <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                        <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                        <div className="flex flex-col items-start justify-start">
-                          <Text
-                            className="text-lg text-white-A700 tracking-[0.90px]"
-                            size="txtPlusJakartaSansRomanSemiBold18"
-                          >
-                            Website Name
-                          </Text>
-                          <Text
-                            className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                            size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                          >
-                            Category of website
-                          </Text>
-                        </div>
-                      </div>
-                      <Text
-                        className="leading-[22.00px] ml-1.5 md:ml-[0] mt-[17px] text-white-A700 text-xs w-[98%] sm:w-full"
-                        size="txtPlusJakartaSansRomanRegular12"
-                      >
-                        <>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry&#39;s standard dummy text ever since the
-                          1500s,
-                        </>
-                      </Text>
-                      <Button
-                        className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-6 rounded-[5px]"
-                        leftIcon={
-                          <Img
-                            className="h-[17px] mr-[7px]"
-                            src="images/img_checkmark.svg"
-                            alt="checkmark"
-                          />
-                        }
-                        color="white_A700"
-                        size="xs"
-                        variant="outline"
-                      >
-                        <div className="text-left text-xs">Free</div>
-                      </Button>
-                      <div className="flex flex-row gap-[13px] items-center justify-between mt-3.5 w-full">
-                        <div className="flex h-[70px] justify-end relative w-[49%]">
-                          <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                          <Button
-                            className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5 right-[7%] absolute"
-                                src="images/img_globe.svg"
-                                alt="globe"
-                              />
-                            }
-                            shape="round"
-                            color="amber_500_19"
-                            variant="fill"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              Visit
-                            </div>
-                          </Button>
-                        </div>
-                        <div className="flex flex-col items-center justify-start w-[47%]">
-                          <Button
-                            className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5"
-                                src="images/img_bookmark.svg"
-                                alt="bookmark"
-                              />
-                            }
-                            shape="round"
-                            color="white_A700"
-                            variant="outline"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              287
-                            </div>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
-                    <div className="flex flex-col items-start justify-start mb-[13px] w-full">
-                      <Img
-                        className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                        src="images/img_rectangle86.png"
-                        alt="rectangleEightySix"
-                      />
-                      <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                        <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                        <div className="flex flex-col items-start justify-start">
-                          <Text
-                            className="text-lg text-white-A700 tracking-[0.90px]"
-                            size="txtPlusJakartaSansRomanSemiBold18"
-                          >
-                            Website Name
-                          </Text>
-                          <Text
-                            className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                            size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                          >
-                            Category of website
-                          </Text>
-                        </div>
-                      </div>
-                      <Text
-                        className="leading-[22.00px] ml-1.5 md:ml-[0] mt-4 text-white-A700 text-xs w-[98%] sm:w-full"
-                        size="txtPlusJakartaSansRomanRegular12"
-                      >
-                        <>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry&#39;s standard dummy text ever since the
-                          1500s,
-                        </>
-                      </Text>
-                      <Button
-                        className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
-                        leftIcon={
-                          <Img
-                            className="h-[17px] mr-[7px]"
-                            src="images/img_checkmark.svg"
-                            alt="checkmark"
-                          />
-                        }
-                        color="white_A700"
-                        size="xs"
-                        variant="outline"
-                      >
-                        <div className="text-left text-xs">Free</div>
-                      </Button>
-                      <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                        <div className="flex h-[70px] justify-end relative w-[49%]">
-                          <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                          <Button
-                            className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5 right-[7%] absolute"
-                                src="images/img_globe.svg"
-                                alt="globe"
-                              />
-                            }
-                            shape="round"
-                            color="amber_500_19"
-                            variant="fill"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              Visit
-                            </div>
-                          </Button>
-                        </div>
-                        <div className="flex flex-col items-center justify-start w-[47%]">
-                          <Button
-                            className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5"
-                                src="images/img_bookmark.svg"
-                                alt="bookmark"
-                              />
-                            }
-                            shape="round"
-                            color="white_A700"
-                            variant="outline"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              287
-                            </div>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
-                    <div className="flex flex-col items-start justify-start mb-[13px] w-full">
-                      <Img
-                        className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-                        src="images/img_rectangle88.png"
-                        alt="rectangleEightyEight"
-                      />
-                      <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[70%] md:w-full">
-                        <div className="bg-blue_gray-100 h-[35px] mb-[3px] rounded-[18px] w-9"></div>
-                        <div className="flex flex-col items-start justify-start">
-                          <Text
-                            className="text-lg text-white-A700 tracking-[0.90px]"
-                            size="txtPlusJakartaSansRomanSemiBold18"
-                          >
-                            Website Name
-                          </Text>
-                          <Text
-                            className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
-                            size="txtPlusJakartaSansRomanRegular14Bluegray80001"
-                          >
-                            Category of website
-                          </Text>
-                        </div>
-                      </div>
-                      <Text
-                        className="leading-[22.00px] ml-1.5 md:ml-[0] mt-4 text-white-A700 text-xs w-[98%] sm:w-full"
-                        size="txtPlusJakartaSansRomanRegular12"
-                      >
-                        <>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry&#39;s standard dummy text ever since the
-                          1500s,
-                        </>
-                      </Text>
-                      <Button
-                        className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
-                        leftIcon={
-                          <Img
-                            className="h-[17px] mr-[7px]"
-                            src="images/img_checkmark.svg"
-                            alt="checkmark"
-                          />
-                        }
-                        color="white_A700"
-                        size="xs"
-                        variant="outline"
-                      >
-                        <div className="text-left text-xs">Free</div>
-                      </Button>
-                      <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
-                        <div className="flex h-[70px] justify-end relative w-[49%]">
-                          <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
-                          <Button
-                            className="border border-amber-500 border-solid cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[134px] px-[30px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5 right-[7%] absolute"
-                                src="images/img_globe.svg"
-                                alt="globe"
-                              />
-                            }
-                            shape="round"
-                            color="amber_500_19"
-                            variant="fill"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              Visit
-                            </div>
-                          </Button>
-                        </div>
-                        <div className="flex flex-col items-center justify-start w-[47%]">
-                          <Button
-                            className="cursor-pointer flex items-center justify-center min-w-[128px] px-[29px] py-[23px]"
-                            leftIcon={
-                              <Img
-                                className="h-6 mr-2.5"
-                                src="images/img_bookmark.svg"
-                                alt="bookmark"
-                              />
-                            }
-                            shape="round"
-                            color="white_A700"
-                            variant="outline"
-                          >
-                            <div className="capitalize font-semibold sm:px-5 text-left text-lg">
-                              287
-                            </div>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {newTools.map((t) => (
+                    <Card {...t} />
+                  ))}
                 </div>
               </div>
             </div>
@@ -2088,7 +604,10 @@ const HomePagePage: React.FC = () => {
             className="sm:flex-col flex-row gap-3.5 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-center max-w-[1211px] mt-[46px] mx-auto md:px-5 w-full"
             orientation="horizontal"
           >
-            <div className="h-[388px] relative w-full">
+            {latestArticles.map((article, index) => (
+              <ArticleCard key={`article-card-${index}`} {...article} />
+            ))}
+            {/* <div className="h-[388px] relative w-full">
               <div className="absolute bg-gradient  border border-blue_gray-900 border-solid flex flex-col h-full inset-[0] items-start justify-center m-auto p-2 rounded-[15px] w-full">
                 <Img
                   className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
@@ -2320,7 +839,7 @@ const HomePagePage: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </List>
           <div className="flex h-[58px] md:h-[93px] justify-end mt-[35px] md:px-5 relative w-[15%]">
             <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[7px] ml-auto mr-[76px] mt-auto rounded-[50%] w-8"></div>
