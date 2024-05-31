@@ -13,7 +13,7 @@ interface Props {
   onClick: () => void;
 }
 
-export const Card = (props: Props) => {
+export const ToolCard = (props: Props) => {
   console.log(props.tags);
   return (
     <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button, Img, Text, Line } from "components";
+import { useAuth } from "features";
 
 type HeaderProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -10,6 +11,8 @@ type HeaderProps = React.DetailedHTMLProps<
 
 export const Header: React.FC<HeaderProps> = () => {
   const { pathname } = useLocation();
+
+  const { isAuthenticated } = useAuth();
 
   const navigate = useNavigate();
 
@@ -100,17 +103,19 @@ export const Header: React.FC<HeaderProps> = () => {
               </div>
               <div className="flex h-16 justify-end ml-30 md:ml-[0] relative w-[16%] md:w-full">
                 <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-1.5 ml-auto mr-[33px] mt-auto rounded-[50%] w-8"></div>
-                <Button
-                  className="border border-amber-500 border-solid font-bold capitalize cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[152px]"
-                  leftIcon={<Img src="images/img_lock.svg" alt="lock" />}
-                  onClick={() => navigate("/login")}
-                  shape="round"
-                  color="amber_500_19"
-                  size="md"
-                  variant="fill"
-                >
-                  Sign in
-                </Button>
+                {!isAuthenticated && (
+                  <Button
+                    className="border border-amber-500 border-solid font-bold capitalize cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[152px]"
+                    leftIcon={<Img src="images/img_lock.svg" alt="lock" />}
+                    onClick={() => navigate("/login")}
+                    shape="round"
+                    color="amber_500_19"
+                    size="md"
+                    variant="fill"
+                  >
+                    Sign in
+                  </Button>
+                )}
               </div>
               <div className="flex h-16 justify-end ml-0 md:ml-[0] relative w-[16%] md:w-full">
                 <div className="backdrop-opacity-[0.5] bg-green-A400 blur-[24.00px] h-[35px] mb-[3px] ml-auto mr-[54px] mt-auto rounded-[17px] w-[17%]"></div>

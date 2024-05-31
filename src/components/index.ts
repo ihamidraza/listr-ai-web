@@ -15,5 +15,5 @@ export { Header4 } from "./Header4";
 export { Footer } from "./Footer";
 export * from "./SubscribeForm";
 export * from "./FAQs";
-export * from "./Card";
+export * from "./ToolCard";
 export * from "./ArticleCard";

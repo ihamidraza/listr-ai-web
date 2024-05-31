@@ -1,8 +1,140 @@
-import React, { useState } from "react";
-import { Select } from "antd";
+import React, { useEffect, useState } from "react";
+import { Select, message } from "antd";
 import { useNavigate } from "react-router-dom";
-import { Button, CheckBox, Img, Input, Text, SubscribeForm } from "components";
+import { Button, Img, Input, Text, SubscribeForm, ToolCard } from "components";
 import AiToolsCategoryfilterModal from "modals/AiToolsCategoryfilter";
+import { server } from "utils";
+
+const dummyData = [
+  {
+    title: "Understanding JavaScript Closures",
+    description:
+      "A deep dive into closures in JavaScript and how to use them effectively.",
+    image:
+      "https://images.unsplash.com/photo-1590608897129-79da63e27c77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofHx8fHwwfHx8fDE2MjU1NjcwNDA&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "JavaScript",
+    bookmarkCount: 120,
+    tags: ["javascript", "closures", "programming"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+  {
+    title: "Mastering Flexbox for Responsive Design",
+    description:
+      "Learn how to create flexible and responsive layouts using Flexbox.",
+    image:
+      "https://images.unsplash.com/photo-1606761568900-1fded2903c14?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGZsZXhib3h8ZW58MHx8fHwxNjI1NTY3MTIz&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "CSS",
+    bookmarkCount: 230,
+    tags: ["css", "flexbox", "web design"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+  {
+    title: "React Hooks: A Comprehensive Guide",
+    description:
+      "An in-depth guide to using hooks in React for state and effect management.",
+    image:
+      "https://images.unsplash.com/photo-1601582592685-4520e827a35b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHJlYWN0fGVufDB8fHx8MTYyNTU2NzE1Mg&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "React",
+    bookmarkCount: 150,
+    tags: ["react", "hooks", "javascript"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+  {
+    title: "A Beginner's Guide to GraphQL",
+    description:
+      "Learn the basics of GraphQL and how to integrate it into your applications.",
+    image:
+      "https://images.unsplash.com/photo-1581091870622-d3a52a6d914a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGdyYXBocWx8ZW58MHx8fHwxNjI1NTY3MTg3&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "GraphQL",
+    bookmarkCount: 90,
+    tags: ["graphql", "api", "backend"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+  {
+    title: "Introduction to TypeScript",
+    description:
+      "Get started with TypeScript and learn its key features and benefits.",
+    image:
+      "https://images.unsplash.com/photo-1606787366850-de6330128bfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofHx8fHwwfHx8fDE2MjU1NjcyMTM&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "TypeScript",
+    bookmarkCount: 200,
+    tags: ["typescript", "javascript", "programming"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+  {
+    title: "Building REST APIs with Express",
+    description:
+      "A guide to creating RESTful APIs using the Express.js framework.",
+    image:
+      "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGV4cHJlc3MlMjBqc3xlbnwwfHx8fDE2MjU1NjcyMzQ&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "Express.js",
+    bookmarkCount: 180,
+    tags: ["express", "nodejs", "api"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+  {
+    title: "Managing State with Redux",
+    description: "An introduction to managing application state with Redux.",
+    image:
+      "https://images.unsplash.com/photo-1581092320320-88bbd4eb1a85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDZ8fHJlZHV4fGVufDB8fHx8MTYyNTU2NzI2MA&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "Redux",
+    bookmarkCount: 140,
+    tags: ["redux", "state management", "react"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+  {
+    title: "Responsive Web Design Principles",
+    description:
+      "Learn the principles of responsive web design and how to apply them.",
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHJlc3BvbnNpdmUlMjB3ZWIrfGVufDB8fHx8MTYyNTU2NzI3OQ&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "Web Design",
+    bookmarkCount: 160,
+    tags: ["responsive design", "web design", "css"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+  {
+    title: "Understanding Asynchronous JavaScript",
+    description:
+      "A comprehensive guide to asynchronous programming in JavaScript.",
+    image:
+      "https://images.unsplash.com/photo-1581091215367-59cf60b705d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDd8fGFzeW5jaHJvbm91cyUyMGphdmFzY3JpcHR8ZW58MHx8fHwxNjI1NTY3Mjk5&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "JavaScript",
+    bookmarkCount: 170,
+    tags: ["javascript", "async", "programming"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+  {
+    title: "Getting Started with Vue.js",
+    description: "An introductory guide to building applications with Vue.js.",
+    image:
+      "https://images.unsplash.com/photo-1502784444185-6a115efc7cb2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHZ1ZXxlbnwwfHx8fDE2MjU1NjczMTk&ixlib=rb-1.2.1&q=80&w=400",
+    button: "Read More",
+    category: "Vue.js",
+    bookmarkCount: 130,
+    tags: ["vue", "javascript", "frontend"],
+    handleBookmark: () => console.log("Bookmarked!"),
+    onClick: () => console.log("Button clicked!"),
+  },
+];
 
 const newOptionsList = [
   {
@@ -65,6 +197,22 @@ const AiToolsCategoryOnePage: React.FC = () => {
   const navigate = useNavigate();
 
   const [modal, toggleModal] = useState(false);
+
+  const [tools, setTools] = useState(dummyData);
+
+  const fetchTools = async () => {
+    try {
+      const { data } = await server.get("/tools?orderBy=createdAt");
+
+      setTools(data);
+    } catch (err) {
+      message.error(err?.message || "Error while fetching tools");
+    }
+  };
+
+  useEffect(() => {
+    fetchTools();
+  }, []);
   return (
     <>
       <AiToolsCategoryfilterModal modal={modal} toggleModal={toggleModal} />
@@ -231,7 +379,10 @@ const AiToolsCategoryOnePage: React.FC = () => {
             /> */}
           </div>
           <div className="md:gap-5 gap-[22px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center max-w-[1214px] min-h-[auto] mt-[30px] mx-auto md:px-5 w-full">
-            <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[11px] rounded-[15px] w-full">
+            {tools.map((t) => (
+              <ToolCard {...t} />
+            ))}
+            {/* <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[11px] rounded-[15px] w-full">
               <div className="flex flex-col gap-2.5 items-center justify-start mb-[26px] w-full">
                 <Img
                   className="h-[213px] md:h-auto object-cover rounded-bl-[7px] rounded-br-[7px] w-full"
@@ -782,7 +933,7 @@ const AiToolsCategoryOnePage: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <SubscribeForm />
         </div>

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { message } from "antd";
 
-// import { useGoogleLogin } from "@react-oauth/google";
-
 import {
   Button,
   Img,
@@ -12,7 +10,7 @@ import {
   Text,
   SubscribeForm,
   FAQs,
-  Card,
+  ToolCard,
   ArticleCard,
 } from "components";
 import { useNavigate } from "react-router-dom";
@@ -283,7 +281,7 @@ const HomePagePage: React.FC = () => {
           </Text>
           <div className="md:gap-5 gap-[17px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-center max-w-[1213px] min-h-[auto] mt-[25px] mx-auto md:px-5 w-full">
             {featuredTools.map((t) => (
-              <Card {...t} />
+              <ToolCard {...t} />
             ))}
           </div>
           {!isAuthenticated && (
@@ -482,7 +480,7 @@ const HomePagePage: React.FC = () => {
               <div className="flex flex-col items-center justify-start w-full">
                 <div className="md:gap-5 gap-[17px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-center min-h-[auto] w-full">
                   {newTools.map((t) => (
-                    <Card {...t} />
+                    <ToolCard {...t} />
                   ))}
                 </div>
               </div>
