@@ -1,24 +1,9 @@
-import { Button, Img, Text, Line } from "components";
+import { Img, Text, Line } from "components";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
+import { Article } from "interfaces";
 
-interface Props {
-  id: number;
-  title: string;
-  description: string;
-  body: string;
-  imgurl: string;
-  topic: string;
-  views: number;
-  tags: any[];
-  published: boolean;
-  featured: boolean;
-  created_at: string;
-  // handleBookmark: () => void;
-  // onClick: () => void;
-}
-
-export const ArticleCard = (props: Props) => {
+export const ArticleCard = (props: Article) => {
   const navigate = useNavigate();
   const {
     id,
@@ -29,7 +14,7 @@ export const ArticleCard = (props: Props) => {
     topic,
     views,
     published,
-    created_at,
+    createdAt,
   } = props;
 
   const handleClick = () => {
@@ -70,7 +55,7 @@ export const ArticleCard = (props: Props) => {
                 className="mb-0.5 mt-[5px] text-white-A700 text-xs"
                 size="txtPlusJakartaSansRomanRegular12"
               >
-                {moment(created_at).format("MMMM D, YYYY")}
+                {moment(createdAt).format("MMMM D, YYYY")}
               </Text>
             </div>
             <div className="flex flex-row items-start justify-evenly w-[50%]">

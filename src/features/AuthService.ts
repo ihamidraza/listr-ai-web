@@ -9,7 +9,7 @@ export const login = async (email: string, password: string) => {
       password,
     });
 
-    localStorage.setItem("loggedInUser", data);
+    localStorage.setItem("loggedInUser", JSON.stringify(data));
     location.reload();
     return data;
   } catch (error) {
@@ -24,10 +24,10 @@ export const logout = () => {
 };
 
 export const getLoggedInUser = () => {
-  return localStorage.getItem("loggedInUser");
+  return JSON.parse(localStorage.getItem("loggedInUser"));
 };
 
-export const isAuthenticated = localStorage.getItem("loggedInUser");
+export const isAuthenticated = !!localStorage.getItem("loggedInUser");
 
 // export const isAuthenticated = async () => {
 //   const token = localStorage.getItem("loggedInUser");

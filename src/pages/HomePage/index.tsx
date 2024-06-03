@@ -17,100 +17,13 @@ import { useNavigate } from "react-router-dom";
 import { server } from "utils";
 import { isAuthenticated } from "features";
 
-const dummyArticles = [
-  {
-    id: 1,
-    title: "Introduction to React",
-    description: "A comprehensive guide to getting started with React.",
-    body: "React is a JavaScript library for building user interfaces...",
-    imgurl:
-      "https://images.unsplash.com/photo-1584952237757-8b4e80dcd6c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fHJlYWN0fGVufDB8fHx8MTYyNTU2NTI0Ng&ixlib=rb-1.2.1&q=80&w=400",
-    topic: "JavaScript",
-    views: 1500,
-    tags: ["react", "javascript", "frontend"],
-    published: true,
-    featured: true,
-    created_at: "2023-05-01T10:00:00Z",
-  },
-  {
-    id: 2,
-    title: "Advanced CSS Techniques",
-    description: "Mastering CSS for responsive and modern web designs.",
-    body: "CSS is the language we use to style an HTML document...",
-    imgurl:
-      "https://images.unsplash.com/photo-1585366119951-87c32e9e7d1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGNzc3xlbnwwfHx8fDE2MjU1NjU3MzA&ixlib=rb-1.2.1&q=80&w=400",
-    topic: "CSS",
-    views: 2300,
-    tags: ["css", "web design", "responsive"],
-    published: true,
-    featured: false,
-    created_at: "2023-05-10T14:30:00Z",
-  },
-  {
-    id: 3,
-    title: "Understanding TypeScript",
-    description: "An in-depth look at TypeScript and its features.",
-    body: "TypeScript extends JavaScript by adding types...",
-    imgurl:
-      "https://images.unsplash.com/photo-1600585154340-be6161bbf937?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fHR5cGVzY3JpcHR8ZW58MHx8fHwxNjI1NTY1ODAw&ixlib=rb-1.2.1&q=80&w=400",
-    topic: "TypeScript",
-    views: 1800,
-    tags: ["typescript", "javascript", "programming"],
-    published: false,
-    featured: false,
-    created_at: "2023-05-15T09:00:00Z",
-  },
-  {
-    id: 4,
-    title: "Getting Started with Node.js",
-    description: "A beginner's guide to server-side JavaScript with Node.js.",
-    body: "Node.js is a runtime environment that allows you to run JavaScript on the server...",
-    imgurl:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDd8fG5vZGVqcyUyMHZlcnRleHxlbnwwfHx8fDE2MjU1NjU4NTE&ixlib=rb-1.2.1&q=80&w=400",
-    topic: "Node.js",
-    views: 2100,
-    tags: ["nodejs", "javascript", "backend"],
-    published: true,
-    featured: true,
-    created_at: "2023-06-01T12:00:00Z",
-  },
-  {
-    id: 5,
-    title: "Building REST APIs with Express",
-    description: "Learn how to create RESTful APIs using Express.js.",
-    body: "Express is a minimal and flexible Node.js web application framework...",
-    imgurl:
-      "https://images.unsplash.com/photo-1568301015834-35f4b0b7ceae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDd8fGV4cHJlc3MlMjBqc3xlbnwwfHx8fDE2MjU1NjU5MDA&ixlib=rb-1.2.1&q=80&w=400",
-    topic: "Express.js",
-    views: 1900,
-    tags: ["express", "nodejs", "api"],
-    published: true,
-    featured: false,
-    created_at: "2023-06-10T16:00:00Z",
-  },
-  {
-    id: 6,
-    title: "Database Management with MongoDB",
-    description: "A guide to using MongoDB for managing databases.",
-    body: "MongoDB is a document-oriented NoSQL database used for high volume data storage...",
-    imgurl:
-      "https://images.unsplash.com/photo-1517346699856-dae1a54cd3f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDEwfHxtb25nb2RifGVufDB8fHx8MTYyNTU2NTk0NA&ixlib=rb-1.2.1&q=80&w=400",
-    topic: "Database",
-    views: 1700,
-    tags: ["mongodb", "database", "nosql"],
-    published: false,
-    featured: true,
-    created_at: "2023-06-15T11:30:00Z",
-  },
-];
-
 const HomePagePage: React.FC = () => {
   const navigate = useNavigate();
 
   const [search, setSearch] = useState("");
   const [featuredTools, setFeaturedTools] = useState([]);
   const [newTools, setNewTools] = useState([]);
-  const [latestArticles, setLatestArticles] = useState(dummyArticles);
+  const [latestArticles, setLatestArticles] = useState([]);
 
   const fetchFeaturedTools = async () => {
     try {
@@ -124,7 +37,7 @@ const HomePagePage: React.FC = () => {
 
   const fetchNewTools = async () => {
     try {
-      const { data } = await server.get("/tools?orderBy=createdAt");
+      const { data } = await server.get("/tools?ordered=createdAt");
 
       setNewTools(data);
     } catch (err) {
@@ -134,7 +47,7 @@ const HomePagePage: React.FC = () => {
 
   const fetchLatestArticles = async () => {
     try {
-      const { data } = await server.get("/articles?orderBy=createdAt");
+      const { data } = await server.get("/articles?ordered=createdAt");
 
       setLatestArticles(data);
     } catch (err) {

@@ -1,26 +1,42 @@
-import { Tag } from "antd";
+import { Tag, message } from "antd";
 import { Button, Img, Text } from "components";
+import { getLoggedInUser, isAuthenticated } from "features";
 
-interface Props {
-  title: string;
-  description: string;
-  image: string;
-  button: string;
-  category: string;
-  bookmarkCount: number;
-  tags: any[];
-  handleBookmark: () => void;
-  onClick: () => void;
-}
+import { AITool } from "interfaces";
+import { useState } from "react";
+import { server } from "utils";
 
-export const ToolCard = (props: Props) => {
-  console.log(props.tags);
+export const ToolCard = (props: AITool) => {
+  const [bookmarked, toggleBookmark] = useState(props.bookmarked);
+  const handleBookMark = async () => {
+    if (!isAuthenticated) {
+      message.error("Please login to bookmark tools");
+      return;
+    }
+
+    const user = getLoggedInUser();
+
+    console.log(user);
+
+    try {
+      await server.post("/bookmarks", {
+        userId: user.id,
+        toolId: props.id,
+      });
+      toggleBookmark(!bookmarked);
+    } catch (err) {
+      console.error(err);
+      message.error(
+        err?.response?.data?.message || "Error while bookmarking tool"
+      );
+    }
+  };
   return (
     <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-[7px] rounded-[15px] w-full">
       <div className="flex flex-col items-start justify-start mb-[13px] w-full">
         <Img
           className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
-          src={props.image}
+          src={props.imgurl}
           alt="rectangleFortyNine"
         />
         <div className="flex flex-row gap-[7px] items-start justify-start ml-1.5 md:ml-[0] mt-[7px] w-[100%] md:w-full">
@@ -30,13 +46,13 @@ export const ToolCard = (props: Props) => {
               className="text-lg text-white-A700 tracking-[0.90px]"
               size="txtPlusJakartaSansRomanSemiBold18"
             >
-              {props.title}
+              {props.topic}
             </Text>
             <Text
               className="text-blue_gray-800_01 text-sm tracking-[0.70px]"
               size="txtPlusJakartaSansRomanRegular14Bluegray80001"
             >
-              {props.category}
+              {props.subCategory?.category?.name}
             </Text>
           </div>
         </div>
@@ -44,11 +60,10 @@ export const ToolCard = (props: Props) => {
           className="leading-[22.00px] ml-1.5 md:ml-[0] mt-4 text-white-A700 text-xs w-[98%] sm:w-full"
           size="txtPlusJakartaSansRomanRegular12"
         >
-          {props.description}
+          {props.body}
         </Text>
-        {props.tags?.map((name) => (
-          <Tag>{name}</Tag>
-        ))}
+
+        <Tag>{props.tag.name}</Tag>
 
         {/* <Button
           className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
@@ -80,7 +95,7 @@ export const ToolCard = (props: Props) => {
               shape="round"
               color="amber_500_19"
               variant="fill"
-              onClick={props.onClick}
+              // onClick={props.onClick}
             >
               <div className="capitalize font-semibold sm:px-5 text-left">
                 Visit
@@ -98,12 +113,16 @@ export const ToolCard = (props: Props) => {
                 />
               }
               shape="round"
-              color="white_A700"
+              color={bookmarked ? "black" : "white_A700"}
               variant="outline"
-              onClick={props.handleBookmark}
+              onClick={handleBookMark}
+              style={{
+                borderColor: bookmarked ? "black" : "white_A700",
+                backgroundColor: bookmarked ? "white" : "black",
+              }}
             >
               <div className="capitalize font-semibold sm:px-5 text-left">
-                {props.bookmarkCount || 0}
+                {props._count?.bookmark || 0}
               </div>
             </Button>
           </div>
