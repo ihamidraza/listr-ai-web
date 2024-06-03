@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button, Img, Text, Line } from "components";
-import { useAuth } from "features";
+import { isAuthenticated, logout } from "features";
 
 type HeaderProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -12,9 +12,12 @@ type HeaderProps = React.DetailedHTMLProps<
 export const Header: React.FC<HeaderProps> = () => {
   const { pathname } = useLocation();
 
-  const { isAuthenticated } = useAuth();
-
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    window.location.reload();
+  };
 
   return (
     <>
@@ -131,6 +134,19 @@ export const Header: React.FC<HeaderProps> = () => {
                   Submit AI tools
                 </Button>
               </div>
+              {isAuthenticated && (
+                <Button
+                  className="border border-amber-500 border-solid font-bold capitalize cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[152px]"
+                  leftIcon={<Img src="images/img_lock.svg" alt="lock" />}
+                  onClick={logout}
+                  shape="round"
+                  color="amber_500_19"
+                  size="md"
+                  variant="fill"
+                >
+                  Logout
+                </Button>
+              )}
             </div>
           </header>
         </div>

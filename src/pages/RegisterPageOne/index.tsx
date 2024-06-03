@@ -4,14 +4,12 @@ import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Input, Line, Text } from "components";
-import { server, setAuth } from "utils";
-import { useAuth } from "features";
+import { server } from "utils";
+import { isAuthenticated } from "features";
 import { CONTEXT, BASE_URL } from "../../../apiConfig";
 
 const RegisterPageOnePage: React.FC = () => {
   const navigate = useNavigate();
-
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,16 +18,6 @@ const RegisterPageOnePage: React.FC = () => {
 
   useEffect(() => {
     if (isAuthenticated) return navigate("/");
-
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("code");
-
-    if (token) {
-      setAuth(token);
-      setIsAuthenticated(true);
-      message.success("Authenticated successfully");
-      navigate("/");
-    }
   });
 
   const handleLoginWithGoogle = async () => {

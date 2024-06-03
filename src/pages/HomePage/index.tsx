@@ -15,7 +15,7 @@ import {
 } from "components";
 import { useNavigate } from "react-router-dom";
 import { server } from "utils";
-import { useAuth } from "features";
+import { isAuthenticated } from "features";
 
 const dummyArticles = [
   {
@@ -106,8 +106,6 @@ const dummyArticles = [
 
 const HomePagePage: React.FC = () => {
   const navigate = useNavigate();
-
-  const { isAuthenticated } = useAuth();
 
   const [search, setSearch] = useState("");
   const [featuredTools, setFeaturedTools] = useState([]);

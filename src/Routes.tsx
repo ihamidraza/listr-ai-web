@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Spin } from "antd";
 
 import { Layout } from "layout";
-import { AuthProvider } from "features";
+
 import NotFound from "pages/NotFound";
 
 const NewsPageDetail = React.lazy(() => import("pages/NewsPageDetail"));
@@ -51,61 +51,59 @@ const LoginPage = React.lazy(() => import("pages/LoginPage"));
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<Spin />}>
-      <AuthProvider>
-        <Router>
-          <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/" element={<Layout />}>
-              <Route path="" element={<HomePage />} />
-              <Route path="login" element={<LoginPage />} />
-              <Route path="register" element={<RegisterPageOne />} />
-              <Route path="aiToolsCategory" element={<AiToolsCategoryOne />} />
-              <Route path="aiToolsCategories" element={<AiToolsCategory />} />
-              <Route path="aiToolMapper" element={<AitoolMapper />} />
-              <Route path="customAISolutions" element={<CustomAISolutions />} />
-              <Route path="/aboutUs" element={<AboutUs />} />
-              <Route path="/termsConditions" element={<TermsConditions />} />
-              <Route path="contactUs" element={<ContactUs />} />
-              <Route path="/articles" element={<Articles />} />
-              <Route path="/articles/:id" element={<ArticlesOne />} />
-              <Route path="submitTool" element={<SubmittoolOne />} />
-              <Route path="registerpage" element={<RegisterPage />} />
-              <Route path="/newsLetter" element={<NewsletterPage />} />
-              <Route path="/news" element={<NewsPage />} />
-              <Route path="/newsOne" element={<NewsPageOne />} />
-              <Route path="/newsDetail" element={<NewsPageDetail />} />
-              <Route path="/submitTool1" element={<Submittool />} />
-              <Route path="aiToolMapperLogin" element={<AitoolMapperlogin />} />
-              <Route
-                path="aiToolMapperLoginone"
-                element={<AitoolMapperloginOne />}
-              />
-              <Route
-                path="bookmarkWebsiteLinkOne"
-                element={<BookmarkWebsitLinkpageOne />}
-              />
-              <Route
-                path="bookmarkWebsiteLinkPage"
-                element={<BookmarkWebsitLinkpage />}
-              />
-              <Route path="favoritesLogin" element={<FavoritesPageLogin />} />
-              <Route
-                path="/favoritesNoResult"
-                element={<FavoritesPageNoResult />}
-              />
-              <Route
-                path="/favoritesNoResultOne"
-                element={<FavoritesPageNoResultOne />}
-              />
-              {/* 
+      <Router>
+        <Routes>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Layout />}>
+            <Route path="" element={<HomePage />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPageOne />} />
+            <Route path="aiToolsCategory" element={<AiToolsCategoryOne />} />
+            <Route path="aiToolsCategories" element={<AiToolsCategory />} />
+            <Route path="aiToolMapper" element={<AitoolMapper />} />
+            <Route path="customAISolutions" element={<CustomAISolutions />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/termsConditions" element={<TermsConditions />} />
+            <Route path="contactUs" element={<ContactUs />} />
+            <Route path="/articles" element={<Articles />} />
+            <Route path="/articles/:id" element={<ArticlesOne />} />
+            <Route path="submitTool" element={<SubmittoolOne />} />
+            <Route path="registerpage" element={<RegisterPage />} />
+            <Route path="/newsLetter" element={<NewsletterPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/newsOne" element={<NewsPageOne />} />
+            <Route path="/newsDetail" element={<NewsPageDetail />} />
+            <Route path="/submitTool1" element={<Submittool />} />
+            <Route path="aiToolMapperLogin" element={<AitoolMapperlogin />} />
+            <Route
+              path="aiToolMapperLoginone"
+              element={<AitoolMapperloginOne />}
+            />
+            <Route
+              path="bookmarkWebsiteLinkOne"
+              element={<BookmarkWebsitLinkpageOne />}
+            />
+            <Route
+              path="bookmarkWebsiteLinkPage"
+              element={<BookmarkWebsitLinkpage />}
+            />
+            <Route path="favoritesLogin" element={<FavoritesPageLogin />} />
+            <Route
+              path="/favoritesNoResult"
+              element={<FavoritesPageNoResult />}
+            />
+            <Route
+              path="/favoritesNoResultOne"
+              element={<FavoritesPageNoResultOne />}
+            />
+            {/* 
             <Route path="/aiToolsCategoryThree" element={<AiToolsCategoryThree />} />
             <Route path="aiToolsCategoryTwo" element={<AiToolsCategoryTwo />} />
             <Route path="/homeOne" element={<HomePageOne />} />
             */}
-            </Route>
-          </Routes>
-        </Router>
-      </AuthProvider>
+          </Route>
+        </Routes>
+      </Router>
     </React.Suspense>
   );
 };

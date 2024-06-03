@@ -3,32 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 
 import { Button, Img, Input, Line, SubscribeForm, Text } from "components";
-import { server, setAuth } from "utils";
-import { useAuth } from "features";
 
-import { CONTEXT, BASE_URL } from "../../../apiConfig";
+import { login, isAuthenticated } from "features";
 
 const LoginPagePage: React.FC = () => {
   const navigate = useNavigate();
-
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (isAuthenticated) return navigate("/");
-
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("code");
-
-    if (token) {
-      message.success("Authenticated successfully");
-
-      setAuth(token);
-      setIsAuthenticated(true);
-      navigate("/");
-    }
   }, []);
 
   const onFinish = async () => {
@@ -37,15 +22,7 @@ const LoginPagePage: React.FC = () => {
     if (!password) return message.error("Password is required");
 
     try {
-      const payload = {
-        email,
-        password,
-      };
-
-      const { data } = await server.post("/auth/login", payload);
-      console.log(data);
-      setIsAuthenticated(true);
-      setAuth(data.access_token);
+      await login(email, password);
       message.success("Logged in successfully");
       navigate("/");
     } catch (err) {
@@ -57,10 +34,10 @@ const LoginPagePage: React.FC = () => {
   };
 
   const handleLoginWithGoogle = async () => {
-    try {
-      const googleLoginUrl = `${BASE_URL}/google?context=${CONTEXT}`;
-      window.location.href = googleLoginUrl;
-    } catch (err) {}
+    // try {
+    //   const googleLoginUrl = `${BASE_URL}/google?context=${CONTEXT}`;
+    //   window.location.href = googleLoginUrl;
+    // } catch (err) {}
   };
 
   function isValidEmail(email) {
