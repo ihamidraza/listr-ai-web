@@ -5,7 +5,6 @@ import { Button, Img, Input, Text, SubscribeForm, ToolCard } from "components";
 import AiToolsCategoryfilterModal from "modals/AiToolsCategoryfilter";
 import { server } from "utils";
 
-
 const newOptionsList = [
   {
     label: (
@@ -68,11 +67,15 @@ const AiToolsCategoryOnePage: React.FC = () => {
 
   const [modal, toggleModal] = useState(false);
 
+  const [search, setSearch] = useState("");
+
   const [tools, setTools] = useState([]);
 
   const fetchTools = async () => {
     try {
-      const { data } = await server.get("/tools?ordered=createdAt");
+      const { data } = await server.get(
+        `/tools?ordered=createdAt&search=${search}`
+      );
 
       setTools(data);
     } catch (err) {
@@ -131,10 +134,14 @@ const AiToolsCategoryOnePage: React.FC = () => {
                       size="lg"
                       variant="fill"
                       style={{ width: "40vw" }}
+                      onChange={setSearch}
                     ></Input>
                     <div className="flex h-[70px] justify-end relative w-[9%] md:w-full">
                       <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[37px] mb-1.5 ml-auto mr-[15px] mt-auto rounded-[18px] w-[37px]"></div>
-                      <Button className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto">
+                      <Button
+                        className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto"
+                        onClick={() => fetchTools()}
+                      >
                         <Img
                           className="h-10 w-20"
                           src="images/img_save_white_a700.svg"

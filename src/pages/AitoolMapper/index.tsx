@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { Button, Img, Input, Line, SubscribeForm, Text } from "components";
+import { Button, Img, Input, SubscribeForm, Text, ToolCard } from "components";
+import { server } from "utils";
+import { message } from "antd";
 
 const AitoolMapperPage: React.FC = () => {
+  const [loading, toggleLoading] = useState(false);
+  const [tools, setTools] = React.useState([]);
+
+  const fetchFeaturedTools = async () => {
+    try {
+      const { data } = await server.get(`/tools?featured=true`);
+      setTools(data);
+    } catch (err) {
+      message.error(err?.message || "Error while fetching featured tools");
+    }
+  };
+
+  useEffect(() => {
+    fetchFeaturedTools();
+  }, []);
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
-        <div className="flex flex-col items-center justify-start w-full" style={{ marginTop: 100 }}>
+        <div
+          className="flex flex-col items-center justify-start w-full"
+          style={{ marginTop: 100 }}
+        >
           <div className="h-[813px] md:px-5 relative w-full">
             <div className="h-[813px] m-auto w-full">
               <Img
@@ -83,7 +103,6 @@ const AitoolMapperPage: React.FC = () => {
                 </div>
               </div>
             </div>
-
           </div>
           <div className="flex md:flex-col flex-row gap-8 items-center justify-start max-w-[1199px] mt-4 mx-auto md:px-5 w-full">
             <Input
@@ -97,10 +116,7 @@ const AitoolMapperPage: React.FC = () => {
             ></Input>
             <div className="flex h-[70px] justify-end relative w-[7%] md:w-full">
               <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[37px] mb-1.5 ml-auto mr-[15px] mt-auto rounded-[18px] w-[37px]"></div>
-              <Button
-                className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto"
-              >
-
+              <Button className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-auto">
                 <Img
                   className="h-10 w-20"
                   src="images/img_save_white_a700.svg"
@@ -119,7 +135,10 @@ const AitoolMapperPage: React.FC = () => {
               </Text>
               <div className="flex flex-col items-center justify-start w-full">
                 <div className="md:gap-5 gap-[17px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 justify-center min-h-[auto] w-full">
-                  <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
+                  {tools.map((tool) => (
+                    <ToolCard {...tool} />
+                  ))}
+                  {/* <div className="bg-gradient  border border-blue_gray-900 border-solid flex flex-1 flex-col items-center justify-start p-1.5 rounded-[15px] w-full">
                     <div className="flex flex-col items-start justify-start mb-3.5 w-[99%] md:w-full">
                       <Img
                         className="h-[159px] md:h-auto object-cover rounded-[7px] w-full"
@@ -862,7 +881,7 @@ const AitoolMapperPage: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

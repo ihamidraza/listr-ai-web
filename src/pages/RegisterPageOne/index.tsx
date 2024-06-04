@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import { message } from "antd";
+import { message, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Img, Input, Line, Text } from "components";
-import { server } from "utils";
+import { Img, Input, Line, Text } from "components";
+import { isValidEmail, server } from "utils";
 import { isAuthenticated } from "features";
 import { CONTEXT, BASE_URL } from "../../../apiConfig";
 
@@ -16,15 +16,17 @@ const RegisterPageOnePage: React.FC = () => {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
 
+  const [loading, toggleLoading] = useState(false);
+
   useEffect(() => {
     if (isAuthenticated) return navigate("/");
   });
 
   const handleLoginWithGoogle = async () => {
-    try {
-      const googleLoginUrl = `${BASE_URL}/google?context=${CONTEXT}`;
-      window.location.href = googleLoginUrl;
-    } catch (err) {}
+    // try {
+    //   const googleLoginUrl = `${BASE_URL}/google?context=${CONTEXT}`;
+    //   window.location.href = googleLoginUrl;
+    // } catch (err) {}
   };
 
   const onFinish = async () => {
@@ -34,6 +36,8 @@ const RegisterPageOnePage: React.FC = () => {
     if (!password) return message.error("Password is required");
     if (password !== password2)
       return message.error("Passwords are mismatched");
+
+    toggleLoading(true);
 
     try {
       const data = {
@@ -48,14 +52,10 @@ const RegisterPageOnePage: React.FC = () => {
       navigate("/login");
     } catch (err) {
       message.error(err?.message || "Error while signing up");
+    } finally {
+      toggleLoading(false);
     }
   };
-
-  function isValidEmail(email) {
-    var re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-  }
 
   return (
     <>
@@ -95,12 +95,12 @@ const RegisterPageOnePage: React.FC = () => {
                 </Text>
                 <div className="flex flex-col items-start justify-start mt-5 w-[79%] md:w-full">
                   <Button
-                    className="border border-blue_gray-900 border-solid capitalize cursor-pointer max-h-[70px] inset-[0] m-auto min-w-[361px] text-center text-lg"
+                    className="border border-blue_gray-900 border-solid capitalize cursor-pointer h-[70px] inset-[0] m-auto min-w-[400px] text-center text-lg"
                     shape="round"
-                    color="white_A700"
-                    size="xl"
-                    variant="fill"
-                    style={{ backgroundColor: "#fff" }}
+                    // color="white_A700"
+                    // size="xl"
+                    // variant="fill"
+                    style={{ backgroundColor: "#fff", color: "#000" }}
                     onClick={handleLoginWithGoogle}
                   >
                     <Img
@@ -206,10 +206,7 @@ const RegisterPageOnePage: React.FC = () => {
           <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[5px] ml-auto mr-[138px] mt-auto rounded-[50%] w-8"></div>
           <Button
             className="absolute border border-amber-500 border-solid capitalize cursor-pointer font-bold h-full inset-[0] m-auto min-w-[376px] sm:min-w-full text-center text-lg"
-            shape="round"
-            color="amber_500_19"
-            size="xl"
-            variant="fill"
+            loading={loading}
             onClick={onFinish}
           >
             Sign Up
@@ -222,7 +219,7 @@ const RegisterPageOnePage: React.FC = () => {
           <span className="text-gray-100 font-plusjakartasans text-left font-normal">
             Need an account?{" "}
           </span>
-          <Button onClick={() => navigate("/login")}>
+          <Button type="text" onClick={() => navigate("/login")}>
             <span className="text-amber-500 font-plusjakartasans text-left font-bold">
               Login Here!
             </span>

@@ -1,9 +1,32 @@
-import React from "react";
-// import { default as ModalProvider } from "react-modal";
+import { Button, message } from "antd";
 
-import { Button, Input, Text, Img } from "components";
+import { Input, Text, Img } from "components";
+import { useState } from "react";
+import { isValidEmail, server } from "utils";
 
 export const SubscribeForm = () => {
+  const [loading, toggleLoading] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = async () => {
+    if (!email) return message.error("Email is required");
+    if (!isValidEmail(email)) return message.error("Email is not valid");
+
+    toggleLoading(true);
+
+    try {
+      await server.post("/subscribers", { email });
+
+      setEmail("");
+
+      message.success("Subscribed successfully");
+    } catch (err) {
+      console.log(err);
+      message.error(err?.response?.data?.message || "Error while subscribing");
+    } finally {
+      toggleLoading(false);
+    }
+  };
   return (
     <div
       className="h-[422px] md:h-[512px] max-w-[1212px] mt-[90px] mx-auto md:px-5 relative w-full"
@@ -33,16 +56,17 @@ export const SubscribeForm = () => {
           <div className="bg-black-900_0c border border-blue_gray-900 border-solid flex flex-row sm:gap-10 items-center justify-between p-4 rounded-[15px] w-full">
             <Input
               className="ml-[5px] text-blue_gray-800 text-sm"
-              // size="txtPlusJakartaSansRomanMedium14"
               placeholder=" Enter Your Email"
+              value={email}
+              onChange={setEmail}
             ></Input>
             <div className="flex h-[58px] justify-end mr-2.5 relative w-[17%]">
               <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[3px] ml-auto mr-[39px] mt-auto rounded-[50%] w-8"></div>
               <Button
                 className="absolute border border-amber-500 border-solid cursor-pointer font-semibold h-full inset-[0] m-auto min-w-[163px] rounded-[7px] text-center text-lg uppercase"
                 color="amber_500_19"
-                size="xl"
-                variant="fill"
+                loading={loading}
+                onClick={handleSubscribe}
               >
                 Subscribe
               </Button>

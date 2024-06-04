@@ -5,17 +5,7 @@ import { Article } from "interfaces";
 
 export const ArticleCard = (props: Article) => {
   const navigate = useNavigate();
-  const {
-    id,
-    title,
-    description,
-    body,
-    imgurl,
-    topic,
-    views,
-    published,
-    createdAt,
-  } = props;
+  const { id, title, description, imgurl, createdAt } = props;
 
   const handleClick = () => {
     navigate(`/articles/${id}`);

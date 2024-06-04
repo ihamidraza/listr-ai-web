@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { message } from "antd";
+import { message, Button as AntButton } from "antd";
 
 import {
   Button,
@@ -27,7 +27,9 @@ const HomePagePage: React.FC = () => {
 
   const fetchFeaturedTools = async () => {
     try {
-      const { data } = await server.get("/tools?featured=true");
+      const { data } = await server.get(
+        `/tools?featured=true&search=${search}`
+      );
 
       setFeaturedTools(data);
     } catch (err) {
@@ -37,7 +39,9 @@ const HomePagePage: React.FC = () => {
 
   const fetchNewTools = async () => {
     try {
-      const { data } = await server.get("/tools?ordered=createdAt");
+      const { data } = await server.get(
+        `/tools?ordered=createdAt&search=${search}`
+      );
 
       setNewTools(data);
     } catch (err) {
@@ -47,7 +51,9 @@ const HomePagePage: React.FC = () => {
 
   const fetchLatestArticles = async () => {
     try {
-      const { data } = await server.get("/articles?ordered=createdAt");
+      const { data } = await server.get(
+        `/articles?ordered=createdAt&search=${search}`
+      );
 
       setLatestArticles(data);
     } catch (err) {
@@ -55,14 +61,16 @@ const HomePagePage: React.FC = () => {
     }
   };
 
-  const handleSearch = () => {
-    console.log(search);
+  const fetchAllData = async () => {
+    await Promise.allSettled([
+      fetchFeaturedTools(),
+      fetchNewTools(),
+      fetchLatestArticles(),
+    ]);
   };
 
   useEffect(() => {
-    fetchFeaturedTools();
-    fetchNewTools();
-    fetchLatestArticles();
+    fetchAllData();
   }, []);
 
   return (
@@ -124,16 +132,16 @@ const HomePagePage: React.FC = () => {
                       <div className="flex h-[70px] justify-end relative w-[20%] md:w-full">
                         <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[37px] mb-1.5 ml-auto mr-[15px] mt-auto rounded-[18px] w-[37px]"></div>
 
-                        <Button
+                        <AntButton
                           className="absolute bg-amber-500_19 border border-amber-500 border-solid flex flex-col h-full inset-[0] items-center justify-center m-auto px-5 py-[15px] rounded-[15px] w-20"
-                          onClick={handleSearch}
+                          onClick={fetchAllData}
                         >
                           <Img
                             className="h-10 w-20"
                             src="images/img_save_white_a700.svg"
                             alt="save"
                           />
-                        </Button>
+                        </AntButton>
                       </div>
                     </div>
                     <div className="flex sm:flex-col flex-row gap-[15px] items-center justify-start md:ml-[0] ml-[34px] mt-[33px] w-4/5 md:w-full">
