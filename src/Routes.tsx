@@ -29,6 +29,7 @@ const SubmittoolOne = React.lazy(() => import("pages/SubmittoolOne"));
 const Submittool = React.lazy(() => import("pages/Submittool"));
 const ArticlesOne = React.lazy(() => import("pages/ArticlesOne"));
 const Articles = React.lazy(() => import("pages/Articles"));
+const TrendingArticles = React.lazy(() => import("pages/ArticlesTrending"));
 const AiToolsCategoryThree = React.lazy(
   () => import("pages/AiToolsCategoryThree")
 );
@@ -66,6 +67,7 @@ const ProjectRoutes = () => {
             <Route path="/termsConditions" element={<TermsConditions />} />
             <Route path="contactUs" element={<ContactUs />} />
             <Route path="/articles" element={<Articles />} />
+            <Route path="/articles/trending" element={<TrendingArticles />} />
             <Route path="/articles/:id" element={<ArticlesOne />} />
             <Route path="submitTool" element={<SubmittoolOne />} />
             <Route path="registerpage" element={<RegisterPage />} />

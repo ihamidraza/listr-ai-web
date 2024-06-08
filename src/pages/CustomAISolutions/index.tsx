@@ -1,18 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 
-import {
-  Button,
-  CheckBox,
-  FAQs,
-  Img,
-  Input,
-  Line,
-  List,
-  SelectBox,
-  Text,
-} from "components";
+import { Button, FAQs, Img, Input, List, Text } from "components";
+import { useNavigate } from "react-router-dom";
+import { message, Button as AntButton } from "antd";
+import { isValidEmail, server } from "utils";
+import TextArea from "antd/es/input/TextArea";
 
 const CustomAISolutionsPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [userMessage, setMessage] = useState("");
+
+  const [submitting, toggleSubmitting] = useState(false);
+
+  const handleFormSubmit = async () => {
+    if (!name) {
+      message.error("Please enter your name");
+      return;
+    }
+
+    if (!email) {
+      message.error("Please enter your email");
+      return;
+    }
+    if (isValidEmail(email) === false) {
+      message.error("Please enter a valid email address");
+      return;
+    }
+
+    if (!userMessage) {
+      message.error("Please enter your message");
+      return;
+    }
+
+    toggleSubmitting(true);
+
+    try {
+      await server.post("/subscribers", {
+        name,
+        email,
+        message: userMessage,
+      });
+
+      setName("");
+      setEmail("");
+      setMessage("");
+      message.success("Your response has been submitted successfully");
+    } catch (err) {
+      console.log(err);
+      message.error(
+        err.response.data.message || "Error while submitting response"
+      );
+    } finally {
+      toggleSubmitting(false);
+    }
+  };
+
   return (
     <>
       <div className="bg-gray-900 flex flex-col font-plusjakartasans items-center justify-start mx-auto w-full">
@@ -57,6 +102,7 @@ const CustomAISolutionsPage: React.FC = () => {
                         color="amber_500_19"
                         size="2xl"
                         variant="fill"
+                        onClick={() => navigate("/contactUs")}
                       >
                         Contact Us
                       </Button>
@@ -150,6 +196,7 @@ const CustomAISolutionsPage: React.FC = () => {
                   color="white_A700"
                   size="2xl"
                   variant="outline"
+                  onClick={() => navigate("/contactUs")}
                 >
                   <div className="capitalize font-semibold text-left text-lg">
                     Contact Us
@@ -195,6 +242,7 @@ const CustomAISolutionsPage: React.FC = () => {
                   color="white_A700"
                   size="2xl"
                   variant="outline"
+                  onClick={() => navigate("/contactUs")}
                 >
                   <div className="capitalize font-semibold text-left text-lg">
                     Contact Us
@@ -239,6 +287,7 @@ const CustomAISolutionsPage: React.FC = () => {
                   color="white_A700"
                   size="2xl"
                   variant="outline"
+                  onClick={() => navigate("/contactUs")}
                 >
                   <div className="capitalize font-semibold text-left text-lg">
                     Contact Us
@@ -272,6 +321,7 @@ const CustomAISolutionsPage: React.FC = () => {
                     color="amber_500_19"
                     size="2xl"
                     variant="fill"
+                    onClick={() => navigate("/contactUs")}
                   >
                     Contact Us
                   </Button>
@@ -650,6 +700,7 @@ const CustomAISolutionsPage: React.FC = () => {
                   color="white_A700"
                   size="2xl"
                   variant="outline"
+                  onClick={() => navigate("/contactUs")}
                 >
                   <div className="capitalize font-semibold text-left text-lg">
                     Contact Us
@@ -889,6 +940,7 @@ const CustomAISolutionsPage: React.FC = () => {
                 color="white_A700_19"
                 size="2xl"
                 variant="fill"
+                onClick={() => navigate("/contactUs")}
               >
                 Contact Us
               </Button>
@@ -1154,6 +1206,8 @@ const CustomAISolutionsPage: React.FC = () => {
                 color="black_900_33"
                 size="lg"
                 variant="fill"
+                value={name}
+                onChange={setName}
               ></Input>
             </div>
             <div className="flex md:flex-1 flex-col gap-[9px] items-start justify-start w-1/2 md:w-full">
@@ -1173,6 +1227,8 @@ const CustomAISolutionsPage: React.FC = () => {
                 color="black_900_33"
                 size="lg"
                 variant="fill"
+                value={email}
+                onChange={setEmail}
               ></Input>
             </div>
           </div>
@@ -1183,26 +1239,29 @@ const CustomAISolutionsPage: React.FC = () => {
             >
               Message
             </Text>
-            <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col items-start justify-start p-5 rounded-[10px] w-full">
-              <Text
-                className="mb-[183px] mt-0.5 text-blue_gray-800 text-sm"
-                size="txtPlusJakartaSansRomanMedium14"
-              >
-                Type your message
-              </Text>
-            </div>
+
+            <TextArea
+              className="bg-black-900_33 border border-blue_gray-900 border-solid mb-[50px] mt-0.5 text-blue_gray-800 text-sm"
+              placeholder="Type your message"
+              value={userMessage}
+              onChange={(e) => setMessage(e.target.value)}
+            >
+              Type your message
+            </TextArea>
+            {/* </div> */}
           </div>
           <div className="flex h-[58px] md:h-[88px] justify-end max-w-[1064px] mt-[30px] mx-auto md:px-5 relative w-full">
             <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-8 mb-[5px] ml-auto mr-[477px] mt-auto rounded-[25px] w-[5%]"></div>
-            <Button
+            <AntButton
               className="absolute border border-amber-500 border-solid capitalize cursor-pointer font-bold h-full inset-[0] m-auto min-w-[1064px] md:min-w-full text-center text-lg"
-              shape="round"
               color="amber_500_19"
-              size="xl"
-              variant="fill"
+              size="large"
+              type="primary"
+              loading={submitting}
+              onClick={handleFormSubmit}
             >
               Submit
-            </Button>
+            </AntButton>
           </div>
           <div className="flex md:flex-col flex-row md:gap-5 items-center justify-center md:ml-[0] mt-[82px] mb-20 md:px-5 md:w-full">
             <div className="flex h-20 justify-end relative w-20">

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Img, Input, Text } from "components";
 import { useNavigate } from "react-router-dom";
+import { Button, message } from "antd";
+import { isValidEmail, server } from "utils";
 
 type FooterProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -11,6 +13,32 @@ type FooterProps = React.DetailedHTMLProps<
 
 export const Footer: React.FC<FooterProps> = (props) => {
   const navigate = useNavigate();
+
+  const [subscribing, toggleSubscribing] = useState(false);
+
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      message.error("Please enter your email address");
+      return;
+    }
+    if (isValidEmail(email) === false) {
+      message.error("Please enter a valid email address");
+      return;
+    }
+    toggleSubscribing(true);
+    try {
+      await server.post("/subscribers", { email });
+      message.success("You have successfully subscribed");
+      setEmail("");
+    } catch (err) {
+      console.log(err);
+      message.error(err.response.data.message || "Error while subscribing");
+    } finally {
+      toggleSubscribing(false);
+    }
+  };
   return (
     <>
       <footer className={props.className}>
@@ -212,12 +240,23 @@ export const Footer: React.FC<FooterProps> = (props) => {
                   placeholder="Email Address"
                   className="!placeholder:text-gray-500 !text-gray-500 font-plusjakartasans p-0 text-left text-xs w-full"
                   wrapClassName="border border-blue_gray-900 border-solid flex mt-[37px] rounded-[28px] w-full"
+                  value={email}
+                  onChange={setEmail}
                   suffix={
-                    <Img
-                      className="h-8 ml-[35px] my-auto"
-                      src="images/img_save.svg"
-                      alt="save"
-                    />
+                    <Button
+                      type="text"
+                      size="small"
+                      loading={subscribing}
+                      onClick={handleSubscribe}
+                    >
+                      {!subscribing && (
+                        <Img
+                          className="h-6 my-auto"
+                          src="images/img_save.svg"
+                          alt="save"
+                        />
+                      )}
+                    </Button>
                   }
                   color="black_900_33"
                   size="xs"
