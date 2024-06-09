@@ -75,27 +75,27 @@ export const Footer: React.FC<FooterProps> = (props) => {
                     <div className="flex flex-col h-8 items-end justify-start p-1 w-8">
                       <Img
                         className="h-6 mr-[5px]"
-                        src="images/img_facebook.svg"
+                        src="/images/img_facebook.svg"
                         alt="facebook"
                       />
                     </div>
                     <div className="flex flex-col h-8 items-center justify-end p-[3px] w-8">
                       <Img
                         className="h-6 w-6"
-                        src="images/img_link.svg"
+                        src="/images/img_link.svg"
                         alt="link"
                       />
                     </div>
                     <div className="flex flex-col h-8 items-center justify-start p-0.5 w-8">
                       <Img
                         className="h-[21px] my-0.5"
-                        src="images/img_trash.svg"
+                        src="/images/img_trash.svg"
                         alt="trash"
                       />
                     </div>
                     <Img
                       className="h-8 w-8"
-                      src="images/img_info.svg"
+                      src="/images/img_info.svg"
                       alt="info"
                     />
                   </div>
@@ -252,7 +252,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
                       {!subscribing && (
                         <Img
                           className="h-6 my-auto"
-                          src="images/img_save.svg"
+                          src="/images/img_save.svg"
                           alt="save"
                         />
                       )}

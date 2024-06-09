@@ -248,6 +248,7 @@ const ArticlesPage: React.FC = () => {
                     color="amber_500_19"
                     size="xl"
                     variant="fill"
+                    onClick={() => navigate("/articles/trending")}
                   >
                     View All Trending Articles
                   </Button>
@@ -273,6 +274,7 @@ const ArticlesPage: React.FC = () => {
             color="amber_500_19"
             size="xl"
             variant="fill"
+            onClick={() => navigate("/articles/featured")}
           >
             View All Featured Articles
           </Button>
@@ -296,6 +298,7 @@ const ArticlesPage: React.FC = () => {
             color="amber_500_19"
             size="xl"
             variant="fill"
+            onClick={() => navigate("/articles/latest")}
           >
             View All Latest Articles
           </Button>

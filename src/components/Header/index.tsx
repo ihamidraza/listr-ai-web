@@ -109,7 +109,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 {!isAuthenticated && (
                   <Button
                     className="border border-amber-500 border-solid font-bold capitalize cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[152px]"
-                    leftIcon={<Img src="images/img_lock.svg" alt="lock" />}
+                    leftIcon={<Img src="/images/img_lock.svg" alt="lock" />}
                     onClick={() => navigate("/login")}
                     shape="round"
                     color="amber_500_19"
@@ -137,7 +137,7 @@ export const Header: React.FC<HeaderProps> = () => {
               {isAuthenticated && (
                 <Button
                   className="border border-amber-500 border-solid font-bold capitalize cursor-pointer flex h-max inset-[0] items-center justify-center m-auto min-w-[152px]"
-                  leftIcon={<Img src="images/img_lock.svg" alt="lock" />}
+                  leftIcon={<Img src="/images/img_lock.svg" alt="lock" />}
                   onClick={logout}
                   shape="round"
                   color="amber_500_19"

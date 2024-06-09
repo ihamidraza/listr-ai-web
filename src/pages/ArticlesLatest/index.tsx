@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from "react";
 
-import { ArticleCard, Button, List, SubscribeForm, Text } from "components";
-import { chunkArray, server } from "utils";
+import { ArticleCard, SubscribeForm, Text } from "components";
+import { server } from "utils";
 import { Article } from "interfaces";
 
-import { useNavigate } from "react-router-dom";
-import { Spin } from "antd";
-
-const TrendingArticles: React.FC = () => {
-  const navigate = useNavigate();
+const FeaturedArticles: React.FC = () => {
   const [fetching, toggleFetching] = useState(false);
 
-  const [trendingArticles, setTrendingArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
 
-  const getTrendingArticles = async () => {
+  const getArticles = async () => {
     toggleFetching(true);
     try {
-      const { data } = await server.get("/articles");
+      const { data } = await server.get("/articles?ordered=createdAt");
 
-      setTrendingArticles(data);
+      setArticles(data);
     } catch (err) {
       console.log(err);
     } finally {
@@ -27,7 +23,7 @@ const TrendingArticles: React.FC = () => {
   };
 
   useEffect(() => {
-    getTrendingArticles();
+    getArticles();
   }, []);
 
   return (
@@ -38,11 +34,11 @@ const TrendingArticles: React.FC = () => {
           size="txtPlusJakartaSansExtraBold36"
           style={{ marginTop: 200 }}
         >
-          Trending Articles
+          Latest Articles
         </Text>
         {/* <Spin spinning={fetching}> */}
         <div className="md:gap-5 gap-[22px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center max-w-[1214px] min-h-[auto] mt-[35px] mx-auto md:px-5 w-full">
-          {trendingArticles.map((article, index) => (
+          {articles.map((article, index) => (
             <ArticleCard {...article} key={index} />
           ))}
         </div>
@@ -54,4 +50,4 @@ const TrendingArticles: React.FC = () => {
   );
 };
 
-export default TrendingArticles;
+export default FeaturedArticles;

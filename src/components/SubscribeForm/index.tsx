@@ -35,14 +35,14 @@ export const SubscribeForm = () => {
       <div className="bg-black-900_33 border border-blue_gray-900 border-solid flex flex-col h-full items-center justify-start m-auto pt-0.5 rounded-[15px] w-full">
         <Img
           className="h-[420px] md:h-auto object-cover rounded-tl-[15px] rounded-tr-[15px]"
-          src="images/img_maskgroup.png"
+          src="/images/img_maskgroup.png"
           alt="maskgroup"
         />
       </div>
       <div className="absolute h-[422px] inset-[0] justify-center m-auto w-full">
         <Img
           className="h-[422px] m-auto object-cover w-full"
-          src="images/img_image_422x1212.png"
+          src="/images/img_image_422x1212.png"
           alt="image_Four"
         />
         <div className="absolute flex flex-col md:gap-10 gap-[82px] h-max inset-[0] items-center justify-center m-auto w-[84%]">

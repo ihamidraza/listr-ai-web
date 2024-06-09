@@ -38,7 +38,7 @@ export const ArticleCard = (props: Article) => {
             <div className="flex flex-row items-end justify-evenly w-[50%]">
               <Img
                 className="h-6 w-6"
-                src="images/img_calendar.svg"
+                src="/images/img_calendar.svg"
                 alt="calendar"
               />
               <Text
@@ -48,17 +48,19 @@ export const ArticleCard = (props: Article) => {
                 {moment(createdAt).format("MMMM D, YYYY")}
               </Text>
             </div>
-            <div className="flex flex-row items-start justify-evenly w-[50%]">
+            <div
+              className="flex flex-row items-start justify-end w-[50%]  hover:underline cursor-pointer"
+              onClick={handleClick}
+            >
               <Text
                 className="mt-1 text-amber-500 text-xs hover:underline"
                 size="txtPlusJakartaSansRomanBold12"
-                onClick={handleClick}
               >
                 Read More
               </Text>
               <Img
-                className="h-6 w-6"
-                src="images/img_arrowleft.svg"
+                className="h-6 w-6 ml-2 mr-2 hover:underline"
+                src="/images/img_arrowleft.svg"
                 alt="arrowleft"
               />
             </div>

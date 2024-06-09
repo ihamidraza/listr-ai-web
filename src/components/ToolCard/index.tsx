@@ -65,21 +65,6 @@ export const ToolCard = (props: AITool) => {
 
         <Tag>{props.tag.name}</Tag>
 
-        {/* <Button
-          className="cursor-pointer flex items-center justify-center min-w-[65px] md:ml-[0] ml-[5px] mt-10 rounded-[5px]"
-          leftIcon={
-            <Img
-              className="h-[17px] mr-[7px]"
-              src="images/img_checkmark.svg"
-              alt="checkmark"
-            />
-          }
-          color="white_A700"
-          size="xs"
-          variant="outline"
-        >
-          <div className="text-left text-xs">{props.tags}</div>
-        </Button> */}
         <div className="flex flex-row gap-[13px] items-center justify-between mt-4 w-full">
           <div className="flex h-[70px] justify-end relative w-[49%]">
             <div className="backdrop-opacity-[0.5] bg-amber-500 blur-[24.00px] h-[23px] mb-[18px] ml-auto mr-12 mt-auto rounded-[11px] w-[23px]"></div>
@@ -88,7 +73,7 @@ export const ToolCard = (props: AITool) => {
               leftIcon={
                 <Img
                   className="h-5 mr-2.5"
-                  src="images/img_globe.svg"
+                  src="/images/img_globe.svg"
                   alt="globe"
                 />
               }
@@ -108,7 +93,7 @@ export const ToolCard = (props: AITool) => {
               leftIcon={
                 <Img
                   className="h-5 mr-2.5"
-                  src="images/img_bookmark.svg"
+                  src="/images/img_bookmark.svg"
                   alt="bookmark"
                 />
               }
