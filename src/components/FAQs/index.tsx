@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Text } from "../Text"; // Assuming Text component is imported from your library
 import { Img } from "../Img"; // Assuming Img component is imported from your library
 import { Line } from "../Line"; // Assuming Line component is imported from your library
+import { server } from "utils";
+import { Empty, Spin, message } from "antd";
 
 const FaqItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,21 +34,27 @@ const FaqItem = ({ question, answer }) => {
 };
 
 export const FAQs = () => {
-  const faqs = [
-    {
-      question: "What is the ListrAITool and how can it be used?",
-      answer: "Answer 1",
-    },
-    {
-      question: "What are the benefits of using the ListrAITool?",
-      answer: "Answer 2",
-    },
-    {
-      question:
-        "How can businesses and individuals use the ListrAITool for AI development?",
-      answer: "Answer 3",
-    },
-  ];
+  const [FAQs, setFAQs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const getFAQs = async () => {
+    setLoading(true);
+    try {
+      const { data } = await server.get("/faqs");
+      setFAQs(data);
+    } catch (err) {
+      console.error(err);
+      message.error(
+        err?.response?.data?.message || "Error while fetching FAQ's"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getFAQs();
+  }, []);
 
   return (
     <div className="max-w-lg mx-auto w-full">
@@ -58,9 +66,18 @@ export const FAQs = () => {
           FAQ's
         </Text>
       </div>
-      {faqs.map((faq, index) => (
-        <FaqItem key={index} question={faq.question} answer={faq.answer} />
-      ))}
+      <Spin spinning={loading}>
+        {FAQs.length ? (
+          FAQs.map((faq, index) => (
+            <FaqItem key={index} question={faq.question} answer={faq.answer} />
+          ))
+        ) : (
+          <Empty
+            description="No FAQ's found"
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+          />
+        )}
+      </Spin>
     </div>
   );
 };
