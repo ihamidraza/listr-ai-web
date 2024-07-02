@@ -8,6 +8,8 @@ export interface Category {
 export interface SubCategory {
   id: number;
   name: string;
+  description: string;
+  tools: number;
   createdAt: string;
   updatedAt: string;
   categoryId: number;

@@ -17,3 +17,4 @@ export * from "./SubscribeForm";
 export * from "./FAQs";
 export * from "./ToolCard";
 export * from "./ArticleCard";
+export * from "./SubCategoryCard";
